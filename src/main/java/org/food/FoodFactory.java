@@ -20,7 +20,7 @@ public class FoodFactory {
                 return new StoneOil();
             case "Fish":
                 return new Fish();
-            case "MistelToe":
+            case "Misteltoe":
                 return new Misteltoe();
             case "FourLeafClover":
                 return new FourLeafClover();
@@ -32,6 +32,8 @@ public class FoodFactory {
                 return new Lobster();
             case "SecretIngredient":
                 return new SecretIngredient();
+                case "Strawberry":
+                    return new Strawberry();
         }
         return null;
     }

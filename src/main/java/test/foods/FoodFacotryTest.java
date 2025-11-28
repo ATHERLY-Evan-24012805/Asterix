@@ -112,7 +112,7 @@ public class FoodFacotryTest {
     //Verifie la creation de FourleafClover (Trèfle a quatre feuille)
     @Test
     void testCreateFoodFactoryFourLeafClover(){
-        Food result = factory.createFood("FourLeadClover");
+        Food result = factory.createFood("FourLeafClover");
 
         assertNotNull(result, "la factory ne doit pas renvoyer null");
         assertInstanceOf(FourLeafClover.class, result, "L'objet devrait etre de type FourLeafClover");
