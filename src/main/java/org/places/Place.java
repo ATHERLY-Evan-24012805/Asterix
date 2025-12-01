@@ -1,5 +1,7 @@
 package org.places;
 
+import org.clanLeader.ClanLeader;
+import org.foods.Food;
 import org.persons.Person;
 
 import java.util.ArrayList;
@@ -10,13 +12,19 @@ public abstract class Place {
     private int surface;
     private ClanLeader chief;
     private int census;
-    private List<Person> ListOfPeople;
-    private List<Food> ListOfFood;
-
+    protected List<Food> food = new ArrayList<>();
     protected List<Person> people = new ArrayList<>();
+
+    public abstract boolean canAddPerson(Person person);
+
     public void addPerson(Person person) {
-        people.add(person);
+        if (canAddPerson(person)) {
+            people.add(person);
+        } else {
+            System.out.println("Impossible d'ajouter cette personne ici : " + person);
+        }
     }
+
     public void removePerson(Person person) {
         people.remove(person);
     }
@@ -24,14 +32,11 @@ public abstract class Place {
         return people;
     }
 
-
     public void healSomeone(Person person) {
         person.heal();
-
     }
 
     public void feedSomeone(Person person) {
-
         person.eat();
     }
 
@@ -41,8 +46,8 @@ public abstract class Place {
                 "Superficie : " + surface + "\n" +
                 "Chef de clan : " + chief + "\n" +
                 "Recensement : " + census + "\n" +
-                "Liste de personnes : " + ListOfPeople + "\n" +
-                "Liste d'aliments : " + ListOfFood;
+                "Liste de personnes : " + people + "\n" +
+                "Liste d'aliments : " + food;
     }
 
 

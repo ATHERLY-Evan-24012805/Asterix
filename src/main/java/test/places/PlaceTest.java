@@ -9,7 +9,6 @@ import org.persons.Person;
 import org.places.Place;
 import org.places.RomanCity;
 
-
 import java.util.List;
 
 public class PlaceTest {
