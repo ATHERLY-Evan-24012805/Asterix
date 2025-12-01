@@ -50,5 +50,6 @@ class MagicPotionTest {
         assertEquals(5, potion.getDoses());
         assertEquals(MagicEffect.WEREWOLF, potion.getEffects());
     }
+    //test
 
 }
