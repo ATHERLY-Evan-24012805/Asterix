@@ -1,5 +1,6 @@
 package persons.Gaulish.charac;
-
+import MagicPotion.MagicPotion;
+import MagicPotion.MagicEffect;
 import persons.Gaulish.Gaulish;
 import persons.Fighter;
 import persons.Leader;
@@ -22,5 +23,9 @@ public class Druide extends Gaulish implements Fighter, Leader, Worker{
     @Override
     public void work(){
 
+    }
+
+    public MagicPotion createMagicPotion(){
+        return new MagicPotion(3, MagicEffect.NORMAL);
     }
 }

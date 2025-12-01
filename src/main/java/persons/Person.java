@@ -1,5 +1,7 @@
 package persons;
 
+import MagicPotion.MagicPotion;
+
 public abstract class Person {
     private String name;
     private char gender;
@@ -30,7 +32,7 @@ public abstract class Person {
         health = health + 10;
     }
 
-    public void drinkPotion(){
+    public void drinkPotion(MagicPotion MagicPotion){
         potion = potion + 10;
     }
 
