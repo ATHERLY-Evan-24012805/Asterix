@@ -1,12 +1,12 @@
-package org.places;
+package places;
 
-import org.persons.Person;
+import persons.Person;
 
 public class BattleField extends Place{
 
     @Override
     public boolean canAddPerson(Person person) {
-        return false;
+        return true;
     }
 
 }

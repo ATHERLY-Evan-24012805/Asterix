@@ -1,8 +1,8 @@
-package org.places;
+package places;
 
-import org.clanLeader.ClanLeader;
-import org.foods.Food;
-import org.persons.Person;
+import clanLeader.ClanLeader;
+import Foods.Foods;
+import persons.Person;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,7 @@ public abstract class Place {
     private int surface;
     private ClanLeader chief;
     private int census;
-    protected List<Food> food = new ArrayList<>();
+    protected List<Foods> food = new ArrayList<>();
     protected List<Person> people = new ArrayList<>();
 
     public abstract boolean canAddPerson(Person person);
@@ -33,11 +33,21 @@ public abstract class Place {
     }
 
     public void healSomeone(Person person) {
-        person.heal();
+        if (people.contains(person)) {
+            person.heal();
+        }
+        else {
+            System.out.println("La personne est dans un autre lieu");
+        }
     }
 
     public void feedSomeone(Person person) {
-        person.eat();
+        if (people.contains(person)) {
+            person.eat();
+        }
+        else {
+            System.out.println("La personne est dans un autre lieu");
+        }
     }
 
     @Override

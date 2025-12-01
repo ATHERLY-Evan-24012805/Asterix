@@ -1,10 +1,11 @@
-package org.places;
+package places;
 
-import org.persons.Person;
+import persons.Gaulish.Gaulish;
+import persons.Person;
 
 public class GallicVillage extends Place{
     @Override
     public boolean canAddPerson(Person person) {
-        return false;
+        return person instanceof Gaulish;
     }
 }

@@ -1,11 +1,12 @@
-package org.places;
+package places;
 
-import org.persons.Person;
+import persons.Person;
+import persons.Roman.Roman;
 
 public class RomanCity extends Place {
 
     @Override
     public boolean canAddPerson(Person person) {
-        return false;
+        return person instanceof Roman;
     }
 }

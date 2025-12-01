@@ -1,4 +1,4 @@
-package org.clanLeader;
+package clanLeader;
 
 public class ClanLeader {
 }
