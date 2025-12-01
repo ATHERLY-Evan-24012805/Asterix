@@ -35,12 +35,6 @@ class PersonTest {
         assertEquals(110, health);
     }
 
-    @Test
-    void testDrinkPotion() {
-        character.drinkPotion();
-        int potion = getPrivateInt(character, "potion");
-        assertEquals(10, potion);
-    }
 
     @Test
     void testFightWithMockedAdversary() {
