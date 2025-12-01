@@ -2,9 +2,7 @@ package test.foods;
 
 import org.food.*;
 import org.food.Food;
-import org.food.*;
 import org.food.items.*;
-import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 
