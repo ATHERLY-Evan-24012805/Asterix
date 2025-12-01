@@ -1,15 +1,13 @@
 package test.clock;
 
-import org.clock.Clock;
-import org.clock.TemporalObject;
-import org.food.items.Fish;
-import org.food.items.FourLeafClover;
+import clock.Clock;
+import clock.TemporalObject;
+import food.items.Fish;
+import food.items.FourLeafClover;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
-
-import static org.mockito.ArgumentMatchers.anyInt;
 
 public class TestClock {
     private Clock clock;

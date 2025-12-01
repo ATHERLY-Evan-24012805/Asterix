@@ -1,6 +1,6 @@
-package org.food.items;
+package food.items;
 
-import org.food.Food;
+import food.Food;
 
 public class Misteltoe extends Food{
     public Misteltoe() {

@@ -1,4 +1,4 @@
-package org.clock;
+package clock;
 
 public interface TemporalObject {
     public void ticsPassed();

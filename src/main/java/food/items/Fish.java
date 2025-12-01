@@ -1,16 +1,16 @@
-package org.food.items;
+package food.items;
 
-import org.clock.TemporalObject;
-import org.food.Food;
+import clock.TemporalObject;
+import food.Food;
 
-public class FourLeafClover extends Food implements TemporalObject {
+public class Fish extends Food implements TemporalObject {
 
     //Attributs
     private boolean peramption = true;
-    private int isFreshFor = 48;
+    private int isFreshFor = 24;
 
     //Constructeur
-    public FourLeafClover() {
+    public Fish(){
         super();
     }
 

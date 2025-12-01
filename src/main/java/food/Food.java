@@ -1,6 +1,4 @@
-package org.food;
-
-import org.clock.TemporalObject;
+package food;
 
 public abstract class Food {
 
