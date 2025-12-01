@@ -1,5 +1,5 @@
-package org.food;
-import org.food.items.*;
+package food;
+import food.items.*;
 
 public class FoodFactory {
     public Food createFood(String type_of_food) {
