@@ -1,37 +1,39 @@
 package theatreOfInvasion;
 
-import Theatres.TheatreOfInvasion;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
+
 import person.Person;
 import place.Place;
+import place.types.*;
+import theatres.TheatreOfInvasion;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.mockito.Mockito.when;
-
 public class TestTheatreOfInvasion {
     private TheatreOfInvasion theatre;
 
+    Place place1 = new RomanFortifiedCamp();
+    Place place2 = new RomanCity();
+    Place place3 = new GallicVillage();
     @Mock
-    Place galicVillage, romanFortifiedCamp, romancity ;
-
+    Person gallic;
     @Mock
-    Person gallic, blacksmith;
+    Person blacksmith;
 
     @BeforeEach
     void init(){
         ArrayList<Place> lplaces = new ArrayList();
-        lplaces.add(galicVillage);
-        lplaces.add(romanFortifiedCamp);
-        lplaces.add(romancity);
-        theatre = new TheatreOfInvasion("scene1", lplaces);
+        lplaces.add(place1);
+        lplaces.add(place2);
+        lplaces.add(place3);
+        theatre = new TheatreOfInvasion("Testing", lplaces);
     }
 
-    // Test la méthodes ShowPlaces
+    // Test la méthode ShowPlaces
     @Test
     void testShowPlaceOfTheatreOfInvasion(){
         ArrayList<Place> result = null;
@@ -43,21 +45,16 @@ public class TestTheatreOfInvasion {
 
     @Test
     void testHowManyPeople(){
-        when(galicVillage.getNbpersons()).thenReturn(15);
-        when(romancity.getNbpersons()).thenReturn(15);
-        when(romanFortifiedCamp.getNbpersons()).thenReturn(15);
+        place1.addPerson(blacksmith);
+        place2.addPerson(gallic);
 
         int result = theatre.howManyPeople();
-        Assertions.assertEquals(45,result);
+        Assertions.assertEquals(2,result);
     }
 
     @Test
     void testPeopleByPlace(){
-        List p = new ArrayList();
-        p.add(gallic);
-        p.add(blacksmith);
-        when(romancity.getListOfPersonnage()).thenReturn(p);
-        List result = theatre.PeopleByPlace(romancity);
+        List result = theatre.PeopleByPlace(place2);
         Assertions.assertEquals(result.size(), 2);
     }
 }

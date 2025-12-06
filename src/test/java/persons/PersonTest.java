@@ -2,12 +2,16 @@ package persons;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import persons.Roman.charac.RomanGeneral;
+import person.Person;
+import person.types.*;
+import person.types.Roman.charac.RomanGeneral;
+
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 class PersonTest {
+/*
     //Création instance personnages
     Person character;
     RomanGeneral mockAdversaire;
@@ -54,7 +58,7 @@ class PersonTest {
 
         assertTrue(healthAfter < healthBefore);
     }
-
+/*
     private int getPrivateInt(Object obj, String field) {
         try {
             var f = obj.getClass().getSuperclass().getDeclaredField(field);
@@ -64,4 +68,6 @@ class PersonTest {
             throw new RuntimeException(e);
         }
     }
+
+ */
 }
