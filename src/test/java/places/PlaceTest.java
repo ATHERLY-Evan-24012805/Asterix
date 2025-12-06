@@ -1,6 +1,5 @@
-package test.places;
+package places;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -12,12 +11,12 @@ import persons.Gaulish.charac.Druide;
 import persons.Gaulish.charac.GaulishBlacksmith;
 import persons.Gaulish.charac.GaulishInnKeeper;
 import persons.Gaulish.charac.GaulishShopKeeper;
+import persons.Lycanthrope;
 import persons.Person;
 import persons.Roman.Roman;
 import persons.Roman.charac.RomanGeneral;
 import persons.Roman.charac.RomanLegionary;
 import persons.Roman.charac.RomanPrefect;
-import places.*;
 
 import java.util.List;
 
@@ -41,6 +40,8 @@ public class PlaceTest {
     Person gaulishShopKeeperMock;
     Person druidMock;
 
+    Person lycanthropeMock;
+
     @BeforeEach
     void setup() {
         romanCity = new RomanCity();
@@ -60,6 +61,8 @@ public class PlaceTest {
         gaulishInnKeeperMock = mock(GaulishInnKeeper.class);
         gaulishShopKeeperMock = mock(GaulishShopKeeper.class);
         druidMock = mock(Druide.class);
+
+        lycanthropeMock = mock(Lycanthrope.class);
     }
 
     @Test
@@ -76,6 +79,10 @@ public class PlaceTest {
         romanCity.addPerson(druidMock);
         assertFalse(people.contains(druidMock));
         assertEquals(1, people.size());
+
+        romanCity.addPerson(lycanthropeMock);
+        assertTrue(people.contains(lycanthropeMock));
+        assertEquals(2, people.size());
     }
 
     @Test
@@ -100,9 +107,50 @@ public class PlaceTest {
         romanFortifiedCamp.addPerson(romanLegionaryMock);
         assertTrue(people.contains(romanLegionaryMock));
         assertEquals(2, people.size());
+    }
 
+    @Test
+    void addPersonGallicVillage() {
+        gallicVillage.addPerson(romanMock);
+        List<Person> people = gallicVillage.getPeople();
+        assertFalse(people.contains(romanMock));
+        assertEquals(0, people.size());
 
+        gallicVillage.addPerson(gaulishBlacksmithMock);
+        assertTrue(people.contains(gaulishBlacksmithMock));
+        assertEquals(1, people.size());
+    }
 
+    @Test
+    void addPersonGalloRomanVillage() {
+        galloRomanVillage.addPerson(gaulishInnKeeperMock);
+        List<Person> people = galloRomanVillage.getPeople();
+        assertTrue(people.contains(gaulishInnKeeperMock));
+        assertEquals(1, people.size());
+
+        galloRomanVillage.addPerson(romanMock);
+        assertTrue(people.contains(romanMock));
+        assertEquals(2, people.size());
+
+        galloRomanVillage.addPerson(lycanthropeMock);
+        assertFalse(people.contains(lycanthropeMock));
+        assertEquals(2, people.size());
+    }
+
+    @Test
+    void addPersonEnclosure() {
+        enclosure.addPerson(gaulishMock);
+        List<Person> people = enclosure.getPeople();
+        assertFalse(people.contains(gaulishMock));
+        assertEquals(0, people.size());
+
+        enclosure.addPerson(romanMock);
+        assertFalse(people.contains(romanMock));
+        assertEquals(0, people.size());
+
+        enclosure.addPerson(lycanthropeMock);
+        assertTrue(people.contains(lycanthropeMock));
+        assertEquals(1, people.size());
     }
 
     @Test

@@ -1,10 +1,11 @@
 package places;
 
+import persons.Lycanthrope;
 import persons.Person;
 
 public class Enclosure extends Place{
     @Override
     public boolean canAddPerson(Person person) {
-        return true;
+        return person instanceof Lycanthrope;
     }
 }
