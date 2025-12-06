@@ -10,6 +10,8 @@ public class Druide extends Gaulish implements Fighter, Leader, Worker{
         super(name, gender, height, age, strength, endurance);
     }
 
+    public void makeMagicPotion() {}
+
     @Override
     public void Fighter() {
     }

@@ -38,6 +38,15 @@ public abstract class Place {
     }
 
     /**
+     * Retourne la liste des aliments présents dans le lieu.
+     *
+     * @return Liste des aliments
+     */
+    public List<Foods> getFood() {
+        return food;
+    }
+
+    /**
      * Vérifie si une personne peut être ajoutée dans ce lieu.
      *
      * @param person La personne à tester
