@@ -11,11 +11,12 @@ import person.types.Gaulish.charac.Druide;
 import person.types.Gaulish.charac.GaulishBlacksmith;
 import person.types.Gaulish.charac.GaulishInnKeeper;
 import person.types.Gaulish.charac.GaulishShopKeeper;
-import person.types.Person;
+import person.Person;
 import person.types.Roman.Roman;
 import person.types.Roman.charac.RomanGeneral;
 import person.types.Roman.charac.RomanLegionary;
 import person.types.Roman.charac.RomanPrefect;
+import place.Place;
 import place.types.*;
 
 import java.util.List;

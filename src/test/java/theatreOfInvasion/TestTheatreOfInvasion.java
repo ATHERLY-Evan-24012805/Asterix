@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 
+import person.types.*;
 import person.Person;
 import place.Place;
 import place.types.*;
@@ -19,6 +20,7 @@ public class TestTheatreOfInvasion {
     Place place1 = new RomanFortifiedCamp();
     Place place2 = new RomanCity();
     Place place3 = new GallicVillage();
+
     @Mock
     Person gallic;
     @Mock

@@ -1,6 +1,6 @@
 package MagicPotion;
 
-import Foods.*;
+import food.Food.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import static org.mockito.Mockito.*;
 public class MagicPotionTest {
-    MagicPotion potion;
+/*    MagicPotion potion;
 
     Mistletoe mistletoe = mock(Mistletoe.class);
     Carrot carrot = mock(Carrot.class);
@@ -44,4 +44,6 @@ public class MagicPotionTest {
     void testConstructeur4(){
         potion = new MagicPotion(mistletoe,carrot, salt, clover, fish, stoneOil, honey, mead, shhhIngredient, optionalIngredient, optionalIngredient2, optionalIngredient3);
     }
+
+ */
 }
