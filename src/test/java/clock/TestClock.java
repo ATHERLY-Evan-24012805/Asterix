@@ -27,24 +27,24 @@ public class TestClock {
     @Test
     void testSubscibtion(){
         Assertions.assertTrue(clock.getSubscribers().isEmpty());
-        clock.Subscribe(FakeSub1);
-        clock.Subscribe(FakeSub2);
+        clock.subscribe(FakeSub1);
+        clock.subscribe(FakeSub2);
         Assertions.assertFalse(clock.getSubscribers().isEmpty());
     }
 
     @Test
     void testUnsubscribe(){
         Assertions.assertTrue(clock.getSubscribers().isEmpty());
-        clock.Subscribe(FakeSub1);
+        clock.subscribe(FakeSub1);
         Assertions.assertFalse(clock.getSubscribers().isEmpty());
-        clock.Unsubscribe(FakeSub1);
+        clock.unsubscribe(FakeSub1);
         Assertions.assertTrue(clock.getSubscribers().isEmpty());
     }
 
     @Test
     void testNotifySubscribers(){
-        clock.Subscribe(fish);
-        clock.Subscribe(fourLeafClover);
+        clock.subscribe(fish);
+        clock.subscribe(fourLeafClover);
         clock.notifySubscribers();
         int resultFish = fish.getIsFreshFor();
         int resultClover = fourLeafClover.getIsFreshFor();
@@ -57,8 +57,8 @@ public class TestClock {
         Assertions.assertTrue(fish.getPeramption());
         Assertions.assertTrue(fourLeafClover.getPeramption());
 
-        clock.Subscribe(fish);
-        clock.Subscribe(fourLeafClover);
+        clock.subscribe(fish);
+        clock.subscribe(fourLeafClover);
         clock.notifySubscribers();
         for (int i = 0; i < 24; i++ ){
             clock.notifySubscribers();

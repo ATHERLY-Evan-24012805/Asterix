@@ -9,15 +9,16 @@ public class Clock {
     private List<TemporalObject> subscribers = new ArrayList<>();
 
     //Methodes
-    public void Subscribe(TemporalObject subscriber) {
+    public void subscribe(TemporalObject subscriber) {
         subscribers.add(subscriber);
     }
-    public void Unsubscribe(TemporalObject subscriber) {
+    public void unsubscribe(TemporalObject subscriber) {
         subscribers.remove(subscriber);
     }
     public void notifySubscribers() {
         // On prévient tout le monde un par un
         for (TemporalObject obj : subscribers) {
+            System.out.println("une heure est passée.");
             obj.ticsPassed();
         }
     }
