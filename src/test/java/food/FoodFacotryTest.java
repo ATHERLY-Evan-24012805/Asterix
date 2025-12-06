@@ -1,4 +1,4 @@
-package test.foods;
+package food;
 
 import food.FoodFactory;
 import food.items.*;
