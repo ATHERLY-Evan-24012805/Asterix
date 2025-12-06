@@ -1,4 +1,4 @@
-package test.clock;
+package clock;
 
 import clock.Clock;
 import clock.TemporalObject;
