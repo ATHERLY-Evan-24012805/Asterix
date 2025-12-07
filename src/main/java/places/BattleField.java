@@ -1,19 +1,16 @@
-package place.types;
+package places;
 
-import place.Place;
-import person.Person;
 import persons.Person;
-import persons.Lycanthrope;
 
 /**
- * Classe représentant un enclos
+ * Classe représentant un champ de bataille.
  *
- * <p>Un enclos ne peut contenir que des créatures fantastiques.
+ * <p>Un champ de bataille peut contenir tous les types de personnages.
  *
  * <p>Hérite de Place et bénéficie donc des méthodes pour
  * gérer les habitants et leur alimentation/soin.
  */
-public class Enclosure extends Place {
+public class BattleField extends Place {
 
     /**
      * Vérifie si une personne peut entrer dans ce lieu
@@ -23,6 +20,7 @@ public class Enclosure extends Place {
      */
     @Override
     public boolean canAddPerson(Person person) {
-        return person instanceof Lycanthrope;
+        return true;
     }
+
 }
