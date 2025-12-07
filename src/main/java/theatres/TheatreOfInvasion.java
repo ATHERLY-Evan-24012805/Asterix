@@ -7,6 +7,7 @@ import place.Place;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 public class TheatreOfInvasion {
@@ -61,8 +62,6 @@ public class TheatreOfInvasion {
         ArrayList<Place> TheirPlaces = new ArrayList<>();
         ArrayList<Place> TheirNames = new ArrayList<>();
         for (int i = 0; i < input; i++) {
-            System.out.println("i " + i + " input " + input);
-
             /* Partie à initialiser une fois la class ClanLeader créée
             System.out.println("Tout bon chef a un nom, quel est le vôtre ? ");
             String name = sc.nextLine();
@@ -73,6 +72,7 @@ public class TheatreOfInvasion {
             System.out.println("Quel est le type de votre premier lieu");
             System.out.println(" 1 : Village Gaullois \n 2 : camp retranché romain \n 3 : ville romaine \n 4 : bourgade gallo-romaine ");
             int numPlace = sc.nextInt();
+            sc.nextLine();
             Place nouveauLieu = null;
             switch (numPlace) {
                 case 1:
@@ -102,10 +102,46 @@ public class TheatreOfInvasion {
         }
         for (Place p : TheirPlaces) {
             if (p instanceof GallicVillage) {
-                System.out.println("Vous avez un lieu de Gaullois, vous disposez par défaut de deux forgerons et d'un aubergiste." +
-                        "Quel nom voulez vous leurs données ?");
-                System.out.print("Forgeron 1 :");
-                String f1 = sc.nextLine();
+                System.out.println("Vous avez un lieu de Gaulois, vous disposez par défaut de deux forgerons et d'un aubergiste." +
+                        "\nQuel nom voulez vous leurs données ?");
+
+                // Forgeron 1 et 2
+                for (int i = 0; i < 2; i++) {
+                    System.out.print("Forgeron " + (i+1) + " :");
+                    String f = sc.nextLine();
+                    char gender = ' '; // On initialise la variable
+                    boolean saisieValide = false;
+                    while (!saisieValide) {
+                        System.out.print("Quel sera son genre M, F ou X ? ");
+                        String inputGender = sc.nextLine(); // On lit le texte
+
+                        // On prend le premier caractère et on le met en MAJUSCULE pour accepter 'm' ou 'M'
+                        if (!inputGender.isEmpty()) {
+                            gender = Character.toUpperCase(inputGender.charAt(0));
+                        }
+
+                        // Vérification
+                        if (gender == 'M' || gender == 'F' || gender == 'X') {
+                            saisieValide = true; // C'est bon, on pourra sortir de la boucle !
+                        } else {
+                            System.out.println("Erreur : Veuillez entrer uniquement M, F ou X.");
+                        }
+                    }
+                    Random rHeight = new Random();
+                    Random rAge = new Random();
+                    int height = rHeight.nextInt((250 - 80) + 1) + 80;
+                    int age = rAge.nextInt((80 - 15) + 1) + 15;
+                    height /= 100;
+                    // on fixe l'endurance et la force des blacksmith a une valeur fixe, car c'est spécifique à leurs role, ici forgeron
+                    // force 80
+                    // endurance 30
+                    p.addPerson(new GaulishBlacksmith(f, gender, height, age, 80, 30)); // return False car pas implementé
+                    //ToString personnage
+                }
+
+                // Aubergiste
+                System.out.print("Aubergiste :");
+                String NK = sc.nextLine();
                 char gender = ' '; // On initialise la variable
                 boolean saisieValide = false;
                 while (!saisieValide) {
@@ -123,11 +159,23 @@ public class TheatreOfInvasion {
                     } else {
                         System.out.println("Erreur : Veuillez entrer uniquement M, F ou X.");
                     }
+                    Random rHeight = new Random();
+                    Random rAge = new Random();
+                    int height = rHeight.nextInt((250 - 80) + 1) + 80;
+                    int age = rAge.nextInt((80 - 15) + 1) + 15;
+                    // Pareil les aubergistes ont des valeurs par défaut moins de force plus d'endurance.
+                    // Force 20
+                    // Endurance 80
+                    p.addPerson(new GaulishBlacksmith(NK, gender, height, age, 20, 80)); // return False car pas implementé
                 }
-                p.addPerson(new GaulishBlacksmith(f1,gender));
+                // Il faudrait des fighters par défaut aussi, mais les gaulois n'en ont pas à part les druides ??
+                //System.out.println("Vous avez par défaut 5 Guerriers") ;
+
             }
+
+
         }
-        System.out.println("Vous avez par defaut 5 Guerriers");
+
 
 
 
