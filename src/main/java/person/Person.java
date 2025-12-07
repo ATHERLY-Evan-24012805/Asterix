@@ -1,6 +1,8 @@
 package person;
 
-public abstract class Person {
+import clock.TemporalObject;
+
+public abstract class Person implements TemporalObject {
     private String name;
     private char gender;
     private double height;
@@ -12,7 +14,7 @@ public abstract class Person {
     private int belligerence;
     private int potion = 0;
 
-    public Person(String name, char gender, double height, int age, int strength, int endurance) {
+    public Person(String name, char gender, double height, int age, int strength, int endurance)   {
         this.name = name;
         this.gender = gender;
         this.height = height;
