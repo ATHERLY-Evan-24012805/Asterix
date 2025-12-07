@@ -7,17 +7,19 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-import persons.Person;
-import persons.Roman.Roman;
-import persons.Roman.charac.RomanGeneral;
-import persons.Roman.charac.RomanLegionary;
-import persons.Roman.charac.RomanPrefect;
-import persons.Gaulish.Gaulish;
-import persons.Gaulish.charac.Druide;
-import persons.Gaulish.charac.GaulishBlacksmith;
-import persons.Gaulish.charac.GaulishInnKeeper;
-import persons.Gaulish.charac.GaulishShopKeeper;
-import persons.Lycanthrope;
+import person.Person;
+import person.types.Roman.Roman;
+import person.types.Roman.charac.RomanGeneral;
+import person.types.Roman.charac.RomanLegionary;
+import person.types.Roman.charac.RomanPrefect;
+import person.types.Gaulish.Gaulish;
+import person.types.Gaulish.charac.Druide;
+import person.types.Gaulish.charac.GaulishBlacksmith;
+import person.types.Gaulish.charac.GaulishInnKeeper;
+import person.types.Gaulish.charac.GaulishShopKeeper;
+import person.types.Lycanthrope;
+import place.Place;
+import place.types.*;
 
 import java.util.List;
 

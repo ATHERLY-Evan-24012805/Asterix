@@ -1,9 +1,10 @@
 package place.types;
 
-import place.Place;
+
 import person.Person;
-import persons.Person;
-import persons.Lycanthrope;
+
+import person.types.Lycanthrope;
+import place.Place;
 
 /**
  * Classe représentant un enclos

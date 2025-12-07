@@ -1,7 +1,6 @@
-package places;
+package place;
 
 import clanLeader.ClanLeader;
-import food.Food;
 import food.Food;
 import person.Person;
 
@@ -65,9 +64,6 @@ public abstract class Place {
      */
     public void removePerson(Person person) {
         people.remove(person);
-    }
-    public List<Person> getPeople() {
-        return people;
     }
 
     /**

@@ -1,10 +1,9 @@
 package place.types;
 
-import place.Place;
 import person.Person;
-import persons.Person;
-import persons.Gaulish.Gaulish;
-import persons.Roman.Roman;
+import person.types.Gaulish.Gaulish;
+import person.types.Roman.Roman;
+import place.Place;
 
 /**
  * Classe représentant une ville gallo-romaine

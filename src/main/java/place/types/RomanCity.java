@@ -1,11 +1,9 @@
 package place.types;
 
-import persons.Person;
-import persons.Roman.Roman;
-import persons.Lycanthrope;
-import place.Place;
 import person.Person;
 import person.types.Roman.Roman;
+import person.types.Lycanthrope;
+import place.Place;
 
 /**
  * Classe représentant une ville romaine
