@@ -2,7 +2,7 @@ package MagicPotion;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import persons.Person;
+import person.Person;
 
 import static org.junit.jupiter.api.Assertions.*;
 

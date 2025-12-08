@@ -1,8 +1,8 @@
-package persons.Roman.charac;
+package person.Roman.charac;
 
-import persons.Roman.Roman;
-import persons.Fighter;
-import persons.Leader;
+import person.Roman.Roman;
+import person.Fighter;
+import person.Leader;
 
 public class RomanGeneral extends Roman implements Fighter, Leader {
     public RomanGeneral(String name, char gender, double height, int age, int strength, int endurance) {

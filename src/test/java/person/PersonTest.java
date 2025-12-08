@@ -1,8 +1,8 @@
-package persons;
+package person;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import persons.Roman.charac.RomanGeneral;
+import person.Roman.charac.RomanGeneral;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;

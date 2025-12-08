@@ -1,4 +1,4 @@
-package persons;
+package person;
 
 public interface Leader {
     default void lead(){

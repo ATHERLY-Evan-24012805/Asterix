@@ -1,12 +1,12 @@
-package persons.Gaulish.charac;
+package person.Gaulish.charac;
 import MagicPotion.MagicPotion;
 import MagicPotion.MagicEffect;
 import food.Food;
 import food.items.*;
-import persons.Gaulish.Gaulish;
-import persons.Fighter;
-import persons.Leader;
-import persons.Worker;
+import person.Gaulish.Gaulish;
+import person.Fighter;
+import person.Leader;
+import person.Worker;
 import java.util.ArrayList;
 
 public class Druid extends Gaulish implements Fighter, Leader, Worker{

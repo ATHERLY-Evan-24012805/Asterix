@@ -1,4 +1,4 @@
-package persons;
+package person;
 
 
 public class Lycanthrope extends Person implements Fighter {

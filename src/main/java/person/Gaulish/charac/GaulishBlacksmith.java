@@ -1,6 +1,6 @@
-package persons.Gaulish.charac;
-import persons.Gaulish.Gaulish;
-import persons.Worker;
+package person.Gaulish.charac;
+import person.Gaulish.Gaulish;
+import person.Worker;
 
 public class GaulishBlacksmith extends Gaulish implements Worker {
     public GaulishBlacksmith(String name, char gender, double height, int age, int strength, int endurance) {

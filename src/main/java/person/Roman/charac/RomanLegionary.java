@@ -1,7 +1,7 @@
-package persons.Roman.charac;
+package person.Roman.charac;
 
-import persons.Roman.Roman;
-import persons.Fighter;
+import person.Roman.Roman;
+import person.Fighter;
 
 public class RomanLegionary extends Roman implements Fighter{
     public RomanLegionary(String name, char gender, double height, int age, int strength, int endurance) {
