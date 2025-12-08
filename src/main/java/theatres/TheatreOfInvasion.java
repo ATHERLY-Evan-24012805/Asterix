@@ -97,7 +97,7 @@ public class TheatreOfInvasion {
             // Pareil les aubergistes ont des valeurs par défaut moins de force plus d'endurance.
             // Force 60
             // Endurance 20
-            newPerson = new Druide(name, gender, height, age, 60, 20);
+            newPerson = new Druid(name, gender, height, age, 60, 20);
         }
         if (roleName.equals("ShopKeeper")) {
             // Pareil les aubergistes ont des valeurs par défaut moins de force plus d'endurance.
@@ -170,7 +170,7 @@ public class TheatreOfInvasion {
              */
 
             System.out.println("Quel est le type de votre premier lieu");
-            System.out.println(" 1 : Village Gaullois \n 2 : camp retranché romain \n 3 : ville romaine \n 4 : bourgade gallo-romaine ");
+            System.out.println(" 1 : Village Gaulois \n 2 : camp retranché romain \n 3 : ville romaine \n 4 : bourgade gallo-romaine ");
             int numPlace = sc.nextInt();
             sc.nextLine();
             Place nouveauLieu = null;

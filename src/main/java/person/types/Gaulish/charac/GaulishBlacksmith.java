@@ -11,4 +11,9 @@ public class GaulishBlacksmith extends Gaulish implements Worker {
     public void work() {
 
     }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }
