@@ -12,7 +12,7 @@ public class GaulishBlacksmith extends Gaulish implements Worker {
 
     @Override
     public void work() {
-
+// faire une epée ou ameliorer une epée
     }
 
     @Override

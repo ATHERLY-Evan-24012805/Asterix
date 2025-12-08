@@ -9,7 +9,7 @@ public class GaulishShopKeeper extends Gaulish implements Worker {
 
     @Override
     public void work() {
-
+// Crée de la bouffe reste a decider de la frequence
     }
 
     @Override

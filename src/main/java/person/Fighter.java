@@ -5,5 +5,5 @@ public interface Fighter {
         System.out.println("I am fighter");
     };
      */
-    void fighte();
+    void fight();
 }

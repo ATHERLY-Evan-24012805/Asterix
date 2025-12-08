@@ -17,17 +17,18 @@ public class Druid extends Gaulish implements Fighter, Leader, Worker{
     }
 
     @Override
-    public void fighte() {
+    public void fight() {
+        //fait des degats modérés
     }
 
     @Override
     public void lead(){
-
+        // changes les roles en fonction de la demande du joueurs
     }
 
     @Override
     public void work(){
-
+        // fais des potions
     }
 
     public MagicPotion createMagicPotion(MagicEffect effect, int Quantity){

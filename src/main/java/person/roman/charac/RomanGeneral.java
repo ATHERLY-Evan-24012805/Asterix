@@ -11,13 +11,13 @@ public class RomanGeneral extends Roman implements Fighter, Leader {
 
 
     @Override
-    public void fighte() {
-
+    public void fight() {
+// se bat seulement s'il n'a plus d'allier avec lui sur le champ de bataille. c'est une nuke
     }
 
     @Override
     public void lead(){
-
+// fait en sorte que deux personnages puissent taper en meme temps
     }
 
     @Override

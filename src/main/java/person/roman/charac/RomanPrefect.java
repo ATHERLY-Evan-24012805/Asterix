@@ -11,7 +11,7 @@ public class RomanPrefect extends Roman implements Leader{
 
     @Override
     public void lead(){
-
+        // Promeut un legionnaire en general
     }
 
     @Override

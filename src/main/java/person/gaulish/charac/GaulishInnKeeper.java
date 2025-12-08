@@ -9,7 +9,7 @@ public class GaulishInnKeeper extends Gaulish implements Worker {
 
     @Override
     public void work() {
-
+// soigne les personnes
     }
 
     @Override

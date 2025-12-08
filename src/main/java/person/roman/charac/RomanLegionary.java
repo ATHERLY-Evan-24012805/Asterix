@@ -9,8 +9,8 @@ public class RomanLegionary extends Roman implements Fighter{
     }
 
     @Override
-    public void fighte(){
-
+    public void fight(){
+// Tape et obeit au general
     }
 
     @Override
