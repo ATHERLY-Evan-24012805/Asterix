@@ -11,7 +11,9 @@ import java.util.concurrent.TimeUnit;
 public class Clock {
 
     // Attributs
+    private static final Clock instance = new Clock();
     private List<TemporalObject> subscribers = new ArrayList<>();
+    private final Object lock = new Object();
 
     //Methodes
     public void subscribe(TemporalObject subscriber) {
@@ -43,6 +45,9 @@ public class Clock {
         };
         Thread monThread = new Thread(tacheHorloge);
         monThread.start();
+    }
+    public static Clock getInstance() {
+        return instance;
     }
     //Getters
     public List<TemporalObject> getSubscribers() {
