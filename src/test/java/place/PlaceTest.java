@@ -8,16 +8,16 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 import person.Person;
-import person.types.Roman.Roman;
-import person.types.Roman.charac.RomanGeneral;
-import person.types.Roman.charac.RomanLegionary;
-import person.types.Roman.charac.RomanPrefect;
-import person.types.Gaulish.Gaulish;
-import person.types.Gaulish.charac.Druide;
-import person.types.Gaulish.charac.GaulishBlacksmith;
-import person.types.Gaulish.charac.GaulishInnKeeper;
-import person.types.Gaulish.charac.GaulishShopKeeper;
-import person.types.Lycanthrope;
+import person.Roman.Roman;
+import person.Roman.charac.RomanGeneral;
+import person.Roman.charac.RomanLegionary;
+import person.Roman.charac.RomanPrefect;
+import person.Gaulish.Gaulish;
+import person.Gaulish.charac.Druid;
+import person.Gaulish.charac.GaulishBlacksmith;
+import person.Gaulish.charac.GaulishInnKeeper;
+import person.Gaulish.charac.GaulishShopKeeper;
+import person.Lycanthrope.Lycanthrope;
 import place.Place;
 import place.types.*;
 
@@ -82,7 +82,7 @@ public class PlaceTest {
         gaulishBlacksmithMock = mock(GaulishBlacksmith.class);
         gaulishInnKeeperMock = mock(GaulishInnKeeper.class);
         gaulishShopKeeperMock = mock(GaulishShopKeeper.class);
-        druidMock = mock(Druide.class);
+        druidMock = mock(Druid.class);
 
         lycanthropeMock = mock(Lycanthrope.class);
     }

@@ -3,8 +3,8 @@ package clanLeader;
 import MagicPotion.MagicPotion;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import persons.Gaulish.charac.Druide;
-import persons.Person;
+import person.Gaulish.charac.Druid;
+import person.Person;
 import place.Place;
 
 import java.util.List;
@@ -22,7 +22,7 @@ public class ClanLeaderTest {
 
     Person personMock;
     MagicPotion potionMock;
-    Druide druidMock;
+    Druid druidMock;
 
     /**
      * Initialise les mocks et crée un chef de clan avant chaque test.
@@ -35,7 +35,7 @@ public class ClanLeaderTest {
         placeMock2 = mock(Place.class);
         personMock = mock(Person.class);
         potionMock = mock(MagicPotion.class);
-        druidMock = mock(Druide.class);
+        druidMock = mock(Druid.class);
 
         chief = new ClanLeader("Abraracourcix", "male", 30, placeMock);
     }

@@ -1,8 +1,8 @@
 package clanLeader;
 
 import MagicPotion.MagicPotion;
-import persons.Gaulish.charac.Druide;
-import persons.Person;
+import person.Gaulish.charac.Druid;
+import person.Person;
 import place.Place;
 
 
@@ -86,7 +86,7 @@ public class ClanLeader {
         }
     }
 
-    public void askDruidForPotion(Druide druid) {}
+    public void askDruidForPotion(Druid druid) {}
 
     public void givePotion(Person person, MagicPotion potion) {}
 

@@ -41,7 +41,7 @@ public abstract class Place {
      *
      * @return Liste des aliments
      */
-    public List<Foods> getFood() {
+    public List<Food> getFood() {
         return food;
     }
 
