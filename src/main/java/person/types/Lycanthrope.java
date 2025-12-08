@@ -9,6 +9,7 @@ public class Lycanthrope extends Person implements Fighter {
         super(name, gender, height, age, strength, endurance);
     }
 
+
     @Override
     public void Fighter(){
 

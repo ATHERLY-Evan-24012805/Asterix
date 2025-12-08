@@ -3,7 +3,6 @@ package person;
 import MagicPotion.MagicPotion;
 import clock.TemporalObject;
 
-public abstract class Person {
 public abstract class Person implements TemporalObject {
     private String name;
     private char gender;
@@ -66,4 +65,5 @@ public abstract class Person implements TemporalObject {
     public void die(){
         // à compléter plus tard (soit gestionnaire de personnage, soit variable booléenne, soit remove(this)
     }
+
 }
