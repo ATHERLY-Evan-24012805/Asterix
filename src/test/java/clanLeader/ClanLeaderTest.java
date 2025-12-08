@@ -11,6 +11,9 @@ import java.util.List;
 
 import static org.mockito.Mockito.*;
 
+/**
+ * Classe de tests unitaires pour la classe ClanLeader
+ */
 public class ClanLeaderTest {
 
     ClanLeader chief;
@@ -21,6 +24,11 @@ public class ClanLeaderTest {
     MagicPotion potionMock;
     Druide druidMock;
 
+    /**
+     * Initialise les mocks et crée un chef de clan avant chaque test.
+     *
+     * <p>Cette méthode permet d’isoler le comportement de ClanLeader en simulant toutes les dépendances.
+     */
     @BeforeEach
     void setup() {
         placeMock = mock(Place.class);
@@ -70,6 +78,10 @@ public class ClanLeaderTest {
         verify(druidMock).eat();
     }
 
+    /**
+     * Vérifie que le transfert fonctionne lorsque la personne est dans le lieu
+     * et que la destination autorise son arrivée.
+     */
     @Test
     void testTransferPersonAllowed() {
         when(placeMock.getPeople()).thenReturn(List.of(personMock));
@@ -81,6 +93,9 @@ public class ClanLeaderTest {
         verify(placeMock2).addPerson(personMock);
     }
 
+    /**
+     * Vérifie que le transfert n’a pas lieu lorsque la destination refuse la personne.
+     */
     @Test
     void testTransferPersonNotAllowed() {
         when(placeMock.getPeople()).thenReturn(List.of(personMock));
@@ -92,6 +107,9 @@ public class ClanLeaderTest {
         verify(placeMock2, never()).addPerson(any());
     }
 
+    /**
+     * Vérifie que le transfert n’a pas lieu lorsque la personne n’est pas présente dans le lieu d’origine.
+     */
     @Test
     void testTransferPersonNotInPlace() {
         when(placeMock.getPeople()).thenReturn(List.of());
@@ -101,5 +119,4 @@ public class ClanLeaderTest {
         verify(placeMock, never()).removePerson(any());
         verify(placeMock2, never()).addPerson(any());
     }
-
 }
