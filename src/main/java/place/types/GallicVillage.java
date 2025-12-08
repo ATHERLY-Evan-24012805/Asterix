@@ -1,8 +1,8 @@
 package place.types;
 
 import person.Person;
-import person.types.Gaulish.*;
-import person.types.Lycanthrope;
+import person.gaulish.*;
+import person.lycanthrope.Lycanthrope;
 import place.Place;
 
 /**

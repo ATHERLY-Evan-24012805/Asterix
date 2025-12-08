@@ -1,5 +1,7 @@
 package food;
 
+import clock.TemporalObject;
+
 public abstract class Food {
 
     //Attribut

@@ -1,4 +1,4 @@
-package person.Gaulish;
+package person.gaulish;
 
 
 import person.Person;

@@ -1,6 +1,6 @@
-package person.Roman.charac;
+package person.roman.charac;
 
-import person.Roman.Roman;
+import person.roman.Roman;
 import person.Fighter;
 
 public class RomanLegionary extends Roman implements Fighter{
@@ -9,8 +9,8 @@ public class RomanLegionary extends Roman implements Fighter{
     }
 
     @Override
-    public void Fighter(){
-
+    public void fight(){
+// Tape et obeit au general
     }
 
     @Override

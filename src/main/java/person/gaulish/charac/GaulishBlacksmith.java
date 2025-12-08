@@ -1,7 +1,7 @@
 
-package person.Gaulish.charac;
+package person.gaulish.charac;
 
-import person.Gaulish.Gaulish;
+import person.gaulish.Gaulish;
 import person.Worker;
 
 
@@ -12,7 +12,7 @@ public class GaulishBlacksmith extends Gaulish implements Worker {
 
     @Override
     public void work() {
-
+// faire une epée ou ameliorer une epée
     }
 
     @Override
