@@ -1,4 +1,4 @@
-package persons.Lycanthrope;
+package person.Lycanthrope;
 
 public enum LycanthropeAge {
     JEUNE,

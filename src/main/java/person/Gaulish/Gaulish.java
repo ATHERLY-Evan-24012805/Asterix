@@ -1,4 +1,8 @@
+<<<<<<<< HEAD:src/main/java/person/types/Gaulish/Gaulish.java
 package person.types.Gaulish;
+========
+package person.Gaulish;
+>>>>>>>> origin/boutiques:src/main/java/person/Gaulish/Gaulish.java
 
 import person.Person;
 

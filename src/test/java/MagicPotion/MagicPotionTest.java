@@ -1,11 +1,8 @@
 package MagicPotion;
 
-import food.Food.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.List;
+import person.Person;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -53,8 +50,6 @@ class MagicPotionTest {
         assertEquals(5, potion.getDoses());
         assertEquals(MagicEffect.WEREWOLF, potion.getEffects());
     }
+    //test
 
-    void testConstructeur4(){
-        potion = new MagicPotion(mistletoe,carrot, salt, clover, fish, stoneOil, honey, mead, shhhIngredient, optionalIngredient, optionalIngredient2, optionalIngredient3);
-    }
 }

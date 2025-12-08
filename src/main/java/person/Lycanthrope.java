@@ -1,4 +1,8 @@
+<<<<<<<< HEAD:src/main/java/person/types/Lycanthrope.java
 package person.types;
+========
+package person;
+>>>>>>>> origin/boutiques:src/main/java/person/Lycanthrope.java
 
 
 import person.Person;
