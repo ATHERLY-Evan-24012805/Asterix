@@ -4,14 +4,14 @@ import MagicPotion.MagicPotion;
 
 public abstract class Person {
     private String name;
-    private char gender;
+    protected char gender;
     private double height;
     private int age;
-    private int strength;
+    protected int strength;
     private int endurance;
     private int health = 100;
     private int hunger = 100;
-    private int belligerence;
+    private int belligerence = 100;
     private int potion = 0;
 
     public Person(String name, char gender, double height, int age, int strength, int endurance) {
@@ -42,6 +42,23 @@ public abstract class Person {
 
     public int getHealth() {
         return health;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", gender=" + gender +
+                ", height=" + height +
+                ", age=" + age +
+                ", strength=" + strength +
+                ", endurance=" + endurance +
+                ", health=" + health +
+                ", hunger=" + hunger +
+                ", belligerence=" + belligerence +
+                ", potion=" + potion +
+                '}';
     }
 
     public void die(){

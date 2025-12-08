@@ -10,7 +10,7 @@ import persons.Worker;
 import java.util.ArrayList;
 
 public class Druid extends Gaulish implements Fighter, Leader, Worker{
-    private ArrayList<Food> recette = new ArrayList<>();
+    private ArrayList<Food> recipe = new ArrayList<>();
 
     public Druid(String name, char gender, double height, int age, int strength, int endurance) {
         super(name, gender, height, age, strength, endurance);
@@ -31,30 +31,30 @@ public class Druid extends Gaulish implements Fighter, Leader, Worker{
     }
 
     public MagicPotion createMagicPotion(MagicEffect effect, int Quantity){
-        recette.add(new Misteltoe());
-        recette.add(new Carrot());
-        recette.add(new Salt());
-        recette.add(new FourLeafClover());
-        recette.add(new Fish());
-        recette.add(new StoneOil());
-        recette.add(new Honey());
-        recette.add(new Mead());
-        recette.add(new SecretIngredient());
+        recipe.add(new Misteltoe());
+        recipe.add(new Carrot());
+        recipe.add(new Salt());
+        recipe.add(new FourLeafClover());
+        recipe.add(new Fish());
+        recipe.add(new StoneOil());
+        recipe.add(new Honey());
+        recipe.add(new Mead());
+        recipe.add(new SecretIngredient());
         switch (effect){
-            case WEREWOLF -> {
-                recette.add(new IdefixHair());
-                return new MagicPotion(recette);
+            case WEREWOLF : {
+                recipe.add(new IdefixHair());
+                return new MagicPotion(recipe, 4);
             }
-            case DUPLICATION -> {
-                recette.add(new TwoHeadUnicornMilk());
-                return new MagicPotion(recette);
+            case DUPLICATION : {
+                recipe.add(new TwoHeadUnicornMilk());
+                return new MagicPotion(recipe, 4);
             }
-            case NOURISHING -> {
-                recette.add(new Lobster());
-                return new MagicPotion(recette);
+            case NOURISHING : {
+                recipe.add(new Lobster());
+                return new MagicPotion(recipe, 4);
             }
-            default -> {
-                return new MagicPotion(recette);
+            default : {
+                return new MagicPotion(recipe, 4);
             }
         }
     }
