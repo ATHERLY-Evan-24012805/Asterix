@@ -2,9 +2,9 @@ package place.types;
 
 import place.Place;
 import person.Person;
-import person.types.Roman.charac.RomanGeneral;
-import person.types.Roman.charac.RomanLegionary;
-import person.types.Lycanthrope;
+import person.roman.charac.RomanGeneral;
+import person.roman.charac.RomanLegionary;
+import person.lycanthrope.Lycanthrope;
 
 /**
  * Classe représentant un camp fortifié romain.

@@ -1,6 +1,6 @@
-package person.Roman.charac;
+package person.roman.charac;
 
-import person.Roman.Roman;
+import person.roman.Roman;
 import person.Leader;
 
 public class RomanPrefect extends Roman implements Leader{

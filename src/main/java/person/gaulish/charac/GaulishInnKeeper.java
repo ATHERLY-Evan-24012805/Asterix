@@ -1,5 +1,5 @@
-package person.Gaulish.charac;
-import person.Gaulish.Gaulish;
+package person.gaulish.charac;
+import person.gaulish.Gaulish;
 import person.Worker;
 
 public class GaulishInnKeeper extends Gaulish implements Worker {

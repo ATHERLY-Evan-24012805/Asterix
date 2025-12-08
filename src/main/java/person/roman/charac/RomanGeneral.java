@@ -1,6 +1,6 @@
-package person.Roman.charac;
+package person.roman.charac;
 
-import person.Roman.Roman;
+import person.roman.Roman;
 import person.Fighter;
 import person.Leader;
 
@@ -11,7 +11,7 @@ public class RomanGeneral extends Roman implements Fighter, Leader {
 
 
     @Override
-    public void Fighter() {
+    public void fighte() {
 
     }
 

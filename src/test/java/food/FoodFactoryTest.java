@@ -1,14 +1,12 @@
 package food;
 
-import food.FoodFactory;
 import food.items.*;
-import food.Food;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 
 import static org.junit.jupiter.api.Assertions.*; // Notez le "jupiter"
 
-public class FoodFacotryTest {
+public class FoodFactoryTest {
 
     private FoodFactory factory ;
 

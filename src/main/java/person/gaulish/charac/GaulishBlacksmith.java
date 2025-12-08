@@ -1,7 +1,7 @@
 
-package person.Gaulish.charac;
+package person.gaulish.charac;
 
-import person.Gaulish.Gaulish;
+import person.gaulish.Gaulish;
 import person.Worker;
 
 

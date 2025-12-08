@@ -1,4 +1,4 @@
-package person.Lycanthrope;
+package person.lycanthrope;
 
 
 import person.Fighter;
@@ -12,7 +12,7 @@ public class Lycanthrope extends Person implements Fighter {
 
 
     @Override
-    public void Fighter(){
+    public void fighter(){
 
     }
 

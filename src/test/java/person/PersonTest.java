@@ -2,7 +2,7 @@ package person;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import person.Roman.charac.RomanGeneral;
+import person.roman.charac.RomanGeneral;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;

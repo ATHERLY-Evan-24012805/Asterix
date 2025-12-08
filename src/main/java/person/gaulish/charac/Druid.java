@@ -1,9 +1,9 @@
-package person.Gaulish.charac;
+package person.gaulish.charac;
 import MagicPotion.MagicPotion;
 import MagicPotion.MagicEffect;
 import food.Food;
 import food.items.*;
-import person.Gaulish.Gaulish;
+import person.gaulish.Gaulish;
 import person.Fighter;
 import person.Leader;
 import person.Worker;
@@ -17,7 +17,7 @@ public class Druid extends Gaulish implements Fighter, Leader, Worker{
     }
 
     @Override
-    public void Fighter() {
+    public void fighte() {
     }
 
     @Override

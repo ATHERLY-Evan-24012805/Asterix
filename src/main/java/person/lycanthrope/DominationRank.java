@@ -1,4 +1,4 @@
-package person.Lycanthrope;
+package person.lycanthrope;
 
 public enum DominationRank {
     ALPHA('α',0),
