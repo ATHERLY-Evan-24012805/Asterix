@@ -1,8 +1,4 @@
-<<<<<<<< HEAD:src/main/java/person/types/Roman/Roman.java
-package person.types.Roman;
-========
 package person.Roman;
->>>>>>>> origin/boutiques:src/main/java/person/Roman/Roman.java
 
 import person.Person;
 

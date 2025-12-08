@@ -1,10 +1,7 @@
-<<<<<<<< HEAD:src/main/java/person/types/Lycanthrope.java
-package person.types;
-========
-package person;
->>>>>>>> origin/boutiques:src/main/java/person/Lycanthrope.java
+package person.Lycanthrope;
 
 
+import person.Fighter;
 import person.Person;
 
 public class Lycanthrope extends Person implements Fighter {
@@ -16,6 +13,11 @@ public class Lycanthrope extends Person implements Fighter {
 
     @Override
     public void Fighter(){
+
+    }
+
+    @Override
+    public void ticsPassed() {
 
     }
 }

@@ -58,4 +58,9 @@ public class Druid extends Gaulish implements Fighter, Leader, Worker{
             }
         }
     }
+
+    @Override
+    public void ticsPassed() {
+
+    }
 }

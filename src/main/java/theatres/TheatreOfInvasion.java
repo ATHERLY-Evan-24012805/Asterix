@@ -2,8 +2,8 @@ package theatres;
 
 import clock.Clock;
 import person.Person;
-import person.types.Gaulish.charac.*;
-import person.types.Roman.charac.*;
+import person.Gaulish.charac.*;
+import person.Roman.charac.*;
 import place.types.*;
 import place.Place;
 
@@ -97,7 +97,7 @@ public class TheatreOfInvasion {
             // Pareil les aubergistes ont des valeurs par défaut moins de force plus d'endurance.
             // Force 60
             // Endurance 20
-            newPerson = new Druide(name, gender, height, age, 60, 20);
+            newPerson = new Druid(name, gender, height, age, 60, 20);
         }
         if (roleName.equals("ShopKeeper")) {
             // Pareil les aubergistes ont des valeurs par défaut moins de force plus d'endurance.
