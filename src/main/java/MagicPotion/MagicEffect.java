@@ -5,5 +5,6 @@ public enum MagicEffect {
     DUPLICATION,
     PERMANENT,
     WEREWOLF,
-    TURN_TO_STONE
+    TURN_TO_STONE,
+    NOURISHING
 }

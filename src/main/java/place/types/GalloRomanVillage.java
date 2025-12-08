@@ -1,8 +1,8 @@
 package place.types;
 
-import persons.Person;
-import persons.Gaulish.Gaulish;
-import persons.Roman.Roman;
+import person.Person;
+import person.types.Gaulish.Gaulish;
+import person.types.Roman.Roman;
 import place.Place;
 
 /**

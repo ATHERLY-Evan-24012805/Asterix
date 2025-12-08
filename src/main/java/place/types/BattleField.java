@@ -1,7 +1,6 @@
 package place.types;
 
-import persons.Person;
-import place.Place;
+import person.Person;
 
 /**
  * Classe représentant un champ de bataille.
@@ -11,7 +10,7 @@ import place.Place;
  * <p>Hérite de Place et bénéficie donc des méthodes pour
  * gérer les habitants et leur alimentation/soin.
  */
-public class BattleField extends Place {
+public class BattleField extends place.Place {
 
     /**
      * Vérifie si une personne peut entrer dans ce lieu
@@ -25,3 +24,4 @@ public class BattleField extends Place {
     }
 
 }
+

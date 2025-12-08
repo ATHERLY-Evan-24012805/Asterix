@@ -1,8 +1,8 @@
 package place;
 
 import clanLeader.ClanLeader;
-import Foods.Foods;
-import persons.Person;
+import food.Food;
+import person.Person;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,8 +23,7 @@ public abstract class Place {
     private int surface;
     private ClanLeader chief;
     private int census;
-
-    protected List<Foods> food = new ArrayList<>();
+    protected List<Food> food = new ArrayList<>();
     protected List<Person> people = new ArrayList<>();
 
 
@@ -120,4 +119,14 @@ public abstract class Place {
                 "Liste de personnes : " + people + "\n" +
                 "Liste d'aliments : " + food;
     }
+
+    public int getCensus(){
+        return this.census;
+    }
+    public List getListOfPersons(){
+        return this.people;
+    }
+
+
+
 }
