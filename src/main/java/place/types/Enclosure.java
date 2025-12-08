@@ -2,7 +2,7 @@ package place.types;
 
 import person.Person;
 
-import person.types.Lycanthrope;
+import person.lycanthrope.Lycanthrope;
 import place.Place;
 import persons.Person;
 import persons.Lycanthrope;

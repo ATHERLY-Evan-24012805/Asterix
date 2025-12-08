@@ -1,8 +1,8 @@
 package place.types;
 
 import person.Person;
-import person.types.Roman.Roman;
-import person.types.Lycanthrope;
+import person.roman.Roman;
+import person.lycanthrope.Lycanthrope;
 import place.Place;
 
 /**

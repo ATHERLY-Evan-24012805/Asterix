@@ -1,5 +1,5 @@
-package person.Gaulish.charac;
-import person.Gaulish.Gaulish;
+package person.gaulish.charac;
+import person.gaulish.Gaulish;
 import person.Worker;
 
 public class GaulishShopKeeper extends Gaulish implements Worker {
@@ -9,7 +9,7 @@ public class GaulishShopKeeper extends Gaulish implements Worker {
 
     @Override
     public void work() {
-
+// Crée de la bouffe reste a decider de la frequence
     }
 
     @Override

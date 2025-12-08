@@ -1,6 +1,6 @@
-package person.Roman.charac;
+package person.roman.charac;
 
-import person.Roman.Roman;
+import person.roman.Roman;
 import person.Leader;
 
 public class RomanPrefect extends Roman implements Leader{
@@ -11,7 +11,7 @@ public class RomanPrefect extends Roman implements Leader{
 
     @Override
     public void lead(){
-
+        // Promeut un legionnaire en general
     }
 
     @Override
