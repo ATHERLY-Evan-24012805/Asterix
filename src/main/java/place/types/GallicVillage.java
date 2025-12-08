@@ -1,20 +1,21 @@
-package places;
+package place.types;
 
 import persons.Person;
 import persons.Gaulish.Gaulish;
-import persons.Roman.Roman;
+import persons.Lycanthrope;
+import place.Place;
 
 /**
- * Classe représentant une ville gallo-romaine
+ * Classe représentant un village gaulois
  *
- * <p>Une ville gallo-romaine est un lieu où seuls certains types de personnages peuvent entrer :
- * – Roman
+ * <p>Un village gaulois est un lieu où seuls certains types de personnages peuvent entrer :
  * – Gaulish
+ * – Lycanthrope
  *
  * <p>Hérite de Place et bénéficie donc des méthodes pour
  * gérer les habitants et leur alimentation/soin.
  */
-public class GalloRomanVillage extends Place {
+public class GallicVillage extends Place {
 
     /**
      * Vérifie si une personne peut entrer dans ce lieu
@@ -25,6 +26,6 @@ public class GalloRomanVillage extends Place {
     @Override
     public boolean canAddPerson(Person person) {
         return person instanceof Gaulish ||
-                person instanceof Roman;
+                person instanceof Lycanthrope;
     }
 }

@@ -1,4 +1,4 @@
-package places;
+package place;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,6 +17,7 @@ import persons.Gaulish.charac.GaulishBlacksmith;
 import persons.Gaulish.charac.GaulishInnKeeper;
 import persons.Gaulish.charac.GaulishShopKeeper;
 import persons.Lycanthrope;
+import place.types.*;
 
 import java.util.List;
 

@@ -1,17 +1,21 @@
-package places;
+package place.types;
 
 import persons.Person;
+import persons.Roman.Roman;
 import persons.Lycanthrope;
+import place.Place;
 
 /**
- * Classe représentant un enclos
+ * Classe représentant une ville romaine
  *
- * <p>Un enclos ne peut contenir que des créatures fantastiques.
+ * <p>Une ville romaine est un lieu où seuls certains types de personnages peuvent entrer :
+ * – Roman
+ * – Lycanthrope
  *
  * <p>Hérite de Place et bénéficie donc des méthodes pour
  * gérer les habitants et leur alimentation/soin.
  */
-public class Enclosure extends Place {
+public class RomanCity extends Place {
 
     /**
      * Vérifie si une personne peut entrer dans ce lieu
@@ -21,6 +25,7 @@ public class Enclosure extends Place {
      */
     @Override
     public boolean canAddPerson(Person person) {
-        return person instanceof Lycanthrope;
+        return person instanceof Roman ||
+                person instanceof Lycanthrope;
     }
 }

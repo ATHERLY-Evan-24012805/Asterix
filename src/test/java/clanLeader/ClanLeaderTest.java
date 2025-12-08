@@ -5,7 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import persons.Gaulish.charac.Druide;
 import persons.Person;
-import places.Place;
+import place.Place;
 
 import java.util.List;
 

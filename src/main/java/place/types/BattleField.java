@@ -1,20 +1,17 @@
-package places;
+package place.types;
 
 import persons.Person;
-import persons.Gaulish.Gaulish;
-import persons.Lycanthrope;
+import place.Place;
 
 /**
- * Classe représentant un village gaulois
+ * Classe représentant un champ de bataille.
  *
- * <p>Un village gaulois est un lieu où seuls certains types de personnages peuvent entrer :
- * – Gaulish
- * – Lycanthrope
+ * <p>Un champ de bataille peut contenir tous les types de personnages.
  *
  * <p>Hérite de Place et bénéficie donc des méthodes pour
  * gérer les habitants et leur alimentation/soin.
  */
-public class GallicVillage extends Place {
+public class BattleField extends Place {
 
     /**
      * Vérifie si une personne peut entrer dans ce lieu
@@ -24,7 +21,7 @@ public class GallicVillage extends Place {
      */
     @Override
     public boolean canAddPerson(Person person) {
-        return person instanceof Gaulish ||
-                person instanceof Lycanthrope;
+        return true;
     }
+
 }

@@ -1,4 +1,4 @@
-package places;
+package place;
 
 import clanLeader.ClanLeader;
 import Foods.Foods;

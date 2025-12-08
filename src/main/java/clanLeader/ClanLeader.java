@@ -3,7 +3,7 @@ package clanLeader;
 import MagicPotion.MagicPotion;
 import persons.Gaulish.charac.Druide;
 import persons.Person;
-import places.Place;
+import place.Place;
 
 
 public class ClanLeader {
