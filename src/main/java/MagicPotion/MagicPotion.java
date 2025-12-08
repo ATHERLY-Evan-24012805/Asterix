@@ -5,27 +5,23 @@ import Foods.*;
 import java.util.ArrayList;
 
 public class MagicPotion {
-    private double quantity;
-    private ArrayList<String> effect;
+    private int doses;
+    private MagicEffect effect;
 
-    public void getQuantity() {}
-    public ArrayList<String> getEffects(){
+    public MagicPotion(int doses, MagicEffect effect) {
+        this.doses = doses;
+        this.effect = effect;
+    }
+
+    public MagicEffect getEffects(){
         return effect;
     }
 
-    public MagicPotion(Mistletoe mistletoe, Carrot carrot, Salt salt, FourLeaveClover fourLeaveClover, Fish fish, StoneOil stoneOil, Honey honey, Mead mead, SecretIngredient shhhIngredient) {
-
+    public boolean isEmpty(){
+        return doses == 0;
     }
 
-    public MagicPotion(Mistletoe mistletoe, Carrot carrot, Salt salt, FourLeaveClover fourLeaveClover, Fish fish, StoneOil stoneOil, Honey honey, Mead mead, SecretIngredient shhhIngredient, Foods optionalIngredient) {
-
-    }
-
-    public MagicPotion(Mistletoe mistletoe, Carrot carrot, Salt salt, FourLeaveClover fourLeaveClover, Fish fish, StoneOil stoneOil, Honey honey, Mead mead, SecretIngredient shhhIngredient, Foods optionalIngredient1, Foods optionalIngredient2) {
-
-    }
-
-    public MagicPotion(Mistletoe mistletoe, Carrot carrot, Salt salt, FourLeaveClover fourLeaveClover, Fish fish, StoneOil stoneOil, Honey honey, Mead mead, SecretIngredient shhhIngredient, Foods optionalIngredient1, Foods optionalIngredient2, Foods optionalIngredient3) {
-
+    public int getDoses() {
+        return doses;
     }
 }

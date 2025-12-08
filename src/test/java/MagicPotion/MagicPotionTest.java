@@ -1,47 +1,55 @@
 package MagicPotion;
 
-import Foods.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.List;
+import persons.Person;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import static org.mockito.Mockito.*;
-public class MagicPotionTest {
-    MagicPotion potion;
+class MagicPotionTest {
 
-    Mistletoe mistletoe = mock(Mistletoe.class);
-    Carrot carrot = mock(Carrot.class);
-    Salt salt = mock(Salt.class);
-    FourLeaveClover clover = mock(FourLeaveClover.class);
-    Fish fish = mock(Fish.class);
-    StoneOil stoneOil = mock(StoneOil.class);
-    Honey honey = mock(Honey.class);
-    Mead mead = mock(Mead.class);
-    SecretIngredient shhhIngredient = mock(SecretIngredient.class);
-    Foods optionalIngredient = mock(Foods.class);
-    Foods optionalIngredient2 = mock(Foods.class);
-    Foods optionalIngredient3 = mock(Foods.class);
+    Person character;
+
+    @BeforeEach
+    void setup() {
+        character = new Person("Obélix", 'M', 1.8, 35, 40, 50) {};
+    }
 
 
     @Test
-    void testConstructeur(){
-        potion = new MagicPotion(mistletoe, carrot, salt, clover, fish, stoneOil, honey, mead, shhhIngredient);
-        when(potion.getEffects()).thenReturn(new ArrayList<>(List.of("force surhumaine", "invincibilité")));
+    void testConstructorMagicPotionNormal() {
+        MagicPotion potion = new MagicPotion(3, MagicEffect.NORMAL);
+        assertEquals(3, potion.getDoses());
+        assertEquals(MagicEffect.NORMAL, potion.getEffects());
     }
 
-    void testConstructeur2(){
-        potion = new MagicPotion(mistletoe, carrot, salt, clover, fish, stoneOil, honey, mead, shhhIngredient, optionalIngredient);
+    @Test
+    void testConstructorMagicPotionPermanant() {
+        MagicPotion potion = new MagicPotion(2, MagicEffect.PERMANENT);
+        assertEquals(2, potion.getDoses());
+        assertEquals(MagicEffect.PERMANENT, potion.getEffects());
     }
 
-    void testConstructeur3(){
-        potion = new MagicPotion(mistletoe,carrot, salt, clover, fish, stoneOil, honey, mead, shhhIngredient, optionalIngredient, optionalIngredient2);
+    @Test
+    void testConstructorMagicPotionStone() {
+        MagicPotion potion = new MagicPotion(1, MagicEffect.TURN_TO_STONE);
+        assertEquals(1, potion.getDoses());
+        assertEquals(MagicEffect.TURN_TO_STONE, potion.getEffects());
     }
 
-    void testConstructeur4(){
-        potion = new MagicPotion(mistletoe,carrot, salt, clover, fish, stoneOil, honey, mead, shhhIngredient, optionalIngredient, optionalIngredient2, optionalIngredient3);
+    @Test
+    void testConstructorMagicPotionDuplicate() {
+        MagicPotion potion = new MagicPotion(10, MagicEffect.DUPLICATION);
+        assertEquals(10, potion.getDoses());
+        assertEquals(MagicEffect.DUPLICATION, potion.getEffects());
     }
+
+    @Test
+    void testConstructorMagicPotionWerewolf() {
+        MagicPotion potion = new MagicPotion(5, MagicEffect.WEREWOLF);
+        assertEquals(5, potion.getDoses());
+        assertEquals(MagicEffect.WEREWOLF, potion.getEffects());
+    }
+    //test
+
 }
