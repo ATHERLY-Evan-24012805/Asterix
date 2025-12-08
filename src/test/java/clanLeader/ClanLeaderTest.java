@@ -3,7 +3,7 @@ package clanLeader;
 import MagicPotion.MagicPotion;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import person.Gaulish.charac.Druid;
+import person.gaulish.charac.Druid;
 import person.Person;
 import place.Place;
 

@@ -4,8 +4,8 @@ import person.Person;
 
 import person.lycanthrope.Lycanthrope;
 import place.Place;
-import persons.Person;
-import persons.Lycanthrope;
+import person.Person;
+import person.lycanthrope.Lycanthrope;
 import place.Place;
 
 /**

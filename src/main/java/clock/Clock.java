@@ -22,8 +22,9 @@ public class Clock {
     }
     public void notifySubscribers() {
         // On prévient tout le monde un par un
+        System.out.println("une heure est passée.");
         for (TemporalObject obj : subscribers) {
-            System.out.println("une heure est passée.");
+
             obj.ticsPassed();
         }
     }

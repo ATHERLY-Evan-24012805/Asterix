@@ -8,16 +8,16 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 import person.Person;
-import person.Roman.Roman;
-import person.Roman.charac.RomanGeneral;
-import person.Roman.charac.RomanLegionary;
-import person.Roman.charac.RomanPrefect;
-import person.Gaulish.Gaulish;
-import person.Gaulish.charac.Druid;
-import person.Gaulish.charac.GaulishBlacksmith;
-import person.Gaulish.charac.GaulishInnKeeper;
-import person.Gaulish.charac.GaulishShopKeeper;
-import person.Lycanthrope.Lycanthrope;
+import person.roman.Roman;
+import person.roman.charac.RomanGeneral;
+import person.roman.charac.RomanLegionary;
+import person.roman.charac.RomanPrefect;
+import person.gaulish.Gaulish;
+import person.gaulish.charac.Druid;
+import person.gaulish.charac.GaulishBlacksmith;
+import person.gaulish.charac.GaulishInnKeeper;
+import person.gaulish.charac.GaulishShopKeeper;
+import person.lycanthrope.Lycanthrope;
 import place.Place;
 import place.types.*;
 

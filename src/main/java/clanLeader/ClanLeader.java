@@ -1,7 +1,7 @@
 package clanLeader;
 
 import MagicPotion.MagicPotion;
-import person.Gaulish.charac.Druid;
+import person.gaulish.charac.Druid;
 import person.Person;
 import place.Place;
 
