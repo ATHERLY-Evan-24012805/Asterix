@@ -1,4 +1,4 @@
-package test.places;
+package place;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -8,17 +8,18 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 import person.Person;
-import person.types.Roman.Roman;
-import person.types.Roman.charac.RomanGeneral;
-import person.types.Roman.charac.RomanLegionary;
-import person.types.Roman.charac.RomanPrefect;
-import person.types.Gaulish.Gaulish;
-import person.types.Gaulish.charac.Druide;
-import person.types.Gaulish.charac.GaulishBlacksmith;
-import person.types.Gaulish.charac.GaulishInnKeeper;
-import person.types.Gaulish.charac.GaulishShopKeeper;
-import person.types.Lycanthrope;
+import person.roman.Roman;
+import person.roman.charac.RomanGeneral;
+import person.roman.charac.RomanLegionary;
+import person.roman.charac.RomanPrefect;
+import person.gaulish.Gaulish;
+import person.gaulish.charac.Druid;
+import person.gaulish.charac.GaulishBlacksmith;
+import person.gaulish.charac.GaulishInnKeeper;
+import person.gaulish.charac.GaulishShopKeeper;
+import person.lycanthrope.Lycanthrope;
 import place.Place;
+import place.*;
 import place.types.*;
 
 import java.util.List;
@@ -82,7 +83,7 @@ public class PlaceTest {
         gaulishBlacksmithMock = mock(GaulishBlacksmith.class);
         gaulishInnKeeperMock = mock(GaulishInnKeeper.class);
         gaulishShopKeeperMock = mock(GaulishShopKeeper.class);
-        druidMock = mock(Druide.class);
+        druidMock = mock(Druid.class);
 
         lycanthropeMock = mock(Lycanthrope.class);
     }

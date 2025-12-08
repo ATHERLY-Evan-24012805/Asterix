@@ -12,7 +12,7 @@ public class Lycanthrope extends Person implements Fighter {
 
 
     @Override
-    public void fighter(){
+    public void fight(){
 
     }
 
