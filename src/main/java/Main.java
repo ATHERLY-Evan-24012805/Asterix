@@ -78,7 +78,8 @@ public class Main {
             // 1 aubergiste
             // 1 Druide
             if (p instanceof GallicVillage) {
-                System.out.println("Vous avez un lieu de Gaulois, vous disposez par défaut d'un druide, d'un forgerons et d'un aubergiste." +
+                System.out.println("Vous avez un lieu de Gaulois, vous disposez par défaut d'un druide, d'un forgeron, " +
+                                    "d'un marchand et d'un aubergiste." +
                         "\nQuel nom voulez vous leurs données ?");
 
                 //forgeron
@@ -88,6 +89,10 @@ public class Main {
                 // Aubergiste
                 System.out.println("GaulishInnKeeper(Aubergiste)");
                 createAndAddPerson(p,"GaulishInnKeeper",sc);
+
+                // Marchand
+                System.out.println("ShopKeeper(Marchand)");
+                createAndAddPerson(p, "ShopKeeper", sc);
 
                 // Druide
                 createAndAddPerson(p,"Druide",sc);

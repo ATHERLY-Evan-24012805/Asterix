@@ -1,5 +1,6 @@
 package place;
 
+import food.Food;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -53,7 +54,6 @@ public class PlaceTest {
 
     // Mock créature fantastique
     Person lycanthropeMock;
-
 
     /**
      * Initialise les lieux et les mocks de personnages avant chaque test.
@@ -207,6 +207,20 @@ public class PlaceTest {
 
         assertFalse(people.contains(romanMock));
         assertEquals(0, people.size());
+    }
+
+    @Test
+    void testAddFood() {
+        Food food1 = mock(Food.class);
+        Food food2 = mock(Food.class);
+
+        romanCity.addFood(food1);
+        romanCity.addFood(food2);
+
+        List<Food> foods = romanCity.getFood();
+        assertEquals(2, foods.size(), "Il doit y avoir 2 aliments dans la place");
+        assertTrue(foods.contains(food1), "Le premier aliment doit être présent");
+        assertTrue(foods.contains(food2), "Le second aliment doit être présent");
     }
 
     @Test

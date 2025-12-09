@@ -111,6 +111,7 @@ public class ClanLeader {
         // Vérifie que la personne puisse bien être ajoutée vers la destination.
         if (destination.canAddPerson(person)) {
             place.removePerson(person);
+            person.setPlace(destination);
             destination.addPerson(person);
         }
         else {

@@ -6,6 +6,9 @@ import person.Worker;
 
 
 public class GaulishBlacksmith extends Gaulish implements Worker {
+
+    private int worktimer = 20;
+
     public GaulishBlacksmith(String name, char gender, double height, int age, int strength, int endurance) {
         super(name, gender, height, age, strength, endurance);
     }
@@ -13,10 +16,16 @@ public class GaulishBlacksmith extends Gaulish implements Worker {
     @Override
     public void work() {
 // faire une epée ou ameliorer une epée
+
     }
 
     @Override
     public void ticsPassed() {
+        this.worktimer--;
 
+        if (worktimer == 0) {
+            work();
+            worktimer = 23;
+        }
     }
 }
