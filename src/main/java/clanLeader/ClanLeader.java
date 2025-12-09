@@ -14,7 +14,7 @@ import place.Place;
 public class ClanLeader {
 
     private String name;
-    private String gender;
+    private char gender;
     private int age;
     private Place place;
 
@@ -26,7 +26,7 @@ public class ClanLeader {
      * @param age    age du chef
      * @param place  lieu que le chef dirige
      */
-    public ClanLeader(String name, String gender, int age, Place place) {
+    public ClanLeader(String name, char gender, int age, Place place) {
         this.name = name;
         this.gender = gender;
         this.age = age;

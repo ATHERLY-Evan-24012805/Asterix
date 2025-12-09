@@ -1,5 +1,6 @@
 package person.roman.charac;
 
+import person.Person;
 import person.roman.Roman;
 import person.Fighter;
 
@@ -10,11 +11,13 @@ public class RomanLegionary extends Roman implements Fighter{
 
     @Override
     public void fight(){
-// Tape et obeit au general
+    // Tape et obeit au general
+        fight(getTarget());
     }
 
     @Override
     public void ticsPassed() {
-
+        super.ticsPassed();
+        this.fight();
     }
 }

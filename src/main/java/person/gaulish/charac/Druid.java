@@ -11,7 +11,6 @@ import person.Leader;
 import person.Worker;
 import place.Place;
 import place.types.BattleField;
-import theatres.TheatreOfInvasion;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +22,7 @@ public class Druid extends Gaulish implements Fighter, Leader, Worker{
         super(name, gender, height, age, strength, endurance);
     }
 
+    // à voir si on ne fait pas plutôt choisir au clan leader qui il choisit d'attaquer.
     protected Person findWeakestRoman(List<Person> persons) {
         Person target = null;
         for (Person p : persons) {
@@ -102,7 +102,7 @@ public class Druid extends Gaulish implements Fighter, Leader, Worker{
         }
     }
 
-    public void changeRole(Person target, String newRole, Clock clock) {
+    public void changeRole(Person target, String newRole) {
         if (target == null || newRole == null) return;
 
         Place place = target.getPlace();
@@ -150,12 +150,12 @@ public class Druid extends Gaulish implements Fighter, Leader, Worker{
         }
 
         // Supprimer l'ancienne personne
-        clock.unsubscribe(target);
+        Clock.getInstance().unsubscribe(target);
         place.removePerson(target);
 
         // Ajouter la nouvelle personne
         place.addPerson(replacement);
-        clock.subscribe(replacement);
+        Clock.getInstance().subscribe(replacement);
 
         System.out.println("Le druide assigne " + target.getName() +
                 " au métier " + newRole.toLowerCase());

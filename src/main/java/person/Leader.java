@@ -1,7 +1,7 @@
 package person;
 
 public interface Leader {
-    default void lead(){
+    default void lead() {
         System.out.println("I am leader");
     };
 }

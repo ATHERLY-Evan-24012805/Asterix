@@ -13,9 +13,11 @@ public abstract class Person implements TemporalObject {
     private int endurance;
     private int health = 100;
     private int hunger = 100;
-    private int belligerence = 100;
+    private boolean belligerence = false;
     private int potion = 0;
     private Place place;
+    private int ticBeforeAction;
+    private Person target;
 
     /**
      * Permet de limiter les valeurs entre 0 et 100.
@@ -49,12 +51,30 @@ public abstract class Person implements TemporalObject {
         potion = clamp(potion + 10);
     }
 
-    public void fight(Person adversaire){
-        adversaire.health = adversaire.health - Math.max(1, strength*(1-adversaire.endurance/150)); // Formule à modifier si besoin
+    public void fight(Person target){
+        target.health = target.health - Math.max(1, strength*(1- target.endurance/150)); // Formule à modifier si besoin
     }
 
+    public Person getTarget() {
+        return target;
+    }
+    public void setTarget(Person target) {
+        this.target = target;
+    }
 
+    //Getters
+    public int getTicBeforeAction() {
+        return ticBeforeAction;
+    }
 
+    //Setters
+    public void setTicBeforeAction(int ticBeforeAction) {
+        this.ticBeforeAction = ticBeforeAction;
+    }
+
+    public int getHunger(){
+        return hunger;
+    }
     public int getHealth() {
         return health;
     }
@@ -109,6 +129,19 @@ public abstract class Person implements TemporalObject {
                 ", belligerence=" + belligerence +
                 ", potion=" + potion +
                 '}';
+    }
+
+    @Override
+    public void ticsPassed() {
+        // 1. On perd de la nourriture
+        this.hunger -= 5; // Par exemple -5 par heure
+
+        // 2. Si on a trop faim, on perd de la vie
+        if (this.hunger <= 0) {
+            this.hunger = 0; // On ne descend pas en négatif
+            this.health -= 10;
+            System.out.println(this.getName() + " meurt de faim ! PV restants : " + this.health);
+        }
     }
 
     public void die(){

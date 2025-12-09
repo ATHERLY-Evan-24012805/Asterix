@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 public class Clock {
 
     // Attributs
-    private static final Clock instance = new Clock();
+    private static Clock instance;
     private List<TemporalObject> subscribers = new ArrayList<>();
     private final Object lock = new Object();
 
@@ -48,6 +48,9 @@ public class Clock {
         monThread.start();
     }
     public static Clock getInstance() {
+        if (instance == null) {
+            instance = new Clock();
+        }
         return instance;
     }
     //Getters

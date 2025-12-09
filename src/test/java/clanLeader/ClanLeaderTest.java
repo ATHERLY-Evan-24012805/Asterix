@@ -37,7 +37,7 @@ public class ClanLeaderTest {
         potionMock = mock(MagicPotion.class);
         druidMock = mock(Druid.class);
 
-        chief = new ClanLeader("Abraracourcix", "male", 30, placeMock);
+        chief = new ClanLeader("Abraracourcix", 'm', 30, placeMock);
     }
 
     @Test

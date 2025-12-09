@@ -56,7 +56,7 @@ public class TheatreOfInvasion {
         System.out.print(roleName + " : ");
         String name = sc.nextLine();
 
-        // 2. Validation du Genre (Factorisée ici)
+        // 2. Validation du Genre
         char gender = ' ';
         boolean saisieValide = false;
         while (!saisieValide) {
@@ -68,12 +68,12 @@ public class TheatreOfInvasion {
                 if (gender == 'M' || gender == 'F' || gender == 'X') {
                     saisieValide = true;
                 } else {
-                    System.out.println("Erreur : Veuillez entrer uniquement M, F ou X.");
+                    System.out.println("Veuillez entrer uniquement M, F ou X.");
                 }
             }
         }
 
-        // 3. Génération Aléatoire (Factorisée ici)
+        // 3. Génération Aléatoire
         Random random = new Random();
 
         // Taille entre 80cm et 250cm
@@ -138,6 +138,12 @@ public class TheatreOfInvasion {
 
         p.addPerson(newPerson);
         clock.subscribe(newPerson);
-        System.out.println(roleName + " créé avec succès !");
+        assert newPerson != null;
+        System.out.println(newPerson.toString() + " créé avec succès !");
+    }
+
+    // a implementer pour le deroulement du jeu
+    public void evolutionOfTheGame() {
+        return;
     }
 }

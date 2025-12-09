@@ -1,19 +1,20 @@
 package person.gaulish.charac;
 
-import MagicPotion.MagicPotion;
-import MagicPotion.MagicEffect;
-import clock.Clock;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+
 import person.Person;
+import person.roman.charac.RomanLegionary;
 import place.types.BattleField;
+import clock.Clock;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
 
 class DruidTest {
 
@@ -58,22 +59,20 @@ class DruidTest {
         battlefield.addPerson(target);
         druid.setPlace(battlefield);
 
-        Clock clock = mock(Clock.class);
-
-        druid.changeRole(target, "BLACKSMITH", clock);
+        druid.changeRole(target, "BLACKSMITH");
 
         // Vérifie que l'ancienne personne a été retirée et la nouvelle ajoutée
         assertEquals(1, battlefield.getPeople().size());
         assertEquals("Asterix", battlefield.getPeople().get(0).getName());
-        assertEquals(person.gaulish.charac.GaulishBlacksmith.class, battlefield.getPeople().get(0).getClass());
+        assertEquals(GaulishBlacksmith.class, battlefield.getPeople().get(0).getClass());
 
-        verify(clock).unsubscribe(target);
-        verify(clock).subscribe(battlefield.getPeople().get(0));
+        verify(Clock.getInstance()).unsubscribe(target);
+        verify(Clock.getInstance()).subscribe(battlefield.getPeople().get(0));
     }
 
     @Test
     void testFightInBattleField() {
-        Person roman = new person.roman.charac.RomanLegionary("Julius", 'M', 1.8, 30, 10, 10);
+        Person roman = new RomanLegionary("Julius", 'M', 1.8, 30, 10, 10);
         roman.setHealth(50);
 
         battlefield.addPerson(roman);
