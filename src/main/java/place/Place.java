@@ -37,6 +37,24 @@ public abstract class Place {
     }
 
     /**
+     * Ajoute une instance de nourriture dans le lieu.
+     *
+     * @param f la nourriture à ajouter
+     */
+    public void addFood(Food f) {
+        food.add(f);
+    }
+
+    /**
+     * Retourne la liste des aliments présents dans le lieu.
+     *
+     * @return Liste des aliments
+     */
+    public List<Food> getFood() {
+        return food;
+    }
+
+    /**
      * Vérifie si une personne peut être ajoutée dans ce lieu.
      *
      * @param person La personne à tester
@@ -52,6 +70,7 @@ public abstract class Place {
     public void addPerson(Person person) {
         if (canAddPerson(person) && !people.contains(person)) {
             people.add(person);
+            person.setPlace(this);
         } else {
             System.out.println("Impossible d'ajouter cette personne ici : " + person);
         }

@@ -136,9 +136,8 @@ public class TheatreOfInvasion {
             //ToString personnage
         }
 
-
         p.addPerson(newPerson);
         clock.subscribe(newPerson);
-        System.out.println(roleName + " créé avec succès !"); // toString et getname pour avoir le nom du perso qui s'affiche
+        System.out.println(roleName + " créé avec succès !");
     }
 }
