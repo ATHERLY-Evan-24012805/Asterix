@@ -232,5 +232,9 @@ public abstract class Person implements TemporalObject {
     public Place getPlace() {
         return place;
     }
+
+    public void setPlace(Place place) {
+        this.place = place;
+    }
 }
 
