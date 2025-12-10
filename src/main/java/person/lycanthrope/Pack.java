@@ -36,11 +36,75 @@ public class Pack {
             l.leavePack();
             updateHierarchy();
         }
+        boolean alphaleft = false;
+        if (l==alphaMale) {
+            alphaleft = true;
+            alphaMale = null;
+        }
+
+        if (l==alphaFemale) {
+            alphaleft = true;
+            alphaFemale = null;
+        }
+
+        if (alphaleft) {
+            quickSort(members, 0, members.size()-1);
+            if (alphaMale == null) {
+                for (Lycanthrope member : members) {
+                    if (member.getGender() == 'M') {
+                        this.alphaMale = members.get(0);
+                        this.alphaMale.joinPack(this, DominationRank.ALPHA);
+                        System.out.println(this.alphaMale.getName() + " devient le nouveau mâle Alpha !");
+                        break;
+                    }
+                }
+            }
+            if (alphaFemale == null) {
+                for (Lycanthrope member : members) {
+                    if (member.getGender() == 'F') {
+                        this.alphaFemale = members.get(0);
+                        this.alphaFemale.joinPack(this, DominationRank.ALPHA);
+                        System.out.println(this.alphaFemale.getName() + " devient le nouveau mâle Alpha !");
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    // Algorithme de quickSort pour supprimer un membre de la meute
+    private void quickSort(List<Lycanthrope> list, int low, int high) {
+        if (low < high) {
+            int pi = partition(list, low, high);
+            quickSort(list, low, pi - 1);
+            quickSort(list, pi + 1, high);
+        }
+    }
+
+    private int partition(List<Lycanthrope> list, int low, int high) {
+        int pivot = list.get(high).getDominationRank().getRank();
+        int i = low - 1;
+        for (int j = low; j < high; j++) {
+            if (list.get(j).getDominationRank().getRank() < pivot) {
+                i++;
+                Lycanthrope temp = list.get(i);
+                list.set(i, list.get(j));
+                list.set(j, temp);
+            }
+        }
+        Lycanthrope temp = list.get(i + 1);
+        list.set(i + 1, list.get(high));
+        list.set(high, temp);
+        return i + 1;
     }
 
 
     public Howl getHowl() {
         return howl;
+    }
+
+    public List<Lycanthrope> getMembers() {
+        return members;
     }
 
     // Création de la hierarchie permet initialisation propre
@@ -54,10 +118,25 @@ public class Pack {
             members.add(alphaFemale);
         }
 
-        // Attribution par défaut, met tous les rangs à OMEGA
-        for (Lycanthrope l : members) {
-            l.joinPack(this, DominationRank.OMEGA);
+        if (alphaMale == null) {
+            for (Lycanthrope member : members) {
+                if (member.getGender() == 'M' && member.getDominationRank() == DominationRank.ALPHA) {
+                    alphaMale = member;
+                    break;
+                }
+            }
         }
+
+        // Si alphaFemale est null mais que
+        if (alphaFemale == null) {
+            for (Lycanthrope member : members) {
+                if (member.getGender() == 'F' && member.getDominationRank() == DominationRank.ALPHA) {
+                    alphaFemale = member;
+                    break;
+                }
+            }
+        }
+
 
         // Ecraser le rang précédent pour forcer le couple alpha
         if (alphaMale != null) {

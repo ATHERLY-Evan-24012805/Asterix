@@ -73,13 +73,37 @@ public class Lycanthrope extends Person implements Fighter {
         this.lone = true;
     }
 
-    public void howl(){
-        if(lone || pack == null){
-            System.out.println(getName() + " est solitaire et hurle dans le vide...");
-            return;
+    public void howl(TypeHowl howl, Lycanthrope target){
+        String msg = "";
+
+        switch(howl) {
+            case PACK:
+                if (pack != null) {
+                    msg = "Hurlement de meute : " + pack.getHowl().getMessage();
+                } else {
+                    msg = "Hurlement de meute : solitaire";
+                }
+                break;
+            case DOMINATION:
+                msg = "Hurlement de domination contre " + target.getName();
+                break;
+            case SUBMISSION:
+                msg = "Hurlement de soumission à " + target.getName();
+                break;
+            case AGGRESSIVITY:
+                msg = "Hurlement agressif envers " + target.getName();
+                break;
         }
-        System.out.println(getName() + "hurle ! ");
-        pack.getHowl().display();
+        System.out.println(getName() + " : " + msg);
+
+        // Réponse des membres de la meute
+        if(howl == TypeHowl.PACK && pack != null) {
+            for(Lycanthrope member : pack.getMembers()) {
+                if(member != this) {
+                    System.out.println(member.getName() + " répond au hurlement de meute !");
+                }
+            }
+        }
     }
 
 
@@ -153,5 +177,28 @@ public class Lycanthrope extends Person implements Fighter {
         }
 
         return (this.getStrength() + impetuosity)>= target.getStrength();
+    }
+
+    // Transformation en humain
+    public void transformToHuman(){
+        double chance = 0.0;
+        if (dominationRank != null) {
+            switch (dominationRank) {
+                case ALPHA: chance = 0.01; break;
+                case BETA:  chance = 0.05; break;
+                case GAMMA: chance = 0.1; break;
+                case DELTA: chance = 0.2; break;
+                case EPSILON: chance = 0.3; break;
+                case OMEGA: chance = 0.5; break;
+            }
+        }
+
+        if (Math.random() < chance) {
+            System.out.println(getName() + " quitte la meute et l'enclos !");
+
+            this.pack.removeLycanthrope(this);
+            this.enclosure.removeLycanthrope(this);
+        }
+
     }
 }
