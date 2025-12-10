@@ -1,5 +1,6 @@
 package place.types;
 
+import person.TransformedHuman;
 import place.Place;
 import person.Person;
 import person.roman.charac.RomanGeneral;
@@ -29,6 +30,6 @@ public class RomanFortifiedCamp extends Place {
     public boolean canAddPerson(Person person) {
         return person instanceof RomanGeneral ||
                 person instanceof RomanLegionary ||
-                person instanceof Lycanthrope;
+                person instanceof Lycanthrope || person instanceof TransformedHuman;
     }
 }

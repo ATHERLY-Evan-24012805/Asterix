@@ -1,6 +1,7 @@
 package place.types;
 
 import person.Person;
+import person.TransformedHuman;
 import person.gaulish.*;
 import person.lycanthrope.Lycanthrope;
 import place.Place;
@@ -26,6 +27,6 @@ public class GallicVillage extends Place {
     @Override
     public boolean canAddPerson(Person person) {
         return person instanceof Gaulish ||
-                person instanceof Lycanthrope;
+                person instanceof Lycanthrope || person instanceof TransformedHuman;
     }
 }

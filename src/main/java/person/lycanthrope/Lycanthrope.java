@@ -2,6 +2,8 @@ package person.lycanthrope;
 
 import person.Fighter;
 import person.Person;
+import person.TransformedHuman;
+import place.Place;
 import place.types.Enclosure;
 
 public class Lycanthrope extends Person implements Fighter {
@@ -19,6 +21,9 @@ public class Lycanthrope extends Person implements Fighter {
     private Pack pack;
     private boolean lone;
     private Enclosure enclosure;
+
+    //Caractéristique secondaire
+    private int level;
 
 
     // Conxtructeur
@@ -59,6 +64,36 @@ public class Lycanthrope extends Person implements Fighter {
         return lone;
     }
 
+    public int getLevel(){
+        updateLevel();
+        return level;
+    }
+
+
+    // Méthode Level
+    public void updateLevel(){
+        int newLevel = 0;
+        if (ageCategory != null){
+            switch (ageCategory){
+                case YOUNG: level += 2; break;
+                case ADULT: level += 3; break;
+                case OLD: level += 1; break;
+            }
+        }
+        level += getStrength();
+        level += getDominationFactor();
+
+        switch (dominationRank) {
+            case ALPHA:   level *= 1.5; break;
+            case BETA:    level *= 1.3; break;
+            case GAMMA:   level *= 1.1; break;
+            case DELTA:   level *= 1.0; break;
+            case EPSILON: level *= 0.9; break;
+            case OMEGA:   level *= 0.8; break;
+            default:      level *= 1.0; break;
+        }
+        level = Math.max(level, 0);
+    }
 
     // Meute
     public void joinPack(Pack pack, DominationRank dominationRank){
@@ -129,9 +164,11 @@ public class Lycanthrope extends Person implements Fighter {
 
     // Domination
     public void Dominate(Lycanthrope lycanthrope){
+        if (!canDominate(lycanthrope)){
+            return;
+        }
 
-        if (!canDominate(lycanthrope)) {
-            // Echec donc sanction de l'agresseur
+        if(this.getLevel() <= lycanthrope.getLevel()){
             this.dominationSuffered++;
 
             // Cas où le loup OMEGA échoue la domination face à un male ALPHA
@@ -176,11 +213,11 @@ public class Lycanthrope extends Person implements Fighter {
             return false;
         }
 
-        return (this.getStrength() + impetuosity)>= target.getStrength();
+        return (this.getLevel())>= target.getLevel();
     }
 
     // Transformation en humain
-    public void transformToHuman(){
+    public void transformToHuman(Place place){
         double chance = 0.0;
         if (dominationRank != null) {
             switch (dominationRank) {
@@ -198,6 +235,8 @@ public class Lycanthrope extends Person implements Fighter {
 
             this.pack.removeLycanthrope(this);
             this.enclosure.removeLycanthrope(this);
+            Person newPerson = new TransformedHuman(this.getName(), this.getGender(), this.getHeight(), this.getAge(), this.getStrength(), this.getEndurance());
+            place.addPerson(newPerson);
         }
 
     }
