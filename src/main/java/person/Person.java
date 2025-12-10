@@ -68,75 +68,32 @@ public abstract class Person implements TemporalObject {
         target.health = target.health - Math.max(1, strength*(1- target.endurance/150)); // Formule à modifier si besoin
     }
 
-    public Person getTarget() {
-        return target;
-    }
-    public void setTarget(Person target) {
-        this.target = target;
-    }
 
-    //Getters
-    public int getTicBeforeAction() {
-        return ticBeforeAction;
-    }
-
-    //Setters
-    public void setTicBeforeAction(int ticBeforeAction) {
-        this.ticBeforeAction = ticBeforeAction;
+    public void petrified() {
+        Clock.getInstance().unsubscribe(this);
     }
 
     public void die(Place place){
         place.removePerson(this);
         Clock.getInstance().unsubscribe(this);
     }
-    public void petrified(){
-        Clock.getInstance().unsubscribe(this);
-
-
-
-    @Override
-    public String toString() {
-        return "Person{" +
-                "name='" + name + '\'' +
-                ", gender=" + gender +
-                ", height=" + height +
-                ", age=" + age +
-                ", strength=" + strength +
-                ", endurance=" + endurance +
-                ", health=" + health +
-                ", hunger=" + hunger +
-                ", belligerence=" + belligerence +
-                ", potion=" + potion +
-                '}';
-    }
-
 
     // interaction Potion
     public void drinkPotion(MagicEffect effect) {
         switch (effect) {
-            case DUPLICATION :
+            case DUPLICATION:
                 this.duplicate(this.getName(), this.getGender(), this.getHeight(), this.getAge(), this.getStrength(), this.getEndurance());
                 System.out.println("Vous avez bû une potion de duplication. Amusez-vous vous et vôtre double.");
                 break;
-            case TURN_TO_STONE :
+            case TURN_TO_STONE:
                 this.petrified();
                 System.out.println("Vous avez été transformé en pierre. Désolé...");
                 break;
             default:
                 break;
         }
-    @Override
-    public void ticsPassed() {
-        // 1. On perd de la nourriture
-        this.hunger -= 5; // Par exemple -5 par heure
-
-        // 2. Si on a trop faim, on perd de la vie
-        if (this.hunger <= 0) {
-            this.hunger = 0; // On ne descend pas en négatif
-            this.health -= 10;
-            System.out.println(this.getName() + " meurt de faim ! PV restants : " + this.health);
-        }
     }
+
 
     public void die(){
         // à compléter plus tard (soit gestionnaire de personnage, soit variable booléenne, soit remove(this)
@@ -204,7 +161,19 @@ public abstract class Person implements TemporalObject {
         }
     }
 
-    // Getteurs
+    // Setters
+    public void setTicBeforeAction(int ticBeforeAction) {
+        this.ticBeforeAction = ticBeforeAction;
+    }
+
+    public void setPlace(Place place) {
+        this.place = place;
+    }
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    // Getters
     public String getName() {
         return this.name;
     }
@@ -221,7 +190,7 @@ public abstract class Person implements TemporalObject {
         return age;
     }
 
-    public int getBelligerence() {
+    public boolean getBelligerence() {
         return belligerence;
     }
 
@@ -244,5 +213,49 @@ public abstract class Person implements TemporalObject {
     public int getHealth() {
         return health;
     }
+    public int getTicBeforeAction() {
+        return ticBeforeAction;
+
+    }
+    public Person getTarget() {
+        return target;
+    }
+    public void setTarget(Person target) {
+        this.target = target;
+    }
+    public Place getPlace() {
+        return place;
+    }
+
+
+    @Override
+    public void ticsPassed() {
+        // 1. On perd de la nourriture
+        this.hunger -= 5; // Par exemple -5 par heure
+
+        // 2. Si on a trop faim, on perd de la vie
+        if (this.hunger <= 0) {
+            this.hunger = 0; // On ne descend pas en négatif
+            this.health -= 10;
+            System.out.println(this.getName() + " meurt de faim ! PV restants : " + this.health);
+        }
+    }
+
+        @Override
+        public String toString() {
+            return "Person{" +
+                    "name='" + name + '\'' +
+                    ", gender=" + gender +
+                    ", height=" + height +
+                    ", age=" + age +
+                    ", strength=" + strength +
+                    ", endurance=" + endurance +
+                    ", health=" + health +
+                    ", hunger=" + hunger +
+                    ", belligerence=" + belligerence +
+                    ", potion=" + potion +
+                    '}';
+        }
 }
+
 

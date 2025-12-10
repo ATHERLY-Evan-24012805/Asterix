@@ -28,7 +28,7 @@ public class Druid extends Gaulish implements Fighter, Leader, Worker{
 
     @Override
     public Person duplicate(String name, char gender, double height, int age, int strength, int endurance) {
-        return null;
+        return new Druid(name, gender, height, age, strength, endurance);
     }
 
     // à voir si on ne fait pas plutôt choisir au clan leader qui il choisit d'attaquer.

@@ -18,7 +18,11 @@ public class RomanGeneral extends Roman implements Fighter, Leader {
         this.setTicBeforeAction(5);
     }
 
-    // se bat seulement s'il n'a plus d'allier avec lui sur le champ de bataille
+    public Person duplicate(String name, char gender, double height, int age, int strength, int endurance) {
+        return new RomanGeneral(name, gender, height, age, strength, endurance);
+    }
+
+        // se bat seulement s'il n'a plus d'allier avec lui sur le champ de bataille
     @Override
     public void fight() {
         Place place = this.getPlace();

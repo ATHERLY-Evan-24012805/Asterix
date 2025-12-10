@@ -9,7 +9,11 @@ public class RomanLegionary extends Roman implements Fighter{
         super(name, gender, height, age, strength, endurance);
     }
 
-    @Override
+    public Person duplicate(String name, char gender, double height, int age, int strength, int endurance) {
+        return new RomanLegionary(name, gender, height, age, strength, endurance);
+    }
+
+        @Override
     public void fight(){
     // Tape et obeit au general
         fight(getTarget());

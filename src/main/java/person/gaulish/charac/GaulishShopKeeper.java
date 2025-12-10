@@ -2,6 +2,7 @@ package person.gaulish.charac;
 import clock.TemporalObject;
 import food.Food;
 import food.FoodFactory;
+import person.Person;
 import person.gaulish.Gaulish;
 import person.Worker;
 import place.Place;
@@ -18,7 +19,11 @@ public class GaulishShopKeeper extends Gaulish implements Worker {
         super(name, gender, height, age, strength, endurance);
     }
 
-    @Override
+    public Person duplicate(String name, char gender, double height, int age, int strength, int endurance) {
+        return new GaulishShopKeeper(name, gender, height, age, strength, endurance);
+    }
+
+        @Override
     public void work() {
         String[] possibleFoods = {
                 "BeetJuice", "Carrot", "Fish", "FourLeafClover", "Honey", "IdefixHair", "Lobster", "Mead",
