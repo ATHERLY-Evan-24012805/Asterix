@@ -1,7 +1,7 @@
 package person.lycanthrope;
 
 public enum LycanthropeAge {
-    JEUNE,
-    ADULTE,
-    VIEUX
+    YOUNG,
+    ADULT,
+    OLD
 }

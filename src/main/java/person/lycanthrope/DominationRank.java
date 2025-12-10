@@ -24,7 +24,15 @@ public enum DominationRank {
         return rank;
     }
 
-    public boolean Dominates(DominationRank rank) {
-        return this.rank < rank.rank;
+
+    public DominationRank getLowerRank() {
+        switch (this) {
+            case ALPHA:   return BETA;
+            case BETA:    return GAMMA;
+            case GAMMA:   return DELTA;
+            case DELTA:   return EPSILON;
+            case EPSILON: return OMEGA;
+            default:      return OMEGA;
+        }
     }
 }
