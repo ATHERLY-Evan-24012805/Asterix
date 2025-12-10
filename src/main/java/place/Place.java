@@ -30,33 +30,6 @@ public abstract class Place {
 
 
     /**
-     * Retourne la liste des personnes présentes dans le lieu.
-     *
-     * @return Liste des habitants
-     */
-    public List<Person> getPeople() {
-        return people;
-    }
-
-    /**
-     * Ajoute une instance de nourriture dans le lieu.
-     *
-     * @param f la nourriture à ajouter
-     */
-    public void addFood(Food f) {
-        food.add(f);
-    }
-
-    /**
-     * Retourne la liste des aliments présents dans le lieu.
-     *
-     * @return Liste des aliments
-     */
-    public List<Food> getFood() {
-        return food;
-    }
-
-    /**
      * Vérifie si une personne peut être ajoutée dans ce lieu.
      *
      * @param person La personne à tester
@@ -88,6 +61,15 @@ public abstract class Place {
     }
 
     /**
+     * Ajoute une instance de nourriture dans le lieu.
+     *
+     * @param f la nourriture à ajouter
+     */
+    public void addFood(Food f) {
+        food.add(f);
+    }
+
+    /**
      * Soigne une personne présente dans le lieu.
      *
      * @param person La personne à soigner
@@ -116,6 +98,93 @@ public abstract class Place {
     }
 
     /**
+     * Retourne la liste des personnes présentes dans le lieu.
+     *
+     * @return Liste des habitants
+     */
+    public List<Person> getPeople() {
+        return people;
+    }
+
+    public List getListOfPersons(){
+        return this.people;
+    }
+
+    /**
+     * Retourne la liste des aliments présents dans le lieu.
+     *
+     * @return Liste des aliments
+     */
+    public List<Food> getFood() {
+        return food;
+    }
+
+    /**
+     * Retourne le nombre actuel de personnes dans le lieu (recensement).
+     *
+     * @return Le nombre d'habitants (int).
+     */
+    public int getCensus(){
+        return this.census;
+    }
+
+    // Méthodes inventaire
+    /**
+     * Retourne la liste des objets présents dans l'inventaire du lieu.
+     *
+     * @return Liste des objets ({@code List<Item>}).
+     */
+    public List<Item> getItems() {
+        return inventory;
+    }
+
+    /**
+     * Retourne l'objet présent à l'index spécifié dans l'inventaire.
+     *
+     * @param index L'index de l'objet dans la liste d'inventaire.
+     * @return L'objet ({@link item.Item}) trouvé ou {@code null} si l'index est invalide.
+     */
+    public Item getItem(int index) {
+        if (index < 0 || index >= inventory.size()) {
+            return null;
+        }
+        return inventory.get(index);
+    }
+
+    /**
+     * Ajoute un objet à l'inventaire du lieu.
+     *
+     * @param item L'objet ({@link item.Item}) à ajouter.
+     */
+    public void addItem(Item item){
+        inventory.add(item);
+    }
+
+    /**
+     * Retire un objet de l'inventaire du lieu.
+     *
+     * @param item L'objet ({@link item.Item}) à retirer.
+     */
+    public void removeItem(Item item){
+        inventory.remove(item);
+    }
+
+    /**
+     * Affiche le contenu complet de l'inventaire du lieu.
+     */
+    public void getInventory(){
+        if (inventory.isEmpty()) {
+            System.out.println(name + " n'a rien dans son inventaire.");
+            return;
+        }
+
+        System.out.println("Inventaire de " + name + " :");
+        for (Item item : inventory) {
+            System.out.println("- " + item.getName());
+        }
+    }
+
+    /**
      * Retourne une représentation textuelle du lieu, incluant
      * son nom, sa superficie, son chef, son recensement, ainsi
      * que les listes de personnes et d'aliments présents.
@@ -131,47 +200,4 @@ public abstract class Place {
                 "Liste de personnes : " + people + "\n" +
                 "Liste d'aliments : " + food;
     }
-
-    public int getCensus(){
-        return this.census;
-    }
-    public List getListOfPersons(){
-        return this.people;
-    }
-
-
-    // Méthodes inventaire
-
-
-    public List<Item> getItems() {
-        return inventory;
-    }
-
-    public Item getItem(int index) {
-        if (index < 0 || index >= inventory.size()) {
-            return null;
-        }
-        return inventory.get(index);
-    }
-
-    public void addItem(Item item){
-        inventory.add(item);
-    }
-
-    public void removeItem(Item item){
-        inventory.remove(item);
-    }
-
-    public void getInventory(){
-        if (inventory.isEmpty()) {
-            System.out.println(name + " n'a rien dans son inventaire.");
-            return;
-        }
-
-        System.out.println("Inventaire de " + name + " :");
-        for (Item item : inventory) {
-            System.out.println("- " + item.getName());
-        }
-    }
-
 }

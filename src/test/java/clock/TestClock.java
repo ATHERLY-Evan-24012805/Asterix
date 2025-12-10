@@ -1,7 +1,5 @@
 package clock;
 
-import clock.Clock;
-import clock.TemporalObject;
 import food.items.Fish;
 import food.items.FourLeafClover;
 import org.junit.jupiter.api.Assertions;
@@ -9,7 +7,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 
-
+/**
+ * Tests unitaires pour la classe Clock.
+ */
 public class TestClock {
     private Clock clock;
     private Fish fish = new Fish();
@@ -54,8 +54,8 @@ public class TestClock {
 
     @Test
     void testFoodsPassed(){
-        Assertions.assertTrue(fish.getPeramption());
-        Assertions.assertTrue(fourLeafClover.getPeramption());
+        Assertions.assertTrue(fish.getPeremption());
+        Assertions.assertTrue(fourLeafClover.getPeremption());
 
         clock.subscribe(fish);
         clock.subscribe(fourLeafClover);
@@ -64,10 +64,10 @@ public class TestClock {
             clock.notifySubscribers();
         }
         //le poisson doit être perimé
-        Assertions.assertFalse(fish.getPeramption());
+        Assertions.assertFalse(fish.getPeremption());
 
         //le trèfle ne doit pas être perimé
-        Assertions.assertTrue(fourLeafClover.getPeramption());
+        Assertions.assertTrue(fourLeafClover.getPeremption());
     }
 
 }

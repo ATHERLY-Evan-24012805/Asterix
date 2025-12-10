@@ -13,14 +13,29 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
+/**
+ * Classe centrale de la simulation, agissant comme le Théâtre d'Invasion.
+ *
+ * <p>Elle orchestre l'environnement du jeu en gérant l'horloge ({@link clock.Clock}),
+ * la liste des lieux ({@link place.Place}), et contient des utilitaires statiques
+ * pour la création et la transformation des personnages.
+ */
 public class TheatreOfInvasion {
+
     private String name;
     private int numberOfPlaces;
     private ArrayList<Place> listOfPlaces;
     private List listOfChief;
     private static Clock clock = new Clock();
 
+
     //Constructeur
+    /**
+     * Construit une nouvelle instance du Théâtre d'Invasion.
+     *
+     * @param nameOfTheGame Le nom donné à cette simulation.
+     * @param listOfPlaces La liste initiale des lieux à gérer.
+     */
     public TheatreOfInvasion(String nameOfTheGame, ArrayList<Place> listOfPlaces /*, List listOfChief*/) {
 
         this.name = name;
@@ -29,11 +44,20 @@ public class TheatreOfInvasion {
         //this.listOfChief = listOfChief;
     }
 
-
+    /**
+     * Retourne la liste des lieux gérés par ce théâtre.
+     *
+     * @return La liste des lieux ({@code ArrayList<Place>}).
+     */
     public ArrayList<Place> showPlaces() {
         return listOfPlaces;
     }
 
+    /**
+     * Calcule le nombre total de personnes présentes dans tous les lieux gérés par le théâtre.
+     *
+     * @return Le compte total des personnes (int).
+     */
     public int howManyPeople() {
         int compt = 0;
         for (Place p : listOfPlaces) {
@@ -42,16 +66,36 @@ public class TheatreOfInvasion {
         return compt;
     }
 
+    /**
+     * Retourne la liste des personnes présentes dans un lieu spécifique.
+     *
+     * @param place Le lieu ({@link place.Place}) à inspecter.
+     * @return Liste des personnes (Note : La méthode actuelle retourne toujours {@code null}).
+     */
     public List PeopleByPlace(Place place){
         List people = new ArrayList();
         people = place.getListOfPersons();
-        return null;
+        return people;
     }
 
+    /**
+     * Retourne l'instance statique de l'horloge de la simulation.
+     *
+     * @return L'horloge ({@link clock.Clock}) de la simulation.
+     */
     public static Clock getClock() {
         return clock;
     }
 
+    /**
+     * Crée une nouvelle instance de personnage du type spécifié, l'initialise
+     * avec des statistiques par défaut et des valeurs aléatoires (taille, âge),
+     * puis l'ajoute au lieu et à l'horloge.
+     *
+     * @param p Le lieu ({@link place.Place}) où la personne doit être ajoutée.
+     * @param roleName Le nom du rôle à créer (ex: "Druide", "RomanGeneral").
+     * @param sc L'objet {@code Scanner} pour la saisie utilisateur du nom et du genre.
+     */
     public static void createAndAddPerson(Place p, String roleName, Scanner sc) {
         // 1. Demande du Nom
         System.out.print(roleName + " : ");
@@ -148,7 +192,16 @@ public class TheatreOfInvasion {
         return;
     }
 
-    // Méthode pour transformation en Lycanthrope
+    /**
+     * Gère la transformation d'un personnage en Lycanthrope.
+     *
+     * <p>Le personnage initial former est retiré du jeu (meurt et est désabonné
+     * de l'horloge), et une nouvelle instance de {@link person.lycanthrope.Lycanthrope} est
+     * créée avec ses caractéristiques et ajoutée au lieu et à l'horloge.
+     *
+     * @param former Le personnage ({@link person.Person}) qui se transforme.
+     * @param place Le lieu ({@link place.Place}) où la transformation a lieu.
+     */
     public static void createWerewolfFrom(Person former, Place place) {
 
         // Création du loup-garou

@@ -8,7 +8,30 @@ import java.util.Scanner;
 
 import static theatres.TheatreOfInvasion.createAndAddPerson;
 
+/**
+ * Classe principale d'exécution de la simulation.
+ *
+ * <p>Elle gère l'initialisation du jeu (nom de la partie, nombre de joueurs/lieux,
+ * choix des lieux, création des chefs de clan) et lance la boucle de jeu principale
+ * avec le gestionnaire de temps ({@link clock.Clock}).
+ */
 public class Main {
+
+    /**
+     * Méthode principale du programme, initialisant la simulation.
+     *
+     * <p>Elle procède par étapes :</p>
+     * <ol>
+     * <li>**Initialisation :** Demande le nom de la partie et le nombre de joueurs/lieux.</li>
+     * <li>**Configuration des Joueurs/Lieux :** Pour chaque joueur, demande le nom du chef, le genre, l'âge,
+     * et le type de lieu initial (Village Gaulois, Camp Romain, Ville Romaine, Bourgade).</li>
+     * <li>**Remplissage des Lieux :** Ajoute des personnages par défaut dans chaque lieu,
+     * en fonction du type de lieu (Forgerons, Légionnaires, Druides, etc.), demandant leur nom à l'utilisateur.</li>
+     * <li>**Démarrage :** Lance le {@link clock.Clock} et la boucle de jeu interactive.</li>
+     * </ol>
+     *
+     * @param args Arguments de la ligne de commande (non utilisés).
+     */
     public static void main (String[] args) {
 
         // Initialisation du jeu
