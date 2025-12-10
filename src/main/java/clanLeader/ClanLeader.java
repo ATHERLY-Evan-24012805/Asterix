@@ -1,6 +1,7 @@
 package clanLeader;
 
 import MagicPotion.MagicPotion;
+import MagicPotion.MagicEffect;
 import person.gaulish.charac.Druid;
 import person.Person;
 import place.Place;
@@ -86,9 +87,71 @@ public class ClanLeader {
         }
     }
 
-    public void askDruidForPotion(Druid druid) {}
+    /**
+     * Demande à un Druide présent dans le lieu actuel de fabriquer une potion magique.
+     *
+     * <p>Le chef de clan délègue la tâche de création de la potion au Druide spécifié,
+     * en lui indiquant l'effet désiré et la quantité de recettes à préparer.
+     *
+     * @param druid Le {@link Druid} présent dans le lieu qui fabriquera la potion.
+     * @param desiredEffect L'effet magique ({@link MagicEffect}) désiré pour la potion.
+     * @param quantity La quantité de recettes à préparer (chaque unité donne quatre doses).
+     * @return La {@link MagicPotion} créée, ou null si la fabrication échoue.
+     */
+    public MagicPotion askDruidForPotion(Druid druid, MagicEffect desiredEffect, int quantity) {
+        // Vérifie si le Druide est bien présent dans le lieu
+        if (place.getPeople().contains(druid)) {
+            System.out.println(name + " demande à " + druid.getName() + " de préparer une potion avec l'effet " + desiredEffect.name() + ".");
+            MagicPotion newPotion = druid.createMagicPotion(desiredEffect, quantity, place);
 
-    public void givePotion(Person person, MagicPotion potion) {}
+            if (newPotion != null) {
+                System.out.println(druid.getName() + " a réussi à créer une " + newPotion.getName() + " !");
+            } else {
+                System.out.println(druid.getName() + " a échoué ! La potion a explosé.");
+            }
+            return newPotion;
+        } else {
+            System.out.println(name + " ne peut pas demander la potion : " + druid.getName() + " n'est pas ici.");
+            return null;
+        }
+    }
+
+    /**
+     * Donne une potion spécifique à une personne présente dans le lieu.
+     *
+     * <p>Cette méthode transfère la potion depuis l'inventaire du {@link Place} vers l'individu
+     * (simulé par l'application des effets, car la personne boit la potion).
+     *
+     * @param person La personne qui va boire la potion (doit être dans le lieu du chef).
+     * @param potion La {@link MagicPotion} à administrer.
+     * @param doses La quantité de doses à consommer.
+     */
+    public void givePotion(Person person, MagicPotion potion, int doses) {
+        // Vérifie si la personne est présente
+        if (!place.getPeople().contains(person)) {
+            System.out.println(name + " ne peut pas donner de potion à " + person.getName() + " car il/elle n'est pas ici.");
+            return;
+        }
+
+        // Vérifie si la potion est dans l'inventaire du lieu
+        if (!place.getItems().contains(potion)) {
+            System.out.println(name + " ne possède pas cette potion dans l'inventaire du lieu.");
+            return;
+        }
+
+        System.out.println(name + " donne " + doses + " doses de " + potion.getName() + " à " + person.getName() + ".");
+
+        // Simule la consommation de la potion par la personne.
+        // On doit trouver l'index de la potion dans l'inventaire du lieu pour appeler drinkPotion(index, doses)
+        int potionIndex = place.getItems().indexOf(potion);
+
+        if (potionIndex != -1) {
+            // Utiliser la surcharge drinkPotion(index, doses) de Person
+            person.drinkPotion(potionIndex, doses);
+        } else {
+            System.err.println("Potion non trouvée dans l'inventaire");
+        }
+    }
 
     /**
      * Transfère une personne du lieu actuel vers une destination.
