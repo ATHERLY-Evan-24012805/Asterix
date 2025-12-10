@@ -1,17 +1,21 @@
 package food;
 
 import clock.TemporalObject;
+import item.Item;
 
-public abstract class Food {
+public abstract class Food extends Item {
 
     //Attribut
     private int bonus;
 
     //constructeur
-    public Food(int bonus) {
+    public Food(String name, int bonus) {
+        super(name);
         this.bonus = bonus;
     }
-    public Food(){
+    public Food(String name)
+    {
+        super(name);
         this.bonus = 15;
     }
 

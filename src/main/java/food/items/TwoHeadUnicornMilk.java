@@ -4,6 +4,6 @@ import food.Food;
 
 public class TwoHeadUnicornMilk extends Food {
     public TwoHeadUnicornMilk() {
-        super();
+        super("Two Head Unicorn Milk");
     }
 }

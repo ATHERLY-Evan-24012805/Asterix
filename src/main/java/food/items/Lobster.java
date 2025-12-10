@@ -4,6 +4,6 @@ import food.Food;
 
 public class Lobster extends Food{
     public Lobster(){
-        super();
+        super("Lobster");
     }
 }

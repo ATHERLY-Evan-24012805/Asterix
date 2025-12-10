@@ -11,7 +11,7 @@ public class Fish extends Food implements TemporalObject {
 
     //Constructeur
     public Fish(){
-        super();
+        super("Fish");
     }
 
     //Methodes

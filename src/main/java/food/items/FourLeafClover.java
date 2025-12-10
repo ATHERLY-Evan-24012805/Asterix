@@ -11,7 +11,7 @@ public class FourLeafClover extends Food implements TemporalObject {
 
     //Constructeur
     public FourLeafClover() {
-        super();
+        super("Four Leaf Clover");
     }
 
     //Methodes

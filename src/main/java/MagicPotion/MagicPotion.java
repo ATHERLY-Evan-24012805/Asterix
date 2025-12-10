@@ -2,18 +2,19 @@ package MagicPotion;
 
 import food.Food;
 import food.items.*;
-
+import item.Item;
 
 import java.util.ArrayList;
 
-public class MagicPotion {
+public class MagicPotion extends Item{
     private int doses;
     private int nutrition = 0;
     private ArrayList<MagicEffect> effect = new ArrayList<MagicEffect>();
     private ArrayList<Food> Ingredients;
     private ArrayList<Food> Recipe = new ArrayList<Food>();
 
-    public MagicPotion(ArrayList<Food> Ingredients, int quantity) {
+    public MagicPotion(ArrayList<Food> Ingredients, int quantity)  {
+        super("Magic Potion");
         this.doses = quantity * 4;
         this.Ingredients = Ingredients;
         Recipe.add(new Misteltoe());
@@ -60,9 +61,16 @@ public class MagicPotion {
     }
 
     public void consumeDoses(int doses) {
-        if (this.doses > doses) {
-            this.doses-=doses;
+
+        // Vérification qu'il y a assez de doses dans la potion
+        if (doses > this.doses) {
+            System.err.println("Erreur : pas assez de doses dans la potion.");
+            return;
         }
+
+        this.doses -= doses;
+
+        // Appliquer les effets
         if (doses == 4) {
             effect.add(MagicEffect.PERMANENT);
         }

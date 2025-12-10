@@ -4,6 +4,6 @@ import food.Food;
 
 public class IdefixHair extends Food {
     public IdefixHair() {
-        super();
+        super("Idefix Hair");
     }
 }

@@ -4,6 +4,6 @@ import food.Food;
 
 public class Misteltoe extends Food{
     public Misteltoe() {
-        super();
+        super("Misteltoe");
     }
 }

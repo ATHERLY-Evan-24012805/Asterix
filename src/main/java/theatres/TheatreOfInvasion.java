@@ -3,6 +3,7 @@ package theatres;
 import clock.Clock;
 import person.Person;
 import person.gaulish.charac.*;
+import person.lycanthrope.Lycanthrope;
 import person.roman.charac.*;
 import place.types.*;
 import place.Place;
@@ -140,5 +141,28 @@ public class TheatreOfInvasion {
         p.addPerson(newPerson);
         clock.subscribe(newPerson);
         System.out.println(roleName + " créé avec succès !"); // toString et getname pour avoir le nom du perso qui s'affiche
+    }
+
+    // Méthode pour transformation en Lycanthrope
+    public static void createWerewolfFrom(Person former, Place place) {
+
+        // Création du loup-garou
+        Person werewolf = new Lycanthrope(
+                former.getName() + " le Loup-Garou",
+                former.getGender(),
+                former.getHeight(),
+                former.getAge(),
+                former.getStrength(),
+                former.getEndurance()
+        );
+
+        // Tuer le personnage se transformant
+        former.die(place);
+
+        // Ajout du nouveau
+        place.addPerson(werewolf);
+        clock.subscribe(werewolf);
+
+        System.out.println("Vous vous êtes transformé en Lycanthrope !");
     }
 }

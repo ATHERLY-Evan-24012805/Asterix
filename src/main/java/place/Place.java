@@ -2,6 +2,7 @@ package place;
 
 import clanLeader.ClanLeader;
 import food.Food;
+import item.Item;
 import person.Person;
 
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ public abstract class Place {
     private int census;
     protected List<Food> food = new ArrayList<>();
     protected List<Person> people = new ArrayList<>();
+    private List<Item> inventory = new ArrayList<>();
 
 
     /**
@@ -119,5 +121,38 @@ public abstract class Place {
     }
 
 
+    // Méthodes inventaire
+
+
+    public List<Item> getItems() {
+        return inventory;
+    }
+
+    public Item getItem(int index) {
+        if (index < 0 || index >= inventory.size()) {
+            return null;
+        }
+        return inventory.get(index);
+    }
+
+    public void addItem(Item item){
+        inventory.add(item);
+    }
+
+    public void removeItem(Item item){
+        inventory.remove(item);
+    }
+
+    public void getInventory(){
+        if (inventory.isEmpty()) {
+            System.out.println(name + " n'a rien dans son inventaire.");
+            return;
+        }
+
+        System.out.println("Inventaire de " + name + " :");
+        for (Item item : inventory) {
+            System.out.println("- " + item.getName());
+        }
+    }
 
 }
