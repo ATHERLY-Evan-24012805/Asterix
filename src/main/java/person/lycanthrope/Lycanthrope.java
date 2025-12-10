@@ -23,7 +23,7 @@ public class Lycanthrope extends Person implements Fighter {
     private Enclosure enclosure;
 
     //Caractéristique secondaire
-    private int level;
+    private double level;
 
 
     // Conxtructeur
@@ -64,7 +64,7 @@ public class Lycanthrope extends Person implements Fighter {
         return lone;
     }
 
-    public int getLevel(){
+    public double getLevel(){
         updateLevel();
         return level;
     }
@@ -156,10 +156,11 @@ public class Lycanthrope extends Person implements Fighter {
     public void decreaseRank(int threshold) {
         if (lone || dominationRank == null || dominationRank == DominationRank.OMEGA) return;
 
-        if (getDominationFactor() < threshold) {
-            dominationRank = dominationRank.getLowerRank();
-        }
+        if (getDominationFactor() > threshold) return;
+        if (pack != null && !pack.hasAnotherWithSameRank(this)) return;
+        dominationRank = dominationRank.getLowerRank();
     }
+
 
 
     // Domination
@@ -193,10 +194,16 @@ public class Lycanthrope extends Person implements Fighter {
         this.dominationExercised++;
         lycanthrope.dominationSuffered++;
 
+        boolean dethroning = lycanthrope.getDominationRank() == DominationRank.ALPHA
+                && lycanthrope.getGender() == 'M' && pack != null;
         // Echange des rang
         DominationRank tmp=this.dominationRank;
         this.dominationRank=lycanthrope.dominationRank;
         lycanthrope.dominationRank=tmp;
+
+        if (dethroning) {
+            pack.handleAlphaDomination(this, lycanthrope);
+        }
     }
 
     // Vérification de la domination

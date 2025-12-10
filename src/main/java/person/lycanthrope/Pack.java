@@ -48,8 +48,8 @@ public class Pack {
         }
 
         if (alphaleft) {
-            quickSort(members, 0, members.size()-1);
             if (alphaMale == null) {
+                quickSortByStrength(members, 0, members.size()-1);
                 for (Lycanthrope member : members) {
                     if (member.getGender() == 'M') {
                         this.alphaMale = members.get(0);
@@ -60,6 +60,7 @@ public class Pack {
                 }
             }
             if (alphaFemale == null) {
+                quickSortByLevel(members, 0, members.size()-1);
                 for (Lycanthrope member : members) {
                     if (member.getGender() == 'F') {
                         this.alphaFemale = members.get(0);
@@ -73,19 +74,19 @@ public class Pack {
     }
 
     // Algorithme de quickSort pour supprimer un membre de la meute
-    private void quickSort(List<Lycanthrope> list, int low, int high) {
+    private void quickSortByStrength(List<Lycanthrope> list, int low, int high) {
         if (low < high) {
-            int pi = partition(list, low, high);
-            quickSort(list, low, pi - 1);
-            quickSort(list, pi + 1, high);
+            int pi = partitionByStrength(list, low, high);
+            quickSortByStrength(list, low, pi - 1);
+            quickSortByStrength(list, pi + 1, high);
         }
     }
 
-    private int partition(List<Lycanthrope> list, int low, int high) {
-        int pivot = list.get(high).getDominationRank().getRank();
+    private int partitionByStrength(List<Lycanthrope> list, int low, int high) {
+        int pivot = list.get(high).getStrength();
         int i = low - 1;
         for (int j = low; j < high; j++) {
-            if (list.get(j).getDominationRank().getRank() < pivot) {
+            if (list.get(j).getStrength() > pivot) {
                 i++;
                 Lycanthrope temp = list.get(i);
                 list.set(i, list.get(j));
@@ -98,7 +99,35 @@ public class Pack {
         return i + 1;
     }
 
+    private void quickSortByLevel(List<Lycanthrope> list, int low, int high) {
+        if (low < high) {
+            int pi = partitionByLevel(list, low, high);
+            quickSortByLevel(list, low, pi - 1);
+            quickSortByLevel(list, pi + 1, high);
+        }
+    }
 
+    private int partitionByLevel(List<Lycanthrope> list, int low, int high) {
+        double pivot = list.get(high).getLevel();
+        int i = low - 1;
+
+        for (int j = low; j < high; j++) {
+            if (list.get(j).getLevel() > pivot) { // DESCENDANT
+                i++;
+                Lycanthrope temp = list.get(i);
+                list.set(i, list.get(j));
+                list.set(j, temp);
+            }
+        }
+
+        Lycanthrope temp = list.get(i + 1);
+        list.set(i + 1, list.get(high));
+        list.set(high, temp);
+        return i + 1;
+    }
+
+
+    // Getteurs
     public Howl getHowl() {
         return howl;
     }
@@ -149,11 +178,56 @@ public class Pack {
     }
 
 
+    // Méthode de destitution du male alpha et du calcul de la femelle
+    public void handleAlphaDomination(Lycanthrope winner, Lycanthrope loser) {
+        Lycanthrope oldAlphaFemale = alphaFemale;
+
+        // Mise à jour du nouveau mâle alpha suite à la destitution
+        if (loser == alphaMale) {
+            alphaMale = winner;
+            alphaMale.joinPack(this, DominationRank.ALPHA);
+            System.out.println(alphaMale.getName() + " devient le nouveau mâle Alpha !");
+        }
+
+        // On récupère le rang de male alpha déchu
+        DominationRank fallenMaleRank = loser.getDominationRank();
+
+        // Calcul de la femelle alpha à partir du niveau
+        quickSortByLevel(members, 0, members.size() - 1);
+
+        for (Lycanthrope f : members) {
+            if (f.getGender() == 'F' && f.getAgeCategory() == LycanthropeAge.ADULT) {
+                alphaFemale = f;
+                alphaFemale.joinPack(this, DominationRank.ALPHA);
+                System.out.println(alphaFemale.getName() + " devient la nouvelle femelle Alpha !");
+                break;
+            }
+        }
+
+        if (oldAlphaFemale != null && oldAlphaFemale != alphaFemale) {
+            oldAlphaFemale.joinPack(this, fallenMaleRank);
+            System.out.println(oldAlphaFemale.getName() + " perd son statut Alpha et devient " + fallenMaleRank);
+        }
+    }
+
+
     // Décroissance naturelle des rang
     public void naturalRankDecrease(int threshold) {
         for (Lycanthrope l : members) {
             l.decreaseRank(threshold);
         }
+    }
+
+    // Vérification qu'un lycanthrope n'est pas le seul de son rang
+    public boolean hasAnotherWithSameRank(Lycanthrope me) {
+        for (Lycanthrope l : members) {
+            if (l != me
+                    && l.getGender() == me.getGender()
+                    && l.getDominationRank() == me.getDominationRank()) {
+                return true;
+            }
+        }
+        return false;
     }
 
 
