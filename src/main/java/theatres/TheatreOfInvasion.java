@@ -45,7 +45,7 @@ public class TheatreOfInvasion {
     public List PeopleByPlace(Place place){
         List people = new ArrayList();
         people = place.getListOfPersons();
-        return null;
+        return people;
     }
 
     public static Clock getClock() {

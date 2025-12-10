@@ -72,6 +72,7 @@ public abstract class Place {
     public void addPerson(Person person) {
         if (canAddPerson(person) && !people.contains(person)) {
             people.add(person);
+            this.census++;
             person.setPlace(this);
         } else {
             System.out.println("Impossible d'ajouter cette personne ici : " + person);

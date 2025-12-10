@@ -142,6 +142,9 @@ public class PlaceTest {
         gallicVillage.addPerson(gaulishBlacksmithMock);
         assertTrue(people.contains(gaulishBlacksmithMock));
         assertEquals(1, people.size());
+
+        int result = gallicVillage.getCensus();
+        assertTrue(result == 1);
     }
 
     @Test
