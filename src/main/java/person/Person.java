@@ -94,13 +94,12 @@ public abstract class Person implements TemporalObject {
         }
     }
 
-
     public void die(){
         // à compléter plus tard (soit gestionnaire de personnage, soit variable booléenne, soit remove(this)
     }
 
 
-    public void drinkPotion(int index, int usedDoses) {
+    public void drinkPotion ( int index, int usedDoses){
         // On récupère l'item depuis place
         Item item = place.getItem(index);
 
