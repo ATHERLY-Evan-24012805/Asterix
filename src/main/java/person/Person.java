@@ -89,10 +89,10 @@ public abstract class Person implements TemporalObject {
         place.removePerson(this);
         Clock.getInstance().unsubscribe(this);
     }
-    public void petrified(){
+    public void petrified() {
         Clock.getInstance().unsubscribe(this);
 
-
+    }
 
     @Override
     public String toString() {
@@ -111,22 +111,8 @@ public abstract class Person implements TemporalObject {
     }
 
 
-    // interaction Potion
-    public void drinkPotion(MagicEffect effect) {
-        switch (effect) {
-            case DUPLICATION :
-                this.duplicate(this.getName(), this.getGender(), this.getHeight(), this.getAge(), this.getStrength(), this.getEndurance());
-                System.out.println("Vous avez bû une potion de duplication. Amusez-vous vous et vôtre double.");
-                break;
-            case TURN_TO_STONE :
-                this.petrified();
-                System.out.println("Vous avez été transformé en pierre. Désolé...");
-                break;
-            default:
-                break;
-        }
     @Override
-    public void ticsPassed() {
+    public void ticsPassed () {
         // 1. On perd de la nourriture
         this.hunger -= 5; // Par exemple -5 par heure
 
@@ -138,12 +124,9 @@ public abstract class Person implements TemporalObject {
         }
     }
 
-    public void die(){
-        // à compléter plus tard (soit gestionnaire de personnage, soit variable booléenne, soit remove(this)
-    }
 
 
-    public void drinkPotion(int index, int usedDoses) {
+    public void drinkPotion ( int index, int usedDoses){
         // On récupère l'item depuis place
         Item item = place.getItem(index);
 
@@ -160,9 +143,9 @@ public abstract class Person implements TemporalObject {
 
 
         // Application des effets
-        for (MagicEffect effect : potion.getEffects()) {
-            switch (effect) {
-                case DUPLICATION : {
+        for (MagicEffect e : potion.getEffects()) {
+            switch (e) {
+                case DUPLICATION: {
                     this.duplicate(
                             this.getName(),
                             this.getGender(),
@@ -175,23 +158,23 @@ public abstract class Person implements TemporalObject {
                     break;
                 }
 
-                case TURN_TO_STONE : {
+                case TURN_TO_STONE: {
                     this.petrified();
                     System.out.println("Vous êtes transformé en pierre...");
                     break;
                 }
 
-                case PERMANENT :
-                        System.out.println("Un effet permanent vous affecte.");
-                        break;
+                case PERMANENT:
+                    System.out.println("Un effet permanent vous affecte.");
+                    break;
 
-                case WEREWOLF : {
+                case WEREWOLF: {
                     TheatreOfInvasion.createWerewolfFrom(this, this.place);
                     break;
                 }
 
-                default :
-                        System.out.println("Effet inconnu.");
+                default:
+                    System.out.println("Effet inconnu.");
             }
         }
 
@@ -203,6 +186,7 @@ public abstract class Person implements TemporalObject {
             System.out.println("La potion est terminée.");
         }
     }
+
 
     // Getteurs
     public String getName() {
@@ -221,7 +205,7 @@ public abstract class Person implements TemporalObject {
         return age;
     }
 
-    public int getBelligerence() {
+    public boolean getBelligerence() {
         return belligerence;
     }
 
@@ -243,6 +227,10 @@ public abstract class Person implements TemporalObject {
 
     public int getHealth() {
         return health;
+    }
+
+    public Place getPlace() {
+        return place;
     }
 }
 

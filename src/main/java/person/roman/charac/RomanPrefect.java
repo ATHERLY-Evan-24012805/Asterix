@@ -11,6 +11,11 @@ public class RomanPrefect extends Roman implements Leader{
         this.setTicBeforeAction(24);
     }
 
+    @Override
+    public Person duplicate(String name, char gender, double height, int age, int strength, int endurance) {
+        return null;
+    }
+
 
     @Override
     public void lead() {
