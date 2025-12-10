@@ -6,7 +6,7 @@ import person.gaulish.Gaulish;
 import person.Worker;
 
 
-public class GaulishBlacksmith extends Gaulish implements Worker {
+public non-sealed class GaulishBlacksmith extends Gaulish implements Worker {
 
     private int worktimer = 20;
 

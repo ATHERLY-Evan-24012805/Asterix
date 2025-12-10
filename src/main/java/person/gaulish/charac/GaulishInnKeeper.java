@@ -4,7 +4,7 @@ import person.gaulish.Gaulish;
 import person.Worker;
 import place.Place;
 
-public class GaulishInnKeeper extends Gaulish implements Worker {
+public non-sealed class GaulishInnKeeper extends Gaulish implements Worker {
 
     private int worktimer = 20;
 

@@ -19,7 +19,7 @@ import place.Place;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Druid extends Gaulish implements Fighter, Leader, Worker{
+public non-sealed class Druid extends Gaulish implements Fighter, Leader, Worker{
     private ArrayList<Food> recipe = new ArrayList<>();
 
     public Druid(String name, char gender, double height, int age, int strength, int endurance) {

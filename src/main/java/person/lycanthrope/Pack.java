@@ -1,9 +1,10 @@
 package person.lycanthrope;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-public class Pack {
+public class Pack implements Iterable<Lycanthrope>{
 
     private String name;
     private List<Lycanthrope> members;
@@ -18,6 +19,11 @@ public class Pack {
         this.alphaMale = alphaMale;
         this.alphaFemale = alphaFemale;
         this.members = new ArrayList<>();
+    }
+
+    @Override
+    public Iterator<Lycanthrope> iterator() {
+        return members.iterator(); // members est ta liste de lycanthropes
     }
 
     // Ajout d'un lycanthrope
@@ -213,7 +219,7 @@ public class Pack {
 
     // Décroissance naturelle des rang
     public void naturalRankDecrease(int threshold) {
-        for (Lycanthrope l : members) {
+        for (Lycanthrope l : this) {
             l.decreaseRank(threshold);
         }
     }

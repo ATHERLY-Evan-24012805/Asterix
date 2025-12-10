@@ -6,7 +6,7 @@ import person.TransformedHuman;
 import place.Place;
 import place.types.Enclosure;
 
-public class Lycanthrope extends Person implements Fighter {
+public non-sealed class Lycanthrope extends Person implements Fighter {
     // Caractéristiques principales
     private LycanthropeAge ageCategory;
     private int age;

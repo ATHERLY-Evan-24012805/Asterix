@@ -9,7 +9,7 @@ import place.Place;
 
 import java.util.Random;
 
-public class GaulishShopKeeper extends Gaulish implements Worker {
+public non-sealed class GaulishShopKeeper extends Gaulish implements Worker {
 
     private int worktimer = 15;
     private FoodFactory factory = new FoodFactory();

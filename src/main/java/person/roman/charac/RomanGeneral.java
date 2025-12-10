@@ -10,7 +10,7 @@ import place.types.BattleField;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RomanGeneral extends Roman implements Fighter, Leader {
+public non-sealed class RomanGeneral extends Roman implements Fighter, Leader {
 
     //constructeur
     public RomanGeneral(String name, char gender, double height, int age, int strength, int endurance) {
