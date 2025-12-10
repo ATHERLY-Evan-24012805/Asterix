@@ -1,8 +1,10 @@
 package place.types;
 
-
 import person.Person;
 
+import person.lycanthrope.Lycanthrope;
+import place.Place;
+import person.Person;
 import person.lycanthrope.Lycanthrope;
 import place.Place;
 

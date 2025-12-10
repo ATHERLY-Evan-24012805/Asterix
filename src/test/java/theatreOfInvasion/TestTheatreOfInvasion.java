@@ -5,7 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 
-import person.types.*;
+import person.*;
 import person.Person;
 import place.Place;
 import place.types.*;

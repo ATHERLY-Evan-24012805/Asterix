@@ -1,5 +1,6 @@
-package test.places;
+package place;
 
+import food.Food;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -8,17 +9,18 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 import person.Person;
-import person.types.Roman.Roman;
-import person.types.Roman.charac.RomanGeneral;
-import person.types.Roman.charac.RomanLegionary;
-import person.types.Roman.charac.RomanPrefect;
-import person.types.Gaulish.Gaulish;
-import person.types.Gaulish.charac.Druide;
-import person.types.Gaulish.charac.GaulishBlacksmith;
-import person.types.Gaulish.charac.GaulishInnKeeper;
-import person.types.Gaulish.charac.GaulishShopKeeper;
-import person.types.Lycanthrope;
+import person.roman.Roman;
+import person.roman.charac.RomanGeneral;
+import person.roman.charac.RomanLegionary;
+import person.roman.charac.RomanPrefect;
+import person.gaulish.Gaulish;
+import person.gaulish.charac.Druid;
+import person.gaulish.charac.GaulishBlacksmith;
+import person.gaulish.charac.GaulishInnKeeper;
+import person.gaulish.charac.GaulishShopKeeper;
+import person.lycanthrope.Lycanthrope;
 import place.Place;
+import place.*;
 import place.types.*;
 
 import java.util.List;
@@ -54,7 +56,6 @@ public class PlaceTest {
     // Mock créature fantastique
     Person lycanthropeMock;
 
-
     /**
      * Initialise les lieux et les mocks de personnages avant chaque test.
      * - Crée les différentes instances de Place.
@@ -82,7 +83,7 @@ public class PlaceTest {
         gaulishBlacksmithMock = mock(GaulishBlacksmith.class);
         gaulishInnKeeperMock = mock(GaulishInnKeeper.class);
         gaulishShopKeeperMock = mock(GaulishShopKeeper.class);
-        druidMock = mock(Druide.class);
+        druidMock = mock(Druid.class);
 
         lycanthropeMock = mock(Lycanthrope.class);
     }
@@ -207,6 +208,20 @@ public class PlaceTest {
 
         assertFalse(people.contains(romanMock));
         assertEquals(0, people.size());
+    }
+
+    @Test
+    void testAddFood() {
+        Food food1 = mock(Food.class);
+        Food food2 = mock(Food.class);
+
+        romanCity.addFood(food1);
+        romanCity.addFood(food2);
+
+        List<Food> foods = romanCity.getFood();
+        assertEquals(2, foods.size(), "Il doit y avoir 2 aliments dans la place");
+        assertTrue(foods.contains(food1), "Le premier aliment doit être présent");
+        assertTrue(foods.contains(food2), "Le second aliment doit être présent");
     }
 
     @Test

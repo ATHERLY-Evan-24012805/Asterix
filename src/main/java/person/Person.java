@@ -2,6 +2,7 @@ package person;
 
 import MagicPotion.*;
 import clock.TemporalObject;
+import place.Place;
 import item.Item;
 import person.lycanthrope.Lycanthrope;
 import theatres.TheatreOfInvasion;
@@ -21,9 +22,21 @@ public abstract class Person implements TemporalObject {
     private int endurance;
     private int health = 100;
     private int hunger = 100;
-    private int belligerence = 100;
+    private boolean belligerence = false;
     private int potion = 0;
     private Place place;
+    private int ticBeforeAction;
+    private Person target;
+
+    /**
+     * Permet de limiter les valeurs entre 0 et 100.
+     *
+     * @param value La valeur que l'on veut limiter
+     * @return La valeur max ou min
+     */
+    private int clamp(int value) {
+        return Math.max(0, Math.min(100, value));
+    }
 
     // Constructeurs
     public Person(String name, char gender, double height, int age, int strength, int endurance) {
@@ -46,13 +59,30 @@ public abstract class Person implements TemporalObject {
     public void heal(){
         health = health + 10;
     }
-/*
+
     public void drinkPotion(MagicPotion MagicPotion){
-        potion = potion + 10;
+        potion = clamp(potion + 10);
     }
-*/
-    public void fight(Person adversaire){
-        adversaire.health = adversaire.health - Math.max(1, strength*(1-adversaire.endurance/150)); // Formule à modifier si besoin
+
+    public void fight(Person target){
+        target.health = target.health - Math.max(1, strength*(1- target.endurance/150)); // Formule à modifier si besoin
+    }
+
+    public Person getTarget() {
+        return target;
+    }
+    public void setTarget(Person target) {
+        this.target = target;
+    }
+
+    //Getters
+    public int getTicBeforeAction() {
+        return ticBeforeAction;
+    }
+
+    //Setters
+    public void setTicBeforeAction(int ticBeforeAction) {
+        this.ticBeforeAction = ticBeforeAction;
     }
 
     public void die(Place place){
@@ -61,9 +91,10 @@ public abstract class Person implements TemporalObject {
     }
     public void petrified(){
         Clock.getInstance().unsubscribe(this);
-    }
 
 
+
+    @Override
     public String toString() {
         return "Person{" +
                 "name='" + name + '\'' +
@@ -94,6 +125,21 @@ public abstract class Person implements TemporalObject {
             default:
                 break;
         }
+    @Override
+    public void ticsPassed() {
+        // 1. On perd de la nourriture
+        this.hunger -= 5; // Par exemple -5 par heure
+
+        // 2. Si on a trop faim, on perd de la vie
+        if (this.hunger <= 0) {
+            this.hunger = 0; // On ne descend pas en négatif
+            this.health -= 10;
+            System.out.println(this.getName() + " meurt de faim ! PV restants : " + this.health);
+        }
+    }
+
+    public void die(){
+        // à compléter plus tard (soit gestionnaire de personnage, soit variable booléenne, soit remove(this)
     }
 
 

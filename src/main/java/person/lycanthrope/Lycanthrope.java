@@ -14,15 +14,13 @@ public class Lycanthrope extends Person implements Fighter {
     public Person duplicate(String name, char gender, double height, int age, int strength, int endurance) {
         return null;
     }
-
-
     @Override
-    public void ticsPassed() {
+    public void fight(){
 
     }
 
     @Override
-    public void fight() {
+    public void ticsPassed() {
 
     }
 }

@@ -1,17 +1,23 @@
 package person.gaulish.charac;
 import MagicPotion.MagicPotion;
 import MagicPotion.MagicEffect;
+import clock.Clock;
 import food.Food;
 import food.items.*;
 import item.Item;
+import person.Person;
 import person.Person;
 import person.gaulish.Gaulish;
 import person.Fighter;
 import person.Leader;
 import person.Worker;
 import place.Place;
+import place.types.BattleField;
+
+import place.Place;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Druid extends Gaulish implements Fighter, Leader, Worker{
     private ArrayList<Food> recipe = new ArrayList<>();
@@ -25,14 +31,49 @@ public class Druid extends Gaulish implements Fighter, Leader, Worker{
         return null;
     }
 
-    @Override
-    public void fight() {
-        //fait des degats modérés
+    // à voir si on ne fait pas plutôt choisir au clan leader qui il choisit d'attaquer.
+    protected Person findWeakestRoman(List<Person> persons) {
+        Person target = null;
+        for (Person p : persons) {
+            if (isRoman(p)) {
+                if (target == null || p.getHealth() < target.getHealth()) {
+                    target = p;
+                }
+            }
+        }
+        return target;
+    }
+
+    protected boolean isRoman(Person person) {
+        return person.getClass().getPackageName().contains("person.roman");
     }
 
     @Override
-    public void lead(){
-        // changes les roles en fonction de la demande du joueurs
+    public void fight() {
+        // Pas de combat en dehors d'un BattleField
+        Place place = this.getPlace();
+        if (!(place instanceof BattleField)) {
+            return;
+        }
+
+        List<Person> persons = place.getPeople();
+        Person target = findWeakestRoman(persons);
+
+        if (target == null) {
+            return;
+        }
+
+        this.fight(target);
+
+        System.out.println(
+                this.getName() + " attaque " + target.getName() +
+                        " dans le champ de bataille ! Il lui reste " + target.getHealth() + " PV."
+        );
+    }
+
+    @Override
+    public void lead() {
+        System.out.println(getName() + "Attend l'ordre de changer un métier");
     }
 
     @Override
@@ -121,6 +162,65 @@ public class Druid extends Gaulish implements Fighter, Leader, Worker{
         recipe.add(new Mead());
         recipe.add(new SecretIngredient());
         return recipe;
+    }
+
+    public void changeRole(Person target, String newRole) {
+        if (target == null || newRole == null) return;
+
+        Place place = target.getPlace();
+        if (place == null) return;
+
+        Person replacement = null;
+
+        switch (newRole.toUpperCase()) {
+            case "BLACKSMITH":
+                replacement = new GaulishBlacksmith(
+                        target.getName(),
+                        target.getGender(),
+                        target.getHeight(),
+                        target.getAge(),
+                        target.getStrength(),
+                        target.getEndurance()
+                );
+                break;
+
+            case "SHOPKEEPER":
+                replacement = new GaulishShopKeeper(
+                        target.getName(),
+                        target.getGender(),
+                        target.getHeight(),
+                        target.getAge(),
+                        target.getStrength(),
+                        target.getEndurance()
+                );
+                break;
+
+            case "INNKEEPER":
+                replacement = new GaulishInnKeeper(
+                        target.getName(),
+                        target.getGender(),
+                        target.getHeight(),
+                        target.getAge(),
+                        target.getStrength(),
+                        target.getEndurance()
+                );
+                break;
+
+            default:
+                System.out.println("Rôle inconnu : " + newRole);
+                return;
+        }
+
+        // Supprimer l'ancienne personne
+        Clock.getInstance().unsubscribe(target);
+        place.removePerson(target);
+
+        // Ajouter la nouvelle personne
+        place.addPerson(replacement);
+        Clock.getInstance().subscribe(replacement);
+
+        System.out.println("Le druide assigne " + target.getName() +
+                " au métier " + newRole.toLowerCase());
     }
 
     @Override
