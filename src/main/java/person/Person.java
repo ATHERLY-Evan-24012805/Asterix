@@ -171,6 +171,7 @@ public abstract class Person implements TemporalObject {
     public void setHealth(int health) {
         this.health = health;
     }
+    public void setStrength(int strength) { this. strength = strength; }
 
     // Getters
     public String getName() {

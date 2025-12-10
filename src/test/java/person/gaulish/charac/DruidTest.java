@@ -7,6 +7,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
+import org.mockito.MockedStatic;
+import org.mockito.Mockito;
 import person.Person;
 import person.roman.charac.RomanLegionary;
 import place.types.BattleField;
@@ -55,19 +57,32 @@ class DruidTest {
 
     @Test
     void testChangeRole() {
+
+        // --- Arrange ---
         Person target = new Druid("Asterix", 'M', 1.6, 35, 8, 7);
         battlefield.addPerson(target);
         druid.setPlace(battlefield);
 
-        druid.changeRole(target, "BLACKSMITH");
+        // Mock du Clock singleton
+        try (MockedStatic<Clock> mockedClock = Mockito.mockStatic(Clock.class)) {
 
-        // Vérifie que l'ancienne personne a été retirée et la nouvelle ajoutée
-        assertEquals(1, battlefield.getPeople().size());
-        assertEquals("Asterix", battlefield.getPeople().get(0).getName());
-        assertEquals(GaulishBlacksmith.class, battlefield.getPeople().get(0).getClass());
+            Clock mockClock = mock(Clock.class);
+            mockedClock.when(Clock::getInstance).thenReturn(mockClock);
 
-        verify(Clock.getInstance()).unsubscribe(target);
-        verify(Clock.getInstance()).subscribe(battlefield.getPeople().get(0));
+            // --- Act ---
+            druid.changeRole(target, "BLACKSMITH");
+
+            // --- Assert : Vérifie changement dans Battlefield ---
+            assertEquals(1, battlefield.getPeople().size());
+            Person newPerson = battlefield.getPeople().get(0);
+
+            assertEquals("Asterix", newPerson.getName());
+            assertEquals(GaulishBlacksmith.class, newPerson.getClass());
+
+            // --- Assert : Vérifie interactions avec Clock ---
+            verify(mockClock).unsubscribe(target);
+            verify(mockClock).subscribe(newPerson);
+        }
     }
 
     @Test

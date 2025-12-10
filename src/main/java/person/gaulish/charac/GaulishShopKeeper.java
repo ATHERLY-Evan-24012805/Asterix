@@ -41,6 +41,8 @@ public class GaulishShopKeeper extends Gaulish implements Worker {
 
     @Override
     public void ticsPassed() {
+        super.ticsPassed();
+
         this.worktimer--;
 
         if (worktimer == 0) {

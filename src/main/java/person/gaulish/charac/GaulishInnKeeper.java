@@ -38,6 +38,8 @@ public class GaulishInnKeeper extends Gaulish implements Worker {
 
     @Override
     public void ticsPassed() {
+        super.ticsPassed();
+
         this.worktimer--;
 
         if (worktimer == 0) {
