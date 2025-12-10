@@ -4,13 +4,12 @@ stages:
 
 build_job:
   stage: build
-  image: maven:3.9.0-jdk-17
   script:
+    - mvn -v
     - mvn clean compile
 
 test_job:
   stage: test
-  image: maven:3.9.0-jdk-17
   script:
     - mvn test
   artifacts:
