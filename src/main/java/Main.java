@@ -263,7 +263,7 @@ public class Main {
         while (gameIsRunning) {
             // Le thread principal est bloqué ici tant que l'utilisateur n'écrit pas.
             // Le thread de l'horloge continue de tourner derrière
-            System.out.println("\n--- Quels sont vos ordres ! ---");
+            System.out.println("\n--- Quels sont vos ordres(attaquer , soigner , nourrir , quitter) ! ---");
             String command = sc.nextLine();
 
             // sequence de jeu
