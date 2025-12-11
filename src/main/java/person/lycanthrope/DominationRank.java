@@ -15,7 +15,7 @@ public enum DominationRank {
     private final int rank;
 
     /**
-     * Constructeur de lycanthrope
+     * Constructeur de DominationRank
      * @param symbol
      * @param rank
      */
