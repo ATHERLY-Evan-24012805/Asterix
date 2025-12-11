@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * Classe meute permet d'ajouter et supprimer des lycanthropes et de gérer la meute
+ */
 public class Pack implements Iterable<Lycanthrope>{
 
     private String name;
@@ -13,6 +16,13 @@ public class Pack implements Iterable<Lycanthrope>{
     private Lycanthrope alphaMale;
     private Lycanthrope alphaFemale;
 
+    /**
+     * Constructeur de meute
+     * @param name nom
+     * @param howl hurlement
+     * @param alphaMale male alpha
+     * @param alphaFemale femelle alpha
+     */
     public Pack(String name, String howl, Lycanthrope alphaMale, Lycanthrope alphaFemale) {
         this.name = name;
         this.howl = new Howl(howl);
@@ -21,12 +31,21 @@ public class Pack implements Iterable<Lycanthrope>{
         this.members = new ArrayList<>();
     }
 
+    /**
+     * Iterateur de lycanthrope
+     * @return liste des membres
+     */
     @Override
     public Iterator<Lycanthrope> iterator() {
-        return members.iterator(); // members est ta liste de lycanthropes
+        return members.iterator();
     }
 
     // Ajout d'un lycanthrope
+
+    /**
+     * Ajout de lycanthrope dans une meute
+     * @param l lycanthrope à ajouter
+     */
     public void addLycanthrope(Lycanthrope l) {
 
         if (!members.contains(l)) {
@@ -36,6 +55,10 @@ public class Pack implements Iterable<Lycanthrope>{
         }
     }
 
+    /**
+     * Retirer lycanthrope d'une meute, permet la gestion du départ d'un alpha
+     * @param l Lycanthrope à retirer
+     */
     // Suppression d'un Lycanthrope
     public void removeLycanthrope(Lycanthrope l) {
         if (members.remove(l)) {
@@ -80,6 +103,13 @@ public class Pack implements Iterable<Lycanthrope>{
     }
 
     // Algorithme de quickSort pour supprimer un membre de la meute
+
+    /**
+     * Tri rapide des membres par force
+     * @param list liste des membres à trier
+     * @param low indice du début de la portion à trier
+     * @param high indice de fin de la portion à trier
+     */
     private void quickSortByStrength(List<Lycanthrope> list, int low, int high) {
         if (low < high) {
             int pi = partitionByStrength(list, low, high);
@@ -88,6 +118,13 @@ public class Pack implements Iterable<Lycanthrope>{
         }
     }
 
+    /**
+     * Partition pour tri rapide par force
+     * @param list liste des membres à trier
+     * @param low indice du début de la portion à trier
+     * @param high indice de fin de la portion à trier
+     * @return indice final du pivot après partition
+     */
     private int partitionByStrength(List<Lycanthrope> list, int low, int high) {
         int pivot = list.get(high).getStrength();
         int i = low - 1;
@@ -105,6 +142,12 @@ public class Pack implements Iterable<Lycanthrope>{
         return i + 1;
     }
 
+    /**
+     * Tri rapide des membres par niveau
+     * @param list liste des membres à trier
+     * @param low indice du début de la portion à trier
+     * @param high indice de fin de la portion à trier
+     */
     private void quickSortByLevel(List<Lycanthrope> list, int low, int high) {
         if (low < high) {
             int pi = partitionByLevel(list, low, high);
@@ -113,6 +156,13 @@ public class Pack implements Iterable<Lycanthrope>{
         }
     }
 
+    /**
+     * Partition pour tri rapide par niveau
+     * @param list liste des membres à trier
+     * @param low indice du début de la portion à trier
+     * @param high indice de fin de la portion à trier
+     * @return indice final du pivot après partition
+     */
     private int partitionByLevel(List<Lycanthrope> list, int low, int high) {
         double pivot = list.get(high).getLevel();
         int i = low - 1;
@@ -134,15 +184,28 @@ public class Pack implements Iterable<Lycanthrope>{
 
 
     // Getteurs
+
+    /**
+     * Retourne le hurlement de la meute
+     * @return hurlement de la meute
+     */
     public Howl getHowl() {
         return howl;
     }
 
+    /**
+     * Retourne les membres de la meute
+     * @return membres de la meute
+     */
     public List<Lycanthrope> getMembers() {
         return members;
     }
 
     // Création de la hierarchie permet initialisation propre
+
+    /**
+     * Création de la hiérarchie de la meute pour une initialisation propre
+     */
     private void updateHierarchy() {
 
         // Sécurise que le couple alpha est bien dans la meute
@@ -185,6 +248,12 @@ public class Pack implements Iterable<Lycanthrope>{
 
 
     // Méthode de destitution du male alpha et du calcul de la femelle
+
+    /**
+     * Gestion de la destitution du male alpha et calcul de la nouvelle femelle après une domination
+     * @param winner vainqueur de la domination
+     * @param loser perdant de la domination
+     */
     public void handleAlphaDomination(Lycanthrope winner, Lycanthrope loser) {
         Lycanthrope oldAlphaFemale = alphaFemale;
 
@@ -225,6 +294,12 @@ public class Pack implements Iterable<Lycanthrope>{
     }
 
     // Vérification qu'un lycanthrope n'est pas le seul de son rang
+
+    /**
+     * Vérifie qu'un lycanthrope n'est pas le seul de son rang
+     * @param me Lycanthrope à vérifier
+     * @return booléen pour la vérification
+     */
     public boolean hasAnotherWithSameRank(Lycanthrope me) {
         for (Lycanthrope l : members) {
             if (l != me
@@ -238,6 +313,10 @@ public class Pack implements Iterable<Lycanthrope>{
 
 
     // Affichage de la meute
+
+    /**
+     * Affichage de la meute
+     */
     public void displayPack(){
         System.out.println("Pack: " + name);
         howl.display();
@@ -245,7 +324,12 @@ public class Pack implements Iterable<Lycanthrope>{
         System.out.println("Female alpha: " + alphaFemale.getName());
     }
 
+
     // Affichage des membres de la meute
+
+    /**
+     * Affichage des membres de la meute
+     */
     public void displayPackMembers() {
         System.out.println("Meute : " + name);
         System.out.println("Membres :");

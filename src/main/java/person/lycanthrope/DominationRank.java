@@ -1,5 +1,8 @@
 package person.lycanthrope;
 
+/**
+ * Rang de domination des lycanthropes
+ */
 public enum DominationRank {
     ALPHA('α',0),
     BETA('β', 1),
@@ -11,20 +14,37 @@ public enum DominationRank {
     private final char symbol;
     private final int rank;
 
+    /**
+     * Constructeur de lycanthrope
+     * @param symbol
+     * @param rank
+     */
     DominationRank(char symbol, int rank) {
         this.symbol = symbol;
         this.rank = rank;
     }
 
+    /**
+     * Retourne le symbole du rang
+     * @return symbole
+     */
     public char getSymbol() {
         return symbol;
     }
 
+    /**
+     * Retourne le rang
+     * @return rang
+     */
     public int getRank() {
         return rank;
     }
 
 
+    /**
+     * Renvoie le rang inférieur
+     * @return rang inférieur
+     */
     public DominationRank getLowerRank() {
         switch (this) {
             case ALPHA:   return BETA;
