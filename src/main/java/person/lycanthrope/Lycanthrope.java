@@ -308,7 +308,7 @@ public non-sealed class Lycanthrope extends Person implements Fighter {
             return false;
         }
 
-        return (this.getLevel())>= target.getLevel();
+        return (this.getStrength()+this.impetuosity)>= target.getStrength();
     }
 
     // Transformation en humain
