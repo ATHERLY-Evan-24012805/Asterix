@@ -23,6 +23,10 @@ public class GaulishShopKeeper extends Gaulish implements Worker {
         return new GaulishShopKeeper(name, gender, height, age, strength, endurance);
     }
 
+    public String getType(){
+        return "Commercant";
+    }
+
         @Override
     public void work() {
         String[] possibleFoods = {

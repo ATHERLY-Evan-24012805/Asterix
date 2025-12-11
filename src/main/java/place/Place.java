@@ -24,8 +24,8 @@ public abstract class Place {
     private int surface;
     private ClanLeader chief;
     private int census;
-    protected List<Food> food = new ArrayList<>();
-    protected List<Person> people = new ArrayList<>();
+    private List<Food> food = new ArrayList<>();
+    private List<Person> people = new ArrayList<>();
     private List<Item> inventory = new ArrayList<>();
 
 
@@ -36,6 +36,14 @@ public abstract class Place {
      */
     public List<Person> getPeople() {
         return people;
+    }
+
+    public String getNameAndWorkPeople() {
+        String listOfName = " ";
+        for (Person person : people) {
+            listOfName += person.getName() + "("+ person.getType() +"), ";
+        }
+        return listOfName;
     }
 
     /**
@@ -136,9 +144,13 @@ public abstract class Place {
     public int getCensus(){
         return this.census;
     }
-    public List getListOfPersons(){
+    public List<Person> getListOfPersons(){
         return this.people;
     }
+    public String getName(){
+        return this.name;
+    }
+    public abstract String getType();
 
 
     // Méthodes inventaire

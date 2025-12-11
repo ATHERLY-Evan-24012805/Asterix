@@ -28,4 +28,8 @@ public class Enclosure extends Place {
     public boolean canAddPerson(Person person) {
         return person instanceof Lycanthrope;
     }
+    @Override
+    public String getType() {
+        return "Enclos";
+    }
 }

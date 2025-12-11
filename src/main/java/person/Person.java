@@ -173,6 +173,10 @@ public abstract class Person implements TemporalObject {
     }
 
     // Getters
+    public String getType(){
+        return "Person";
+    }
+
     public String getName() {
         return this.name;
     }

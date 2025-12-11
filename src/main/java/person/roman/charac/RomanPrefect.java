@@ -15,6 +15,9 @@ public class RomanPrefect extends Roman implements Leader{
         return new RomanPrefect(name, gender, height, age, strength, endurance);
     }
 
+    public String getType(){
+        return "Préfet romain ";
+    }
 
     @Override
     public void lead() {

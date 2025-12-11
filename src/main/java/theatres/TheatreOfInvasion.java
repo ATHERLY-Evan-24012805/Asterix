@@ -145,7 +145,14 @@ public class TheatreOfInvasion {
 
     // a implementer pour le deroulement du jeu
     public void evolutionOfTheGame() {
-        return;
+        for (Place p : listOfPlaces) {
+            String people = p.getNameAndWorkPeople();
+            System.out.println("Lieux : " + p.getName() +", " +p.getType());
+            System.out.println("Population : "+people +
+                    "\n Inventaire : " +p.getItems()
+            );
+        }
+
     }
 
     // Méthode pour transformation en Lycanthrope

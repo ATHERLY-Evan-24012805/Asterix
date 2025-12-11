@@ -15,6 +15,10 @@ public class GaulishInnKeeper extends Gaulish implements Worker {
         return new GaulishInnKeeper(name, gender, height, age, strength, endurance);
     }
 
+    public String getType(){
+        return "Aubergiste";
+    }
+
     @Override
     public void work() {
         Place place = this.getPlace();

@@ -28,4 +28,9 @@ public class RomanCity extends Place {
         return person instanceof Roman ||
                 person instanceof Lycanthrope;
     }
+
+    @Override
+    public String getType() {
+        return "Ville romaine";
+    }
 }

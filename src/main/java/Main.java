@@ -1,14 +1,25 @@
 import clanLeader.ClanLeader;
+import person.Person;
 import place.Place;
 import place.types.*;
 import theatres.TheatreOfInvasion;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import static theatres.TheatreOfInvasion.createAndAddPerson;
 
 public class Main {
+
+    public static ClanLeader findLeaderByName(List<ClanLeader> players, String name) {
+        for (ClanLeader leader : players) {
+            if (leader.getName().equalsIgnoreCase(name.trim())) {
+                return leader;
+            }
+        }
+        return null;
+    }
     public static void main (String[] args) {
 
         // Initialisation du jeu
@@ -28,6 +39,7 @@ public class Main {
         }
         // Parametre du/des joueur(s)
         ArrayList<Place> TheirPlaces = new ArrayList<>();
+        TheirPlaces.add(new BattleField());
         ArrayList<ClanLeader> TheirNames = new ArrayList<>();
         for (int i = 0; i < input; i++) {
             // Partie à initialiser une fois la class ClanLeader créée
@@ -179,7 +191,7 @@ public class Main {
                         + "\n Quel noms voulez vous leurs donner ?");
 
                 //Legionnaire
-                System.out.print("RomanLegionary(Legionnaire)");
+                System.out.println("RomanLegionary(Legionnaire)");
                 createAndAddPerson(p,"RomanLegionary",sc);
 
                 //forgeron
@@ -213,13 +225,59 @@ public class Main {
             // Il faut utiliser la methode dans theatreOfInvasion evolutionOfTheGame
             switch (command.toLowerCase()) {
                 case "info":
-                    System.out.println("Il y a " + theatre.howManyPeople() + " personnes en vie.");
+                    theatre.evolutionOfTheGame();
                     break;
 
                 case "attaque":
-                    System.out.println("Bataille lancée ! (Logique à implémenter)");
-                    break;
+                    System.out.println("Déclarez la guerre (Ex: 'Evan attaque Romain') :");
+                    String commandInput = sc.nextLine();
 
+                    // 1. Analyse de la phrase
+                    // On sépare sur le mot clé " attaque " (avec les espaces autour !)
+                    String[] parts = commandInput.split(" attaque ");
+
+                    if (parts.length < 2) {
+                        System.out.println("Format incorrect. Utilisez : [NomJoueur] attaque [NomAdversaire]");
+                        break;
+                    }
+
+                    String nomAttaquant = parts[0];
+                    String nomDefenseur = parts[1];
+
+                    // 2. Recherche des objets ClanLeader
+                    // (Supposons que 'listOfChief' contient tous vos joueurs)
+                    ClanLeader attaquant = findLeaderByName(TheirNames, nomAttaquant);
+                    ClanLeader defenseur = findLeaderByName(TheirNames, nomDefenseur);
+
+                    // 3. Vérification et Affichage des Troupes
+                    if (attaquant != null && defenseur != null) {
+                        System.out.println("\n GUERRE DÉCLARÉE : " + attaquant.getName() + " VS " + defenseur.getName());
+
+                        // --- AFFICHER LES TROUPES DE L'ATTAQUANT ---
+                        System.out.println("\n--- Troupes disponibles de " + attaquant.getName() + " ---");
+                        // On suppose que le ClanLeader possède une liste de ses lieux (getPlaces())
+                        boolean aDesTroupes = false;
+
+                        for (Person person : attaquant.getPlace().getListOfPersons()) {
+                            // On affiche index ou nom pour faciliter la sélection
+                            System.out.println("-> " + person.getName() + " (" + person.getClass().getSimpleName() + ") situé à " + attaquant.getName());
+                            aDesTroupes = true;
+                        }
+
+                        if (!aDesTroupes) {
+                            System.out.println(attaquant.getName()+" n'a plus de soldats !");
+                            break;
+                        }
+
+                        // --- SUITE LOGIQUE : CHOIX DU SOLDAT ---
+                        System.out.println("\nQuel soldat de " + attaquant.getName() + " envoyez-vous ? (Entrez son nom)");
+                        String soldatName = sc.nextLine();
+
+
+                    } else {
+                        System.out.println("Erreur : Impossible de trouver l'un des deux chefs de clan.");
+                    }
+                    break;
                 case "quitter":
                     System.out.println("Fermeture du jeu...");
                     gameIsRunning = false;
@@ -230,6 +288,7 @@ public class Main {
                     System.out.println("Ordre inconnu.");
             }
         }
+
 
     }
 }

@@ -22,6 +22,10 @@ public class RomanGeneral extends Roman implements Fighter, Leader {
         return new RomanGeneral(name, gender, height, age, strength, endurance);
     }
 
+    public String getType(){
+        return "Général romain";
+    }
+
         // se bat seulement s'il n'a plus d'allier avec lui sur le champ de bataille
     @Override
     public void fight() {

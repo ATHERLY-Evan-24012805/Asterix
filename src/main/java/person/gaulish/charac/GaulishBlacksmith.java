@@ -14,6 +14,9 @@ public class GaulishBlacksmith extends Gaulish implements Worker {
         super(name, gender, height, age, strength, endurance);
     }
 
+    public String getType(){
+        return "Forgeron";
+    }
     @Override
     public Person duplicate(String name, char gender, double height, int age, int strength, int endurance) {
         return new GaulishBlacksmith(name, gender, height, age, strength, endurance);

@@ -28,4 +28,9 @@ public class GalloRomanVillage extends Place {
         return person instanceof Gaulish ||
                 person instanceof Roman;
     }
+
+    @Override
+    public String getType() {
+        return "Village Gallo-Romain";
+    }
 }

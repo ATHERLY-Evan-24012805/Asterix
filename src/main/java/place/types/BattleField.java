@@ -23,5 +23,9 @@ public class BattleField extends place.Place {
         return true;
     }
 
+    @Override
+    public String getType() {
+        return "Champ de bataille";
+    }
 }
 
