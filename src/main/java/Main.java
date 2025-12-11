@@ -255,7 +255,7 @@ public class Main {
 
 
         TheatreOfInvasion theatre = new TheatreOfInvasion(GameName, TheirPlaces,TheirNames);
-        System.out.println("Lancement de la partie. A partir de maintenant le temps defile.");
+        System.out.println("La partie commence, la simulation a commencé.");
         theatre.getClock().start(5);
 
         boolean gameIsRunning = true;
@@ -496,6 +496,7 @@ public class Main {
                                         attacker = findPnjByName(battleField.getPeople(), fighterInput);
                                     } catch (Exception e) {
                                         System.out.println("L'attaquant n'est pas sur le champ de bataille.");
+                                        break;
                                     }attackerIsGood = true;
                                     if (attacker.getOwner() == leader){
                                         attackerIsGood = false;
@@ -504,13 +505,14 @@ public class Main {
                                 }
                                 boolean targetIsGood = false;
                                 Person target = null;
-                                while (!targetIsGood || attacker != null) {
+                                while (!targetIsGood) {
                                     System.out.println("Qui est la cible ?(nom)");
                                     String targetInput = sc.nextLine();
                                     try {
                                         target = findPnjByName(battleField.getPeople(), targetInput);
                                     } catch (Exception e) {
                                         System.out.println("La cible n'est pas sur le champ de bataille.");
+                                        break;
                                     }
                                     attacker.setTarget(target);
                                     if (attacker instanceof Fighter) {

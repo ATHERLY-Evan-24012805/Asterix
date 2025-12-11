@@ -120,11 +120,11 @@ public abstract class Person implements TemporalObject {
      *
      * @param target Le personnage ciblé qui subit les dégâts.
      */
-    public int hit(Person target){
-        int damages = Math.max(1, strength*(1- target.endurance/150));
-        target.health = target.health - Math.max(1, strength*(1- target.endurance/150));
+    public int hit(Person target) {
+        int damages = Math.max(1, strength * (1 - target.endurance / 150));
+        target.health = target.health - Math.max(1, strength * (1 - target.endurance / 150));
         return damages;
-
+    }
 
 
     /**
@@ -235,11 +235,11 @@ public abstract class Person implements TemporalObject {
     }
 
     // Setters
-    public void setOwner(ClanLeader owner) {
-        this.owner = owner;
-    }
-    /**
-     * Définit le nombre de tics avant que le personnage ne puisse effectuer une action spécifique.
+    public void setOwner (ClanLeader owner){
+            this.owner = owner;
+        }
+        /**
+         * Définit le nombre de tics avant que le personnage ne puisse effectuer une action spécifique.
      *
      * @param ticBeforeAction Le nouveau délai en tics.
      */
@@ -399,9 +399,6 @@ public abstract class Person implements TemporalObject {
         return target;
     }
 
-    public void setTarget(Person target) {
-        this.target = target;
-    }
     /**
     * Retourne le lieu actuel du personnage.
     *
@@ -458,6 +455,7 @@ public abstract class Person implements TemporalObject {
                 ", potion=" + potion +
                 '}';
         }
+
 }
 
 

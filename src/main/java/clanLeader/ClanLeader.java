@@ -182,13 +182,6 @@ public class ClanLeader {
         }
 
     }
-    public String getName(){
-        return this.name;
-    }
-    public Place getPlace(){
-        return this.place;
-    }
-
     /**
      * Renvoie le nom du chef de clan.
      *

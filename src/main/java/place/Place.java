@@ -56,24 +56,6 @@ public abstract class Place {
     }
 
     /**
-     * Ajoute une instance de nourriture dans le lieu.
-     *
-     * @param f la nourriture à ajouter
-     */
-    public void addFood(Food f) {
-        food.add(f);
-    }
-
-    /**
-     * Retourne la liste des aliments présents dans le lieu.
-     *
-     * @return Liste des aliments
-     */
-    public List<Food> getFood() {
-        return food;
-    }
-
-    /**
      * Vérifie si une personne peut être ajoutée dans ce lieu.
      *
      * @param person La personne à tester
@@ -197,9 +179,6 @@ public abstract class Place {
     public int getCensus(){
         return this.census;
     }
-    public List<Person> getListOfPersons(){
-        return this.people;
-    }
     public String getName(){
         return this.name;
     }
@@ -271,8 +250,7 @@ public abstract class Place {
      */
     @Override
     public String toString() {
-        return "Nom : " + name + "\n" +
-                "Superficie : " + surface + "\n" +
+        return                 "Superficie : " + surface + "\n" +
                 "Chef de clan : " + chief + "\n" +
                 "Recensement : " + census + "\n" +
                 "Liste de personnes : " + people + "\n" +
