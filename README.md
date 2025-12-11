@@ -18,6 +18,10 @@ Le projet met en pratique la programmation orientée objet, la conception UML, l
 - Java
 - Maven
 - JUnit
+- Trello
+https://trello.com/invite/b/69205d350562a708ce7d6633/ATTI4da153cbfb9488ca093c484bb53b1ccd58F56C41/qualitedev
+- Github
+https://github.com/ATHERLY-Evan-24012805/Asterix/edit/master/README.md
 
 
 #### Structure du projet
