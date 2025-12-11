@@ -86,7 +86,7 @@ public abstract class Person implements TemporalObject {
      * <p>Augmente le niveau de faim ({@link #hunger}) de 10 points.
      */
     public void eat(){
-        hunger = hunger + 10;
+        hunger = hunger + 50;
     }
 
     /**
