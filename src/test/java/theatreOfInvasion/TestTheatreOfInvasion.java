@@ -1,5 +1,6 @@
 package theatreOfInvasion;
 
+import clanLeader.ClanLeader;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -31,16 +32,21 @@ public class TestTheatreOfInvasion {
     Person blacksmith;
     @Mock
     Person romanGeneral;
+    @Mock
+    ClanLeader chef1;
 
     @BeforeEach
     void init(){
         ArrayList<Place> lplaces = new ArrayList();
+        ArrayList<ClanLeader> lLeader = new ArrayList();
         lplaces.add(place1);
         lplaces.add(place2);
         lplaces.add(place3);
         blacksmith = mock(GaulishBlacksmith.class);
         romanGeneral = mock(RomanGeneral.class);
-        theatre = new TheatreOfInvasion("Testing", lplaces);
+        chef1 = mock(ClanLeader.class);
+        lLeader.add(chef1);
+        theatre = new TheatreOfInvasion("Testing", lplaces,lLeader);
     }
 
     // Test la méthode ShowPlaces
