@@ -97,8 +97,11 @@ public abstract class Place {
         }
     }
 
-
-
+    /**
+     * Retourne la liste des personnes présentes dans le lieu.
+     *
+     * @return Liste des personnes.
+     */
     public List<Person> getListOfPersons(){
         return this.people;
     }
