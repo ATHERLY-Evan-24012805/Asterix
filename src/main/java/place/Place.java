@@ -102,11 +102,7 @@ public abstract class Place {
      *
      * @return Liste des habitants
      */
-    public List<Person> getPeople() {
-        return people;
-    }
-
-    public List getListOfPersons(){
+    public List<Person> getListOfPersons(){
         return this.people;
     }
 
