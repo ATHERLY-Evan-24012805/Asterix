@@ -33,7 +33,7 @@ class GaulishInnKeeperTest {
             }
 
             @Override
-            public List<Person> getPeople() {
+            public List<Person> getListOfPersons() {
                 return people;
             }
 

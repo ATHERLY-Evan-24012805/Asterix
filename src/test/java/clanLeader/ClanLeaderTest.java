@@ -54,7 +54,7 @@ public class ClanLeaderTest {
 
     @Test
     void testHealAll() {
-        when(placeMock.getPeople()).thenReturn(List.of(personMock, druidMock));
+        when(placeMock.getListOfPersons()).thenReturn(List.of(personMock, druidMock));
 
         chief.healAll();
 
@@ -70,7 +70,7 @@ public class ClanLeaderTest {
 
     @Test
     void testFeedAll() {
-        when(placeMock.getPeople()).thenReturn(List.of(personMock, druidMock));
+        when(placeMock.getListOfPersons()).thenReturn(List.of(personMock, druidMock));
 
         chief.feedAll();
 
@@ -84,7 +84,7 @@ public class ClanLeaderTest {
      */
     @Test
     void testTransferPersonAllowed() {
-        when(placeMock.getPeople()).thenReturn(List.of(personMock));
+        when(placeMock.getListOfPersons()).thenReturn(List.of(personMock));
         when(placeMock2.canAddPerson(personMock)).thenReturn(true);
 
         chief.transferPerson(personMock, placeMock2);
@@ -98,7 +98,7 @@ public class ClanLeaderTest {
      */
     @Test
     void testTransferPersonNotAllowed() {
-        when(placeMock.getPeople()).thenReturn(List.of(personMock));
+        when(placeMock.getListOfPersons()).thenReturn(List.of(personMock));
         when(placeMock2.canAddPerson(personMock)).thenReturn(false);
 
         chief.transferPerson(personMock, placeMock2);
@@ -112,7 +112,7 @@ public class ClanLeaderTest {
      */
     @Test
     void testTransferPersonNotInPlace() {
-        when(placeMock.getPeople()).thenReturn(List.of());
+        when(placeMock.getListOfPersons()).thenReturn(List.of());
 
         chief.transferPerson(personMock, placeMock2);
 

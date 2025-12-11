@@ -1,7 +1,6 @@
 package place;
 
 import food.Food;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -19,8 +18,6 @@ import person.gaulish.charac.GaulishBlacksmith;
 import person.gaulish.charac.GaulishInnKeeper;
 import person.gaulish.charac.GaulishShopKeeper;
 import person.lycanthrope.Lycanthrope;
-import place.Place;
-import place.*;
 import place.types.*;
 
 import java.util.List;
@@ -91,7 +88,7 @@ public class PlaceTest {
     @Test
     void testAddPersonRomanCity() {
         romanCity.addPerson(romanMock);
-        List<Person> people = romanCity.getPeople();
+        List<Person> people = romanCity.getListOfPersons();
         assertTrue(people.contains(romanMock));
         assertEquals(1, people.size());
 
@@ -111,7 +108,7 @@ public class PlaceTest {
     @Test
     void testAddPersonRomanFortifiedCamp() {
         romanFortifiedCamp.addPerson(romanMock);
-        List<Person> people = romanFortifiedCamp.getPeople();
+        List<Person> people = romanFortifiedCamp.getListOfPersons();
         assertFalse(people.contains(romanMock));
         assertEquals(0, people.size());
 
@@ -135,7 +132,7 @@ public class PlaceTest {
     @Test
     void addPersonGallicVillage() {
         gallicVillage.addPerson(romanMock);
-        List<Person> people = gallicVillage.getPeople();
+        List<Person> people = gallicVillage.getListOfPersons();
         assertFalse(people.contains(romanMock));
         assertEquals(0, people.size());
 
@@ -147,7 +144,7 @@ public class PlaceTest {
     @Test
     void addPersonGalloRomanVillage() {
         galloRomanVillage.addPerson(gaulishInnKeeperMock);
-        List<Person> people = galloRomanVillage.getPeople();
+        List<Person> people = galloRomanVillage.getListOfPersons();
         assertTrue(people.contains(gaulishInnKeeperMock));
         assertEquals(1, people.size());
 
@@ -163,7 +160,7 @@ public class PlaceTest {
     @Test
     void addPersonEnclosure() {
         enclosure.addPerson(gaulishMock);
-        List<Person> people = enclosure.getPeople();
+        List<Person> people = enclosure.getListOfPersons();
         assertFalse(people.contains(gaulishMock));
         assertEquals(0, people.size());
 
@@ -181,7 +178,7 @@ public class PlaceTest {
         battleField.addPerson(gaulishMock);
         battleField.addPerson(romanMock);
         battleField.addPerson(lycanthropeMock);
-        List<Person> people = battleField.getPeople();
+        List<Person> people = battleField.getListOfPersons();
         assertTrue(people.contains(gaulishMock));
         assertTrue(people.contains(romanMock));
         assertTrue(people.contains(lycanthropeMock));
@@ -192,16 +189,16 @@ public class PlaceTest {
     void addSamePersonTwice() {
         romanCity.addPerson(romanMock);
         romanCity.addPerson(romanMock);
-        assertEquals(1, romanCity.getPeople().size());
+        assertEquals(1, romanCity.getListOfPersons().size());
 
         romanCity.addPerson(romanMock2);
-        assertEquals(2, romanCity.getPeople().size());
+        assertEquals(2, romanCity.getListOfPersons().size());
     }
 
     @Test
     void testRemovePerson() {
         romanCity.addPerson(romanMock);
-        List<Person> people = romanCity.getPeople();
+        List<Person> people = romanCity.getListOfPersons();
         assertTrue(people.contains(romanMock));
 
         romanCity.removePerson(romanMock);

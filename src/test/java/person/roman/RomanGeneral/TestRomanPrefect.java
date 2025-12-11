@@ -52,7 +52,7 @@ class RomanPrefectTest {
         prefect.lead();
 
         // ASSERT
-        List<Person> population = city.getPeople();
+        List<Person> population = city.getListOfPersons();
 
         // 1. Vérifier la taille de la population (Toujours 2 : Le préfet + le nouveau)
         assertEquals(2, population.size(), "La population doit rester stable (1 mort, 1 naissance)");

@@ -64,7 +64,7 @@ public class ClanLeader {
      * Soigne toutes les personnes présentes dans le lieu.
      */
     public void healAll() {
-        for (Person p : place.getPeople()) {
+        for (Person p : place.getListOfPersons()) {
             p.heal();
         }
     }
@@ -82,7 +82,7 @@ public class ClanLeader {
      * Nourrit toutes les personnes présentes dans le lieu.
      */
     public void feedAll() {
-        for (Person p : place.getPeople()) {
+        for (Person p : place.getListOfPersons()) {
             p.eat();
         }
     }
@@ -100,7 +100,7 @@ public class ClanLeader {
      */
     public MagicPotion askDruidForPotion(Druid druid, MagicEffect desiredEffect, int quantity) {
         // Vérifie si le Druide est bien présent dans le lieu
-        if (place.getPeople().contains(druid)) {
+        if (place.getListOfPersons().contains(druid)) {
             System.out.println(name + " demande à " + druid.getName() + " de préparer une potion avec l'effet " + desiredEffect.name() + ".");
             MagicPotion newPotion = druid.createMagicPotion(desiredEffect, quantity, place);
 
@@ -128,7 +128,7 @@ public class ClanLeader {
      */
     public void givePotion(Person person, MagicPotion potion, int doses) {
         // Vérifie si la personne est présente
-        if (!place.getPeople().contains(person)) {
+        if (!place.getListOfPersons().contains(person)) {
             System.out.println(name + " ne peut pas donner de potion à " + person.getName() + " car il/elle n'est pas ici.");
             return;
         }
@@ -166,7 +166,7 @@ public class ClanLeader {
     public void transferPerson(Person person, Place destination) {
 
         // Vérifie si la personne à déplacer est bien présente dans ce lieu.
-        if (!place.getPeople().contains(person)) {
+        if (!place.getListOfPersons().contains(person)) {
             System.out.println("La personne n'est pas dans ce lieu.");
             return;
         }

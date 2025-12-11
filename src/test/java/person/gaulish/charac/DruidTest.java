@@ -73,8 +73,8 @@ class DruidTest {
             druid.changeRole(target, "BLACKSMITH");
 
             // --- Assert : Vérifie changement dans Battlefield ---
-            assertEquals(1, battlefield.getPeople().size());
-            Person newPerson = battlefield.getPeople().get(0);
+            assertEquals(1, battlefield.getListOfPersons().size());
+            Person newPerson = battlefield.getListOfPersons().get(0);
 
             assertEquals("Asterix", newPerson.getName());
             assertEquals(GaulishBlacksmith.class, newPerson.getClass());

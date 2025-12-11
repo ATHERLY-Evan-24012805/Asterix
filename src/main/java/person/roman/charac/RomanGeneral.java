@@ -8,7 +8,6 @@ import place.Place;
 import place.types.BattleField;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Représente un Général Romain.
@@ -72,7 +71,7 @@ public class RomanGeneral extends Roman implements Fighter, Leader {
         }
 
         // S'il lui reste des alliés, il ne peut se battre
-        for (Person person : place.getPeople()){
+        for (Person person : place.getListOfPersons()){
             if (person == this) continue;
 
             if (person instanceof Roman){
@@ -103,7 +102,7 @@ public class RomanGeneral extends Roman implements Fighter, Leader {
 
         // Instanciation de la liste de legionnaire
         ArrayList<Person> legionnaries = new ArrayList<>();
-        for (Person person : place.getPeople()){
+        for (Person person : place.getListOfPersons()){
             if (person instanceof RomanLegionary){
                 legionnaries.add(person);
             }

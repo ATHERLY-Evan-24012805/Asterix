@@ -59,7 +59,7 @@ public class GaulishInnKeeper extends Gaulish implements Worker {
         // Cherche la personne avec le moins de PV
         Person weakest = null;
 
-        for (Person p : place.getPeople()) {
+        for (Person p : place.getListOfPersons()) {
             if (weakest == null || p.getHealth() < weakest.getHealth()) {
                 weakest = p;
             }

@@ -6,15 +6,12 @@ import food.Food;
 import food.items.*;
 import item.Item;
 import person.Person;
-import person.Person;
 import person.gaulish.Gaulish;
 import person.Fighter;
 import person.Leader;
 import person.Worker;
 import place.Place;
 import place.types.BattleField;
-
-import place.Place;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,7 +71,7 @@ public class Druid extends Gaulish implements Fighter, Leader, Worker{
             return;
         }
 
-        List<Person> persons = place.getPeople();
+        List<Person> persons = place.getListOfPersons();
         Person target = findWeakestRoman(persons);
 
         if (target == null) {

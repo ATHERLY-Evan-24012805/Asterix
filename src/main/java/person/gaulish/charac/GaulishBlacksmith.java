@@ -63,10 +63,10 @@ public class GaulishBlacksmith extends Gaulish implements Worker {
         Place place = this.getPlace();
 
         if (place == null) return;
-        if (place.getPeople().isEmpty()) return;
+        if (place.getListOfPersons().isEmpty()) return;
 
         // Choisir un habitant au hasard
-        Person target = place.getPeople().get(random.nextInt(place.getPeople().size()));
+        Person target = place.getListOfPersons().get(random.nextInt(place.getListOfPersons().size()));
 
         // Augmenter sa force
         target.setStrength(target.getStrength() + 1);

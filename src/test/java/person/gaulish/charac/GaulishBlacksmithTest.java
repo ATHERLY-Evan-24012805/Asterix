@@ -39,7 +39,7 @@ class GaulishBlacksmithTest {
      */
     @Test
     void testWorkWithEmptyPlace() {
-        when(mockPlace.getPeople()).thenReturn(new ArrayList<>());
+        when(mockPlace.getListOfPersons()).thenReturn(new ArrayList<>());
         blacksmith.setPlace(mockPlace);
 
         blacksmith.work();
@@ -56,7 +56,7 @@ class GaulishBlacksmithTest {
         List<Person> people = new ArrayList<>();
         people.add(mockPerson);
 
-        when(mockPlace.getPeople()).thenReturn(people);
+        when(mockPlace.getListOfPersons()).thenReturn(people);
         when(mockPerson.getStrength()).thenReturn(10).thenReturn(11);
         when(mockPerson.getName()).thenReturn("Obelix");
 
@@ -82,7 +82,7 @@ class GaulishBlacksmithTest {
         people.add(person2);
         people.add(person3);
 
-        when(mockPlace.getPeople()).thenReturn(people);
+        when(mockPlace.getListOfPersons()).thenReturn(people);
         when(person1.getStrength()).thenReturn(10);
         when(person2.getStrength()).thenReturn(12);
         when(person3.getStrength()).thenReturn(8);
@@ -127,7 +127,7 @@ class GaulishBlacksmithTest {
         List<Person> people = new ArrayList<>();
         people.add(blacksmith);
 
-        when(mockPlace.getPeople()).thenReturn(people);
+        when(mockPlace.getListOfPersons()).thenReturn(people);
         blacksmith.setPlace(mockPlace);
 
         int initialStrength = blacksmith.getStrength();
