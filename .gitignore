@@ -55,7 +55,8 @@ cmake-build-*/
 
 # IntelliJ
 out/
-
+src/target
+*.iml
 # mpeltonen/sbt-idea plugin
 .idea_modules/
 
@@ -130,4 +131,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+target/
 # End of https://www.toptal.com/developers/gitignore/api/linux,windows,intellij+all
+
+*.iml
