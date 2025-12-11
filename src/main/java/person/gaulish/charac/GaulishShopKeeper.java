@@ -17,7 +17,7 @@ import java.util.Random;
  */
 public class GaulishShopKeeper extends Gaulish implements Worker {
 
-    private int worktimer = 15;
+    private int worktimer = 2;
     private FoodFactory factory = new FoodFactory();
     private Random random = new Random();
 
@@ -71,7 +71,7 @@ public class GaulishShopKeeper extends Gaulish implements Worker {
         Place place = this.getPlace();
         place.addFood(food);
 
-        System.out.println(getName() + "a produit : " + chosenFood);
+        System.out.println(getName() + " a produit et l'a ajouté à l'inventaire du lieu : " + chosenFood);
     }
 
     /**
@@ -88,7 +88,7 @@ public class GaulishShopKeeper extends Gaulish implements Worker {
 
         if (worktimer == 0) {
             work();
-            worktimer = 15;
+            worktimer = 4;
         }
     }
 }

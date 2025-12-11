@@ -84,16 +84,33 @@ public abstract class Place {
     }
 
     /**
-     * Nourrit une personne présente dans le lieu.
+     * Tente de consommer une unité de nourriture du lieu.
      *
-     * @param person La personne à nourrir
+     * @return true si de la nourriture a été consommée avec succès, false sinon (stock vide).
+     */
+    public boolean consumeFood() {
+        if (!food.isEmpty()) {
+            food.removeFirst(); // Retire la première unité de nourriture trouvée
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Nourrit une personne spécifique en consommant de la nourriture du lieu.
+     *
+     * @param person La personne à nourrir.
      */
     public void feedSomeone(Person person) {
-        if (people.contains(person)) {
-            person.eat();
-        }
-        else {
-            System.out.println("La personne est dans un autre lieu");
+        if (getListOfPersons().contains(person)) {
+            if (consumeFood()) {
+                person.eat();
+                System.out.println(person.getName() + " a été nourri(e) et se sent repu.");
+            } else {
+                System.out.println(person.getName() + " ne peut pas être nourri(e) : Le stock de nourriture du lieu est vide !");
+            }
+        } else {
+            System.out.println("La personne n'est pas dans ce lieu.");
         }
     }
 

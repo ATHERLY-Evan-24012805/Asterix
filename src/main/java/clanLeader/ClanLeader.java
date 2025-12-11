@@ -83,7 +83,7 @@ public class ClanLeader {
      */
     public void feedAll() {
         for (Person p : place.getListOfPersons()) {
-            p.eat();
+            place.feedSomeone(p);
         }
     }
 
@@ -180,5 +180,23 @@ public class ClanLeader {
         else {
             System.out.println("Cette personne n'est pas autorisée vers cette destination.");
         }
+    }
+
+    /**
+     * Renvoie le nom du chef de clan.
+     *
+     * @return Le nom du clanLeader
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Renvoie le lieu dirigé par le chef de clan
+     *
+     * @return Le lieu dirigé
+     */
+    public Place getPlace() {
+        return place;
     }
 }

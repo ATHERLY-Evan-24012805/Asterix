@@ -1,4 +1,5 @@
 import clanLeader.ClanLeader;
+import person.Person;
 import place.Place;
 import place.types.*;
 import theatres.TheatreOfInvasion;
@@ -237,6 +238,94 @@ public class Main {
             switch (command.toLowerCase()) {
                 case "info":
                     System.out.println("Il y a " + theatre.howManyPeople() + " personnes en vie.");
+                    break;
+
+                case "nourrir":
+                    if (TheirNames.isEmpty()) {
+                        System.out.println("Aucun chef de clan n'a été créé.");
+                        break;
+                    }
+
+                    // 1/ Choisir un chef/lieu
+                    System.out.println("\n--- NOURRIR DES HABITANTS ---");
+                    System.out.println("Quel chef de clan voulez-vous utiliser pour donner de la nourriture ?");
+
+                    for (int i = 0; i < TheirNames.size(); i++) {
+                        ClanLeader leader = TheirNames.get(i);
+                        System.out.println((i + 1) + " : " + leader.getName() + " dirige " + leader.getPlace().getClass().getSimpleName());
+                    }
+
+                    System.out.print("Entrez le numéro du chef/lieu : ");
+                    String leaderChoice = sc.nextLine();
+
+                    int leaderIndex = -1;
+                    try {
+                        leaderIndex = Integer.parseInt(leaderChoice) - 1;
+                    } catch (NumberFormatException ignored) {
+                        // La vérification ci-dessous gérera l'erreur
+                    }
+
+                    if (leaderIndex < 0 || leaderIndex >= TheirNames.size()) {
+                        System.out.println("Sélection de chef invalide.");
+                        break;
+                    }
+
+                    ClanLeader currentLeader = TheirNames.get(leaderIndex);
+                    Place currentPlace = currentLeader.getPlace();
+
+                    // /2 Choisir l'option (Nourrir une personne ou tous)
+                    System.out.println("\nOptions de Nourriture pour " + currentPlace.getClass().getSimpleName() + " :");
+                    System.out.println("1 : Nourrir une personne spécifique.");
+                    System.out.println("2 : Nourrir TOUS les habitants.");
+                    System.out.print("Entrez votre choix (1 ou 2) : ");
+                    String feedOption = sc.nextLine();
+
+                    if (feedOption.equals("2")) {
+                        // Option 2 : Nourrir tous
+                        currentLeader.feedAll();
+                        break;
+                    }
+
+                    if (feedOption.equals("1")) {
+                        // Option 1 : Nourrir un spécifique
+
+                        if (currentPlace.getListOfPersons().isEmpty()) {
+                            System.out.println("Le lieu de " + currentLeader.getName() + " est vide. Personne à nourrir.");
+                            break;
+                        }
+
+                        // /3 Afficher les habitants et choisir l'habitant à nourrir
+                        System.out.println("\nHabitants disponibles :");
+                        for (int i = 0; i < currentPlace.getListOfPersons().size(); i++) {
+                            Person p = currentPlace.getListOfPersons().get(i);
+                            // J'ai besoin de savoir s'il y a un statut de "faim" sur la Personne pour le mettre ici
+                            System.out.println((i + 1) + " : " + p.getName() + " (" + p.getClass().getSimpleName() + ")");
+                        }
+
+                        System.out.print("Entrez le numéro de l'habitant à nourrir : ");
+                        String personChoice = sc.nextLine();
+
+                        int personIndex = -1;
+                        try {
+                            personIndex = Integer.parseInt(personChoice) - 1;
+                        } catch (NumberFormatException ignored) {
+                            // Géré ci-dessous
+                        }
+
+                        if (personIndex < 0 || personIndex >= currentPlace.getListOfPersons().size()) {
+                            System.out.println("Sélection d'habitant invalide.");
+                            break;
+                        }
+
+                        Person targetPerson = currentPlace.getListOfPersons().get(personIndex);
+
+                        // --- ÉTAPE 4: Exécuter l'action (un spécifique) ---
+                        currentLeader.feedSomeone(targetPerson);
+                        break;
+                    }
+
+                    // Si l'option n'est ni 1 ni 2
+                    System.out.println("Option invalide.");
                     break;
 
                 case "attaque":
