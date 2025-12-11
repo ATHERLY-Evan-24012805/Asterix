@@ -1,0 +1,12 @@
+Aide moi à faire la spécification technique et fonctionnelle d'après les fichiers de TD: <fichiers>
+La classe meute se situe où dans l'arboresence?
+On ne met pas dominationRank dans le constructeur?
+Fais moi un guide pour mettre en place l'intégration continue vie GitLab CI
+<code> Est-ce que ce code marche?
+Fais moi un test pour vérifier que changer de rang suite à une domination apporte de la valuer au vainqueur
+Je met Howl dans le package lycanthrope au même niveau que Pack et Lycanthrope?
+aimerais implémenter un maître de zoo fantastique déplacer le loup d'enclot signifie-t-il de le changer de lieu?
+pas de constructeur pour le zooMaster?
+Explique moi et aide moi à implémenter un thype scéllé
+Peut-on créer 2 instances de Scanner dans un code?
+<code> Modifie cette fonction pour que maintenant ce soit le niveau qui soit pris en compte
