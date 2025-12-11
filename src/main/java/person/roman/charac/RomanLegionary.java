@@ -42,6 +42,9 @@ public class RomanLegionary extends Roman implements Fighter{
     public Person duplicate(String name, char gender, double height, int age, int strength, int endurance) {
         return new RomanLegionary(name, gender, height, age, strength, endurance);
     }
+    public String getType(){
+        return "legionnaire romain";
+    }
 
     /**
      * Implémentation du rôle Fighter.
@@ -49,9 +52,12 @@ public class RomanLegionary extends Roman implements Fighter{
      * <p>Le Légionnaire attaque immédiatement sa cible actuelle.
      */
     @Override
-    public void fight(){
-    // Tape et obéit au general
-        fight(getTarget());
+    public int fight(){
+    // Tape et obeit au general
+        if (this.getTarget() == null) {
+            return 0;
+        }
+        return hit(getTarget());
     }
 
     /**

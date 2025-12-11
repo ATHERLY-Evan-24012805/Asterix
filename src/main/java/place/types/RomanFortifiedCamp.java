@@ -31,4 +31,8 @@ public class RomanFortifiedCamp extends Place {
                 person instanceof RomanLegionary ||
                 person instanceof Lycanthrope;
     }
+    @Override
+    public String getType() {
+        return "Bourgade fortifié Romain";
+    }
 }

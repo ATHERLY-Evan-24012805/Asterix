@@ -51,6 +51,10 @@ public class GaulishShopKeeper extends Gaulish implements Worker {
         return new GaulishShopKeeper(name, gender, height, age, strength, endurance);
     }
 
+    public String getType(){
+        return "Commercant";
+    }
+
     /**
      * La fonction work pour le Marchand consiste à produire un aliment aléatoire
      * et à l'ajouter à l'inventaire de son lieu actuel.

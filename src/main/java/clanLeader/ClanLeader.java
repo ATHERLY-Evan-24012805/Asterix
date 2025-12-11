@@ -180,6 +180,13 @@ public class ClanLeader {
         else {
             System.out.println("Cette personne n'est pas autorisée vers cette destination.");
         }
+
+    }
+    public String getName(){
+        return this.name;
+    }
+    public Place getPlace(){
+        return this.place;
     }
 
     /**

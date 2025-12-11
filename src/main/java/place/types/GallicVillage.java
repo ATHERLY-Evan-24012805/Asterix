@@ -28,4 +28,9 @@ public class GallicVillage extends Place {
         return person instanceof Gaulish ||
                 person instanceof Lycanthrope;
     }
+
+    @Override
+    public String getType() {
+        return "Village gaulois";
+    }
 }

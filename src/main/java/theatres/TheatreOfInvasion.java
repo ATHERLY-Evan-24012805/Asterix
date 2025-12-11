@@ -1,5 +1,6 @@
 package theatres;
 
+import clanLeader.ClanLeader;
 import clock.Clock;
 import person.Person;
 import person.gaulish.charac.*;
@@ -25,9 +26,8 @@ public class TheatreOfInvasion {
     private String name;
     private int numberOfPlaces;
     private ArrayList<Place> listOfPlaces;
-    private List listOfChief;
+    private List<ClanLeader> listOfChief;
     private static Clock clock = new Clock();
-
 
     //Constructeur
     /**
@@ -36,12 +36,12 @@ public class TheatreOfInvasion {
      * @param nameOfTheGame Le nom donné à cette simulation.
      * @param listOfPlaces La liste initiale des lieux à gérer.
      */
-    public TheatreOfInvasion(String nameOfTheGame, ArrayList<Place> listOfPlaces /*, List listOfChief*/) {
+    public TheatreOfInvasion(String nameOfTheGame, ArrayList<Place> listOfPlaces , List listOfChief) {
 
         this.name = name;
         this.listOfPlaces = listOfPlaces;
         this.numberOfPlaces = listOfPlaces.size();
-        //this.listOfChief = listOfChief;
+        this.listOfChief = listOfChief;
     }
 
     /**
@@ -51,6 +51,10 @@ public class TheatreOfInvasion {
      */
     public ArrayList<Place> showPlaces() {
         return listOfPlaces;
+    }
+
+    public List<ClanLeader> getListOfChief() {
+        return listOfChief;
     }
 
     /**
@@ -96,7 +100,7 @@ public class TheatreOfInvasion {
      * @param roleName Le nom du rôle à créer (ex: "Druide", "RomanGeneral").
      * @param sc L'objet {@code Scanner} pour la saisie utilisateur du nom et du genre.
      */
-    public static void createAndAddPerson(Place p, String roleName, Scanner sc) {
+    public static void createAndAddPerson(Place p, String roleName, Scanner sc, ClanLeader leader) {
         // 1. Demande du Nom
         System.out.print(roleName + " : ");
         String name = sc.nextLine();
@@ -124,7 +128,7 @@ public class TheatreOfInvasion {
         // Taille entre 80cm et 250cm
         double height = (random.nextInt((250 - 80) + 1) + 80) / 100.0; // Division par 100.0 pour avoir un double (ex: 1.85)
 
-        // Age entre 15 et 80 (ou paramétrable si besoin)
+        // Age entre 15 et 80
         int age = random.nextInt((80 - 15) + 1) + 15;
 
 
@@ -134,25 +138,25 @@ public class TheatreOfInvasion {
             // on fixe l'endurance et la force des blacksmith a une valeur fixe, car c'est spécifique à leurs role, ici forgeron
             // Force 70
             // Endurance 30
-            newPerson = new GaulishBlacksmith(name, gender, height, age, 70, 30 );
+            newPerson = new GaulishBlacksmith(name.trim(), gender, height, age, 70, 30 );
         }
         if (roleName.equals("GaulishInnKeeper")) {
             // Pareil les aubergistes ont des valeurs par défaut moins de force plus d'endurance.
             // Force 20
             // Endurance 80
-            newPerson = new GaulishInnKeeper(name, gender, height, age, 20, 80);
+            newPerson = new GaulishInnKeeper(name.trim(), gender, height, age, 20, 80);
         }
         if (roleName.equals("Druide")) {
             // Pareil les aubergistes ont des valeurs par défaut moins de force plus d'endurance.
             // Force 60
             // Endurance 20
-            newPerson = new Druid(name, gender, height, age, 60, 20);
+            newPerson = new Druid(name.trim(), gender, height, age, 60, 20);
         }
         if (roleName.equals("ShopKeeper")) {
             // Pareil les aubergistes ont des valeurs par défaut moins de force plus d'endurance.
             // Force 30
             // Endurance 20
-            newPerson = new GaulishShopKeeper(name, gender, height, age, 30, 20);
+            newPerson = new GaulishShopKeeper(name.trim(), gender, height, age, 30, 20);
         }
 
 
@@ -161,7 +165,7 @@ public class TheatreOfInvasion {
             // on fixe l'endurance et la force des généraux a une valeur fixe, car c'est spécifique à leurs role, ici forgeron
             // force 50
             // endurance 50.
-            newPerson = new RomanGeneral(name, gender, height, age, 50, 50);
+            newPerson = new RomanGeneral(name.trim(), gender, height, age, 50, 50);
             //ToString personnage
         }
 
@@ -169,7 +173,7 @@ public class TheatreOfInvasion {
             // on fixe l'endurance et la force des généraux a une valeur fixe, car c'est spécifique à leurs role, ici forgeron
             // force 90
             // endurance 40.
-            newPerson = new RomanLegionary(name, gender, height, age, 90, 40);
+            newPerson = new RomanLegionary(name.trim(), gender, height, age, 90, 40);
             //ToString personnage
         }
 
@@ -177,19 +181,26 @@ public class TheatreOfInvasion {
             // on fixe l'endurance et la force des généraux a une valeur fixe, car c'est spécifique à leurs role, ici forgeron
             // force 30
             // endurance 30.
-            newPerson = new RomanPrefect(name, gender, height, age, 30, 30);
+            newPerson = new RomanPrefect(name.trim(), gender, height, age, 30, 30);
             //ToString personnage
         }
 
+        assert newPerson != null;
+        newPerson.setOwner(leader);
         p.addPerson(newPerson);
         clock.subscribe(newPerson);
-        assert newPerson != null;
-        System.out.println(newPerson.toString() + " créé avec succès !");
+        System.out.println(newPerson.getName().toUpperCase()+" taille :"+newPerson.getHeight()+", age :"+newPerson.getAge()+", Force :"+ newPerson.getStrength()+", Endurance : "+newPerson.getEndurance() + " créé avec succès !" +
+                "\n---------------------------------");
     }
 
-    // a implementer pour le deroulement du jeu
     public void evolutionOfTheGame() {
-        return;
+        for (Place p : listOfPlaces) {
+            String people = p.getNameAndWorkPeople();
+            System.out.println("Lieux : " + p.getName() +", " +p.getType());
+            System.out.println("Population : "+people +
+                    "\n Inventaire : " +p.getItems()
+            );
+        }
     }
 
     /**
@@ -215,7 +226,7 @@ public class TheatreOfInvasion {
         );
 
         // Tuer le personnage se transformant
-        former.die(place);
+        former.die();
 
         // Ajout du nouveau
         place.addPerson(werewolf);

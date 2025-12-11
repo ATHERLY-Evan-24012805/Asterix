@@ -45,6 +45,10 @@ public class GaulishInnKeeper extends Gaulish implements Worker {
         return new GaulishInnKeeper(name, gender, height, age, strength, endurance);
     }
 
+    public String getType(){
+        return "Aubergiste";
+    }
+
     /**
      * La fonction work pour l'Aubergiste consiste à soigner la personne la plus faible du lieu.
      *

@@ -1,18 +1,25 @@
 package theatreOfInvasion;
 
+import clanLeader.ClanLeader;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 
 import person.*;
 import person.Person;
+import person.gaulish.Gaulish;
+import person.gaulish.charac.GaulishBlacksmith;
+import person.roman.charac.RomanGeneral;
 import place.Place;
 import place.types.*;
 import theatres.TheatreOfInvasion;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.mockito.Mockito.mock;
 
 public class TestTheatreOfInvasion {
     private TheatreOfInvasion theatre;
@@ -22,17 +29,24 @@ public class TestTheatreOfInvasion {
     Place place3 = new GallicVillage();
 
     @Mock
-    Person gallic;
-    @Mock
     Person blacksmith;
+    @Mock
+    Person romanGeneral;
+    @Mock
+    ClanLeader chef1;
 
     @BeforeEach
     void init(){
         ArrayList<Place> lplaces = new ArrayList();
+        ArrayList<ClanLeader> lLeader = new ArrayList();
         lplaces.add(place1);
         lplaces.add(place2);
         lplaces.add(place3);
-        theatre = new TheatreOfInvasion("Testing", lplaces);
+        blacksmith = mock(GaulishBlacksmith.class);
+        romanGeneral = mock(RomanGeneral.class);
+        chef1 = mock(ClanLeader.class);
+        lLeader.add(chef1);
+        theatre = new TheatreOfInvasion("Testing", lplaces,lLeader);
     }
 
     // Test la méthode ShowPlaces
@@ -47,8 +61,8 @@ public class TestTheatreOfInvasion {
 
     @Test
     void testHowManyPeople(){
-        place1.addPerson(blacksmith);
-        place2.addPerson(gallic);
+        place3.addPerson(blacksmith);
+        place1.addPerson(romanGeneral);
 
         int result = theatre.howManyPeople();
         Assertions.assertEquals(2,result);
@@ -56,7 +70,8 @@ public class TestTheatreOfInvasion {
 
     @Test
     void testPeopleByPlace(){
-        List result = theatre.PeopleByPlace(place2);
-        Assertions.assertEquals(result.size(), 2);
+        place3.addPerson(blacksmith);
+        List result = theatre.PeopleByPlace(place3);
+        Assertions.assertEquals(1,result.size());
     }
 }

@@ -41,6 +41,10 @@ public class Druid extends Gaulish implements Fighter, Leader, Worker{
         super(name, gender, height, age, strength, endurance);
     }
 
+    public String getType(){
+        return "Druide";
+    }
+
     /**
      * Crée une nouvelle instance de {@code Druid} avec les caractéristiques données.
      * Utilisé pour la potion de duplication.
@@ -64,26 +68,27 @@ public class Druid extends Gaulish implements Fighter, Leader, Worker{
      * L'attaque n'a lieu que si le Druide se trouve dans un BattleField.
      */
     @Override
-    public void fight() {
+    public int fight() {
+
+        if (this.getTarget() == null) {
+            return 0;
+        }
         // Pas de combat en dehors d'un BattleField
         Place place = this.getPlace();
         if (!(place instanceof BattleField)) {
-            return;
+            return 0;
         }
 
         List<Person> persons = place.getListOfPersons();
         Person target = findWeakestRoman(persons);
 
         if (target == null) {
-            return;
+            return 0;
         }
 
-        this.fight(target);
+        int damage = this.hit(target);
 
-        System.out.println(
-                this.getName() + " attaque " + target.getName() +
-                        " dans le champ de bataille ! Il lui reste " + target.getHealth() + " PV."
-        );
+        return damage;
     }
 
     /**
@@ -187,6 +192,7 @@ public class Druid extends Gaulish implements Fighter, Leader, Worker{
         place.addItem(potion);
         return potion;
     }
+
 
     /**
      * Permet au Druide de changer le rôle (la classe concrète) d'une autre personne gauloise.

@@ -35,6 +35,9 @@ public class GaulishBlacksmith extends Gaulish implements Worker {
         super(name, gender, height, age, strength, endurance);
     }
 
+    public String getType(){
+        return "Forgeron";
+    }
     /**
      * Crée une nouvelle instance de GaulishBlacksmith avec les caractéristiques données.
      * Utilisé pour la potion Duplicate.

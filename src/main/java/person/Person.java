@@ -1,6 +1,7 @@
 package person;
 
 import MagicPotion.*;
+import clanLeader.ClanLeader;
 import clock.TemporalObject;
 import place.Place;
 import item.Item;
@@ -33,6 +34,8 @@ public abstract class Person implements TemporalObject {
     private Place place;
     private int ticBeforeAction;
     private Person target;
+    private ClanLeader owner;
+    private boolean isDead = false;
 
     /**
      * Permet de limiter les valeurs entre 0 et 100.
@@ -117,9 +120,12 @@ public abstract class Person implements TemporalObject {
      *
      * @param target Le personnage ciblé qui subit les dégâts.
      */
-    public void fight(Person target){
-        target.health = target.health - Math.max(1, strength*(1- target.endurance/150)); // Formule à modifier si besoin
-    }
+    public int hit(Person target){
+        int damages = Math.max(1, strength*(1- target.endurance/150));
+        target.health = target.health - Math.max(1, strength*(1- target.endurance/150));
+        return damages;
+
+
 
     /**
      * Gère la transformation en pierre du personnage (pétrification).
@@ -130,15 +136,14 @@ public abstract class Person implements TemporalObject {
         Clock.getInstance().unsubscribe(this);
     }
 
-    /**
-     * Gère la mort du personnage.
-     *
-     * <p>Le personnage est retiré du lieu ({@link #place}) et est désabonné
-     * de l'horloge.
-     *
-     * @param place Le lieu où le personnage se trouve et doit être retiré.
-     */
-    public void die(Place place){
+        /**
+         * Gère la mort du personnage.
+         *
+         * <p>Le personnage est retiré du lieu ({@link #place}) et est désabonné
+         * de l'horloge.
+         *
+         */
+    public void die(){
         place.removePerson(this);
         Clock.getInstance().unsubscribe(this);
     }
@@ -230,11 +235,15 @@ public abstract class Person implements TemporalObject {
     }
 
     // Setters
+    public void setOwner(ClanLeader owner) {
+        this.owner = owner;
+    }
     /**
      * Définit le nombre de tics avant que le personnage ne puisse effectuer une action spécifique.
      *
      * @param ticBeforeAction Le nouveau délai en tics.
      */
+
     public void setTicBeforeAction(int ticBeforeAction) {
         this.ticBeforeAction = ticBeforeAction;
     }
@@ -274,6 +283,13 @@ public abstract class Person implements TemporalObject {
     }
 
     // Getters
+    public ClanLeader getOwner() {
+        return owner;
+    }
+    public String getType(){
+        return "Person";
+    }
+
     /**
      * Retourne le nom du personnage.
      *
@@ -323,7 +339,8 @@ public abstract class Person implements TemporalObject {
      * Retourne le niveau de faim.
      *
      * @return Le niveau de faim (int).
-     */    public int getHunger() {
+     */
+    public int getHunger() {
         return hunger;
     }
 
@@ -382,11 +399,14 @@ public abstract class Person implements TemporalObject {
         return target;
     }
 
+    public void setTarget(Person target) {
+        this.target = target;
+    }
     /**
-     * Retourne le lieu actuel du personnage.
-     *
-     * @return Le lieu ({@link place.Place}).
-     */
+    * Retourne le lieu actuel du personnage.
+    *
+    * @return Le lieu ({@link place.Place}).
+    */
     public Place getPlace() {
         return place;
     }
@@ -403,12 +423,18 @@ public abstract class Person implements TemporalObject {
     @Override
     public void ticsPassed() {
         // 1. On perd de la nourriture
-        this.hunger = clamp(this.hunger - 5); // Par exemple -5 par heure
+        this.hunger = clamp(this.hunger - 1); // Par exemple -5 par heure
 
         // 2. Si on a trop faim, on perd de la vie
-        if (this.hunger <= 0) {
-            this.health = clamp(this.health - 10);
+        if (this.hunger <= 0 && !this.isDead) {
+            this.hunger = 0; // On ne descend pas en négatif
+            this.health -= 10;
             System.out.println(this.getName() + " meurt de faim ! PV restants : " + this.health);
+        }
+        if(this.health <= 0 && !this.isDead) {
+            this.isDead = true;
+            this.die();
+            System.out.println(this.getName()+" est mort(e).");
         }
     }
 
