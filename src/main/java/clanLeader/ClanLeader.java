@@ -65,7 +65,7 @@ public class ClanLeader {
      */
     public void healAll() {
         for (Person p : place.getListOfPersons()) {
-            p.heal();
+            place.healSomeone(p);
         }
     }
 

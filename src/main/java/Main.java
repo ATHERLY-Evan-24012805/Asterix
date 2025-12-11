@@ -328,6 +328,92 @@ public class Main {
                     System.out.println("Option invalide.");
                     break;
 
+                case "soigner":
+                    if (TheirNames.isEmpty()) {
+                        System.out.println("Aucun chef de clan n'a été créé.");
+                        break;
+                    }
+
+                    // 1/ Choisir le Chef / Lieu
+                    System.out.println("\n--- 🩹 SOIGNER UN HABITANT / TOUS ---");
+                    System.out.println("Quel chef de clan voulez-vous utiliser pour soigner ?");
+
+                    for (int i = 0; i < TheirNames.size(); i++) {
+                        ClanLeader leader = TheirNames.get(i);
+                        System.out.println((i + 1) + " : " + leader.getName() + " dirige " + leader.getPlace().getClass().getSimpleName());
+                    }
+
+                    System.out.print("Entrez le numéro du chef/lieu : ");
+                    String leaderChoiceHeal = sc.nextLine();
+
+                    int leaderIndexHeal = -1;
+                    try {
+                        leaderIndexHeal = Integer.parseInt(leaderChoiceHeal) - 1;
+                    } catch (NumberFormatException ignored) {
+                        // Géré ci-dessous
+                    }
+
+                    if (leaderIndexHeal < 0 || leaderIndexHeal >= TheirNames.size()) {
+                        System.out.println("Sélection de chef invalide.");
+                        break;
+                    }
+
+                    ClanLeader currentLeaderHeal = TheirNames.get(leaderIndexHeal);
+                    Place currentPlaceHeal = currentLeaderHeal.getPlace();
+
+                    // 2/ Choisir l'option (Soigner un seul habitant ou tous)
+                    System.out.println("\nOptions de Soin pour " + currentPlaceHeal.getClass().getSimpleName() + " :");
+                    System.out.println("1 : Soigner une personne spécifique.");
+                    System.out.println("2 : Soigner TOUS les habitants.");
+                    System.out.print("Entrez votre choix (1 ou 2) : ");
+                    String healOption = sc.nextLine();
+
+                    if (healOption.equals("2")) {
+                        // Option 2 : Soigner tous
+                        currentLeaderHeal.healAll();
+                        break;
+                    }
+
+                    if (healOption.equals("1")) {
+                        // Option 1 : Soigner un spécifique
+                        if (currentPlaceHeal.getListOfPersons().isEmpty()) {
+                            System.out.println("Le lieu de " + currentLeaderHeal.getName() + " est vide. Personne à soigner.");
+                            break;
+                        }
+
+                        // 3/ Afficher les habitants et choisir l'habitant à soigner
+                        System.out.println("\nHabitants disponibles :");
+                        for (int i = 0; i < currentPlaceHeal.getListOfPersons().size(); i++) {
+                            Person p = currentPlaceHeal.getListOfPersons().get(i);
+                            System.out.println((i + 1) + " : " + p.getName() + " (" + p.getClass().getSimpleName() + ")");
+                        }
+
+                        System.out.print("Entrez le numéro de l'habitant à soigner : ");
+                        String personChoiceHeal = sc.nextLine();
+
+                        int personIndexHeal = -1;
+                        try {
+                            personIndexHeal = Integer.parseInt(personChoiceHeal) - 1;
+                        } catch (NumberFormatException ignored) {
+                            // Géré ci-dessous
+                        }
+
+                        if (personIndexHeal < 0 || personIndexHeal >= currentPlaceHeal.getListOfPersons().size()) {
+                            System.out.println("Sélection d'habitant invalide.");
+                            break;
+                        }
+
+                        Person targetPersonHeal = currentPlaceHeal.getListOfPersons().get(personIndexHeal);
+
+                        // 4/ Exécuter l'action de soin
+                        currentLeaderHeal.healSomeone(targetPersonHeal);
+                        break;
+                    }
+
+                    // Si l'option n'est ni 1 ni 2
+                    System.out.println("Option de soin invalide.");
+                    break;
+
                 case "attaque":
                     System.out.println("Bataille lancée ! (Logique à implémenter)");
                     break;

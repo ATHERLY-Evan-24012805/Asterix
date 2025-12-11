@@ -86,7 +86,7 @@ public abstract class Person implements TemporalObject {
      * <p>Augmente le niveau de faim ({@link #hunger}) de 10 points.
      */
     public void eat(){
-        hunger = hunger + 50;
+        hunger = clamp(hunger + 50);
     }
 
     /**
@@ -95,7 +95,7 @@ public abstract class Person implements TemporalObject {
      * <p>Augmente les points de vie ({@link #health}) de 10 points.
      */
     public void heal(){
-        health = health + 10;
+        health = clamp(health + 10);
     }
 
     /**
@@ -254,7 +254,7 @@ public abstract class Person implements TemporalObject {
      * @param health Les nouveaux points de vie.
      */
     public void setHealth(int health) {
-        this.health = health;
+        this.health = clamp(health);
     }
 
     /**
@@ -403,12 +403,11 @@ public abstract class Person implements TemporalObject {
     @Override
     public void ticsPassed() {
         // 1. On perd de la nourriture
-        this.hunger -= 5; // Par exemple -5 par heure
+        this.hunger = clamp(this.hunger - 5); // Par exemple -5 par heure
 
         // 2. Si on a trop faim, on perd de la vie
         if (this.hunger <= 0) {
-            this.hunger = 0; // On ne descend pas en négatif
-            this.health -= 10;
+            this.health = clamp(this.health - 10);
             System.out.println(this.getName() + " meurt de faim ! PV restants : " + this.health);
         }
     }

@@ -77,6 +77,7 @@ public abstract class Place {
     public void healSomeone(Person person) {
         if (people.contains(person)) {
             person.heal();
+            System.out.println(person.getName() + " a été soigné(e)");
         }
         else {
             System.out.println("La personne est dans un autre lieu");

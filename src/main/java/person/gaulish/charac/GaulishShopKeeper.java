@@ -71,7 +71,7 @@ public class GaulishShopKeeper extends Gaulish implements Worker {
         Place place = this.getPlace();
         place.addFood(food);
 
-        System.out.println(getName() + " a produit et l'a ajouté à l'inventaire du lieu : " + chosenFood);
+        System.out.println(getName() + " a produit de la nourriture et l'a ajouté à l'inventaire du lieu : " + chosenFood);
     }
 
     /**
