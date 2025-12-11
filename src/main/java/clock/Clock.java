@@ -34,7 +34,7 @@ public class Clock {
         Runnable tacheHorloge = () -> {
             while (true) {
                 try {
-                    Thread.sleep(intervalleSecondes * 1000);
+                    Thread.sleep(intervalleSecondes * 1000L);
 
                     this.notifySubscribers();
 

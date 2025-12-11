@@ -16,10 +16,13 @@ public class RomanLegionary extends Roman implements Fighter{
         return "legionnaire romain";
     }
 
-        @Override
-    public void fight(){
+    @Override
+    public int fight(){
     // Tape et obeit au general
-        fight(getTarget());
+        if (this.getTarget() == null) {
+            return 0;
+        }
+        return hit(getTarget());
     }
 
     @Override

@@ -6,15 +6,12 @@ import food.Food;
 import food.items.*;
 import item.Item;
 import person.Person;
-import person.Person;
 import person.gaulish.Gaulish;
 import person.Fighter;
 import person.Leader;
 import person.Worker;
 import place.Place;
 import place.types.BattleField;
-
-import place.Place;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +21,10 @@ public class Druid extends Gaulish implements Fighter, Leader, Worker{
 
     public Druid(String name, char gender, double height, int age, int strength, int endurance) {
         super(name, gender, height, age, strength, endurance);
+    }
+
+    public String getType(){
+        return "Druide";
     }
 
     @Override
@@ -49,26 +50,27 @@ public class Druid extends Gaulish implements Fighter, Leader, Worker{
     }
 
     @Override
-    public void fight() {
+    public int fight() {
+
+        if (this.getTarget() == null) {
+            return 0;
+        }
         // Pas de combat en dehors d'un BattleField
         Place place = this.getPlace();
         if (!(place instanceof BattleField)) {
-            return;
+            return 0;
         }
 
         List<Person> persons = place.getPeople();
         Person target = findWeakestRoman(persons);
 
         if (target == null) {
-            return;
+            return 0;
         }
 
-        this.fight(target);
+        int damage = this.hit(target);
 
-        System.out.println(
-                this.getName() + " attaque " + target.getName() +
-                        " dans le champ de bataille ! Il lui reste " + target.getHealth() + " PV."
-        );
+        return damage;
     }
 
     @Override

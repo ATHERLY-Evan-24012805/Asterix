@@ -15,8 +15,8 @@ public class Lycanthrope extends Person implements Fighter {
         return null;
     }
     @Override
-    public void fight(){
-
+    public int fight(){
+        return 0;
     }
 
     @Override

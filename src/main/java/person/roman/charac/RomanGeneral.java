@@ -8,7 +8,6 @@ import place.Place;
 import place.types.BattleField;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class RomanGeneral extends Roman implements Fighter, Leader {
 
@@ -28,12 +27,15 @@ public class RomanGeneral extends Roman implements Fighter, Leader {
 
         // se bat seulement s'il n'a plus d'allier avec lui sur le champ de bataille
     @Override
-    public void fight() {
+    public int fight() {
+        if (this.getTarget() == null) {
+            return 0;
+        }
         Place place = this.getPlace();
 
         // Pas de combat en dehors d'un BattleField
         if (!(place instanceof BattleField)) {
-            return;
+            return 0;
         }
 
         // S'il lui reste des alliés, il ne peut se battre
@@ -41,10 +43,10 @@ public class RomanGeneral extends Roman implements Fighter, Leader {
             if (person == this) continue;
 
             if (person instanceof Roman){
-                return;
+                return 0;
             }
         }
-        this.fight(this.getTarget());
+        return this.hit(this.getTarget());
 
 
     }
@@ -70,8 +72,8 @@ public class RomanGeneral extends Roman implements Fighter, Leader {
         //S'il a plus de deux alliés legionnaires
         if (legionnaries.size()>=2 || this.getTicBeforeAction() == 0){
             //faire agir le general
-            legionnaries.get(0).fight(this.getTarget());
-            legionnaries.get(1).fight(this.getTarget());
+            legionnaries.get(0).hit(this.getTarget());
+            legionnaries.get(1).hit(this.getTarget());
             this.setTicBeforeAction(5);
         }
     }

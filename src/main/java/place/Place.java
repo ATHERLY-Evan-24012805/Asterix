@@ -4,6 +4,7 @@ import clanLeader.ClanLeader;
 import food.Food;
 import item.Item;
 import person.Person;
+import place.types.BattleField;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +37,14 @@ public abstract class Place {
      */
     public List<Person> getPeople() {
         return people;
+    }
+
+    public String UIGetPeople() {
+        String output = "";
+        for (Person person : people) {
+            output+=(person.getName()+" "+ person.getType()+", \n");
+        }
+        return output;
     }
 
     public String getNameAndWorkPeople() {
@@ -78,7 +87,15 @@ public abstract class Place {
      * @param person La personne à ajouter
      */
     public void addPerson(Person person) {
+        if (person == null) {
+            System.out.println("Person is null");
+            return;
+        }
         if (canAddPerson(person) && !people.contains(person)) {
+            Place oldPlace = person.getPlace();
+            if (oldPlace != null) {
+                oldPlace.removePerson(person);
+            }
             people.add(person);
             this.census++;
             person.setPlace(this);
@@ -94,6 +111,9 @@ public abstract class Place {
      */
     public void removePerson(Person person) {
         people.remove(person);
+        if (this instanceof BattleField) {
+            ((BattleField) this).removeEngagedClanLeaders(person.getOwner());
+        }
     }
 
     /**

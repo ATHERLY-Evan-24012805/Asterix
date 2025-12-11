@@ -1,14 +1,11 @@
 package person;
 
 import MagicPotion.*;
+import clanLeader.ClanLeader;
 import clock.TemporalObject;
 import place.Place;
 import item.Item;
-import person.lycanthrope.Lycanthrope;
 import theatres.TheatreOfInvasion;
-import place.Place;
-import java.util.ArrayList;
-import java.util.List;
 import clock.Clock;
 
 public abstract class Person implements TemporalObject {
@@ -27,6 +24,8 @@ public abstract class Person implements TemporalObject {
     private Place place;
     private int ticBeforeAction;
     private Person target;
+    private ClanLeader owner;
+    private boolean isDead = false;
 
     /**
      * Permet de limiter les valeurs entre 0 et 100.
@@ -64,8 +63,10 @@ public abstract class Person implements TemporalObject {
         potion = clamp(potion + 10);
     }
 
-    public void fight(Person target){
-        target.health = target.health - Math.max(1, strength*(1- target.endurance/150)); // Formule à modifier si besoin
+    public int hit(Person target){
+        int damages = Math.max(1, strength*(1- target.endurance/150));
+        target.health = target.health - Math.max(1, strength*(1- target.endurance/150));
+        return damages;
     }
 
 
@@ -73,7 +74,7 @@ public abstract class Person implements TemporalObject {
         Clock.getInstance().unsubscribe(this);
     }
 
-    public void die(Place place){
+    public void die(){
         place.removePerson(this);
         Clock.getInstance().unsubscribe(this);
     }
@@ -93,11 +94,6 @@ public abstract class Person implements TemporalObject {
                 break;
         }
     }
-
-    public void die(){
-        // à compléter plus tard (soit gestionnaire de personnage, soit variable booléenne, soit remove(this)
-    }
-
 
     public void drinkPotion ( int index, int usedDoses){
         // On récupère l'item depuis place
@@ -161,6 +157,9 @@ public abstract class Person implements TemporalObject {
     }
 
     // Setters
+    public void setOwner(ClanLeader owner) {
+        this.owner = owner;
+    }
     public void setTicBeforeAction(int ticBeforeAction) {
         this.ticBeforeAction = ticBeforeAction;
     }
@@ -173,6 +172,9 @@ public abstract class Person implements TemporalObject {
     }
 
     // Getters
+    public ClanLeader getOwner() {
+        return owner;
+    }
     public String getType(){
         return "Person";
     }
@@ -234,13 +236,18 @@ public abstract class Person implements TemporalObject {
     @Override
     public void ticsPassed() {
         // 1. On perd de la nourriture
-        this.hunger -= 5; // Par exemple -5 par heure
+        this.hunger -= 1; // Par exemple -5 par heure
 
         // 2. Si on a trop faim, on perd de la vie
-        if (this.hunger <= 0) {
+        if (this.hunger <= 0 && !this.isDead) {
             this.hunger = 0; // On ne descend pas en négatif
             this.health -= 10;
             System.out.println(this.getName() + " meurt de faim ! PV restants : " + this.health);
+        }
+        if(this.health <= 0 && !this.isDead) {
+            this.isDead = true;
+            this.die();
+            System.out.println(this.getName()+" est mort(e).");
         }
     }
 
