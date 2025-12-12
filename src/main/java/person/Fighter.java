@@ -1,6 +1,11 @@
 package person;
 
-public interface Fighter {
+import person.gaulish.charac.Druid;
+import person.lycanthrope.Lycanthrope;
+import person.roman.charac.RomanGeneral;
+import person.roman.charac.RomanLegionary;
+
+public sealed interface Fighter permits RomanLegionary, RomanGeneral, Druid, Lycanthrope {
 
     /**
      * Déclenche l'action de combat du personnage.

@@ -1,8 +1,8 @@
+package main;
+
 import clanLeader.ClanLeader;
 import person.Person;
 import person.Fighter;
-import person.Leader;
-import person.Person;
 import place.Place;
 import place.types.*;
 import theatres.TheatreOfInvasion;

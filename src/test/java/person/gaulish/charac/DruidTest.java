@@ -87,15 +87,14 @@ class DruidTest {
 
     @Test
     void testFightInBattleField() {
-        Person roman = new RomanLegionary("Julius", 'M', 1.8, 30, 10, 10);
+        Person roman = new RomanLegionary("Julius", 'M', 1.8, 30, 50, 10);
         roman.setHealth(50);
 
         battlefield.addPerson(roman);
         druid.setPlace(battlefield);
-
+        druid.fight();
         // On teste juste que le druide attaque sans exception
-        assertDoesNotThrow(() -> druid.fight());
         // Le romain devrait avoir moins de PV après l'attaque
-        assertTrue(roman.getHealth() < 50);
+        assertEquals(0, 50);
     }
 }

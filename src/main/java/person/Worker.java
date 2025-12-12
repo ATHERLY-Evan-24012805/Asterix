@@ -1,5 +1,5 @@
 package person;
-
+import person.gaulish.charac.*;
 /**
  * Interface définissant la capacité d'un personnage à effectuer un travail ou une tâche spécifique.
  *
@@ -7,7 +7,7 @@ package person;
  * a la responsabilité de définir la logique métier de son rôle productif
  * dans la méthode work().
  */
-public sealed interface Worker permits person.gaulish.charac.Druid, person.gaulish.charac.GaulishBlacksmith, person.gaulish.charac.GaulishInnKeeper, person.gaulish.charac.GaulishShopKeeper{
+public sealed interface Worker permits Druid, GaulishBlacksmith, GaulishInnKeeper, GaulishShopKeeper{
 
     /**
      * Déclenche l'action de travail ou de production du personnage.
@@ -17,5 +17,5 @@ public sealed interface Worker permits person.gaulish.charac.Druid, person.gauli
      */
     default void work(){
         System.out.println("I am a worker");
-    };
+    }
 }
