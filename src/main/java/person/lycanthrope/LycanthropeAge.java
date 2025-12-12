@@ -1,7 +1,10 @@
 package person.lycanthrope;
 
+/**
+ * Catégorie d'âge des lycanthropes
+ */
 public enum LycanthropeAge {
-    JEUNE,
-    ADULTE,
-    VIEUX
+    YOUNG,
+    ADULT,
+    OLD
 }

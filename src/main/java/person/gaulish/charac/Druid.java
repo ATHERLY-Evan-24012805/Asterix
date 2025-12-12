@@ -23,8 +23,7 @@ import java.util.List;
  * <p>Le Druide est unique par sa capacité à préparer des potions magiques
  * et à réassigner les rôles des autres Gaulois.
  */
-public class Druid extends Gaulish implements Fighter, Leader, Worker{
-
+public non-sealed class Druid extends Gaulish implements Fighter, Leader, Worker{
     private ArrayList<Food> recipe = new ArrayList<>();
 
     /**

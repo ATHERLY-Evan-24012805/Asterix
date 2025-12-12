@@ -15,7 +15,7 @@ import java.util.Random;
  * Son rôle principal est de produire aléatoirement de la nourriture** et de l'ajouter
  * à l'inventaire du lieu ({@link place.Place}) où il se trouve.
  */
-public class GaulishShopKeeper extends Gaulish implements Worker {
+public non-sealed class GaulishShopKeeper extends Gaulish implements Worker {
 
     private int worktimer = 2;
     private FoodFactory factory = new FoodFactory();

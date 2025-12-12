@@ -1,5 +1,7 @@
 package person;
 
+import person.roman.charac.RomanGeneral;
+
 /**
  * Interface définissant la capacité d'un personnage à exercer un rôle de leadership
  * ou de coordination
@@ -7,7 +9,7 @@ package person;
  * <p>Les personnages implémentant cette interface (comme les Généraux Romains ou les Druides)
  * ont la responsabilité d'initier des actions ou de modifier l'état d'autres personnages.
  */
-public interface Leader {
+public sealed interface Leader permits RomanGeneral, person.gaulish.charac.Druid, person.roman.charac.RomanPrefect{
 
     /**
      * Déclenche l'action de leadership ou de commandement du personnage.

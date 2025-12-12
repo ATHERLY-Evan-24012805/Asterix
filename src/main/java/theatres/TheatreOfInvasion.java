@@ -4,6 +4,7 @@ import clanLeader.ClanLeader;
 import clock.Clock;
 import person.Person;
 import person.gaulish.charac.*;
+import person.lycanthrope.DominationRank;
 import person.lycanthrope.Lycanthrope;
 import person.roman.charac.*;
 import place.types.*;
@@ -222,7 +223,8 @@ public class TheatreOfInvasion {
                 former.getHeight(),
                 former.getAge(),
                 former.getStrength(),
-                former.getEndurance()
+                former.getEndurance(),
+                DominationRank.OMEGA
         );
 
         // Tuer le personnage se transformant

@@ -7,7 +7,7 @@ package person;
  * a la responsabilité de définir la logique métier de son rôle productif
  * dans la méthode work().
  */
-public interface Worker {
+public sealed interface Worker permits person.gaulish.charac.Druid, person.gaulish.charac.GaulishBlacksmith, person.gaulish.charac.GaulishInnKeeper, person.gaulish.charac.GaulishShopKeeper{
 
     /**
      * Déclenche l'action de travail ou de production du personnage.

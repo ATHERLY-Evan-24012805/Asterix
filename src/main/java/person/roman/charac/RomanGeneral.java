@@ -10,6 +10,7 @@ import place.types.BattleField;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
  * Représente un Général Romain.
  *
@@ -17,7 +18,7 @@ import java.util.List;
  * et de {@link person.Leader}. Il est principalement responsable de la coordination des troupes
  * romaines et ne se bat lui-même qu'en dernier recours.
  */
-public class RomanGeneral extends Roman implements Fighter, Leader {
+public non-sealed class RomanGeneral extends Roman implements Fighter, Leader {
 
     //constructeur
     /**
@@ -66,7 +67,7 @@ public class RomanGeneral extends Roman implements Fighter, Leader {
      */
 
 
-        // se bat seulement s'il n'a plus d'allier avec lui sur le champ de bataille
+    // se bat seulement s'il n'a plus d'allier avec lui sur le champ de bataille
     @Override
     public int fight() {
         if (this.getTarget() == null) {

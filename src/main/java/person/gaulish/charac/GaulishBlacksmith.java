@@ -15,7 +15,7 @@ import java.util.Random;
  * Son travail consiste à forger et réparer des équipements, ce qui est représenté par un bonus de force
  * à un habitant aléatoire de son lieu.
  */
-public class GaulishBlacksmith extends Gaulish implements Worker {
+public non-sealed class GaulishBlacksmith extends Gaulish implements Worker {
 
     private int worktimer = 20;
     private Random random = new Random();

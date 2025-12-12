@@ -12,7 +12,7 @@ import person.Leader;
  * Sa principale fonction de leadership est de promouvoir un autre personnage ciblé
  * au rang de {@link RomanGeneral} lorsque son compteur d'action est écoulé.
  */
-public class RomanPrefect extends Roman implements Leader{
+public non-sealed class RomanPrefect extends Roman implements Leader{
 
     /**
      * Construit une nouvelle instance de RomanPrefect.

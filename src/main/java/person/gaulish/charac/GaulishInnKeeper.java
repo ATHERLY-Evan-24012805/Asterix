@@ -11,7 +11,7 @@ import place.Place;
  * Son rôle principal est de soigner les habitants du lieu où il se trouve, en ciblant
  * la personne possédant le moins de points de vie.
  */
-public class GaulishInnKeeper extends Gaulish implements Worker {
+public non-sealed class GaulishInnKeeper extends Gaulish implements Worker {
 
     private int worktimer = 20;
 

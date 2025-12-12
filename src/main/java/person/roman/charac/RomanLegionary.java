@@ -10,7 +10,7 @@ import person.Fighter;
  * <p>Le Légionnaire est l'unité de combat de base de l'armée romaine. Il implémente l'interface
  * {@link person.Fighter} et est programmé pour attaquer sa cible à chaque unité de temps.
  */
-public class RomanLegionary extends Roman implements Fighter{
+public non-sealed class RomanLegionary extends Roman implements Fighter{
 
     /**
      * Construit une nouvelle instance de {@code RomanLegionary}.

@@ -65,7 +65,7 @@ public class PlaceTest {
     void setup() {
         romanCity = new RomanCity();
         battleField = new BattleField();
-        enclosure = new Enclosure();
+        enclosure = new Enclosure("Enclos Sud");
         gallicVillage = new GallicVillage();
         galloRomanVillage = new GalloRomanVillage();
         romanFortifiedCamp = new RomanFortifiedCamp();
